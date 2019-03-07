@@ -143,7 +143,8 @@ Format: <code>create &lt;username&gt;</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>create John Doe</code></p>
+<p><code>create John Doe</code>
+A new user account called "John Doe" is created.</p>
 </li>
 </ul>
 </div>
@@ -162,13 +163,17 @@ Format: <code>login &lt;username&gt; &lt;password&gt;</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>login John Doe john123</code></p>
+<p><code>login John Doe john123</code>
+The user can login using the username and password to be "John Doe" and "john123" respectively.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
 <h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.3. Viewing help : <code>help</code></a></h3>
+<div class="paragraph">
+<p>Displays the list of commands.</p>
+</div>
 <div class="paragraph">
 <p>Format: <code>help</code></p>
 </div>
@@ -204,10 +209,12 @@ A person can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>add maths pythagoras' theorem</code></p>
+<p><code>add maths pythagoras' theorem</code>
+Adds the subject and content of a new flash card to be "maths" and "pythagoras' theorem" respectively.</p>
 </li>
 <li>
-<p><code>add science definition</code></p>
+<p><code>add science definition</code>
+Adds the subject and content of a new flash card to be "science" and "definition" respectively.</p>
 </li>
 </ul>
 </div>
@@ -463,7 +470,8 @@ Format: <code>undo</code></p>
 <li>
 <p><code>delete 1</code><br>
 <code>list</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<code>undo</code><br>
+Reverses the <code>delete 1</code> command with the 'undo' command.</p>
 </li>
 <li>
 <p><code>select 1</code><br>
@@ -475,7 +483,8 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <p><code>delete 1</code><br>
 <code>clear</code><br>
 <code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br>
+Reverses both the 'clear' and 'delete 1' command.</p>
 </li>
 </ul>
 </div>
@@ -494,7 +503,8 @@ Format: <code>redo</code></p>
 <li>
 <p><code>delete 1</code><br>
 <code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
+<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
+Reverses and reapplies the 'delete 1' command.</p>
 </li>
 <li>
 <p><code>delete 1</code><br>
@@ -507,7 +517,8 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <code>undo</code> (reverses the <code>clear</code> command)<br>
 <code>undo</code> (reverses the <code>delete 1</code> command)<br>
 <code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
+<code>redo</code> (reapplies the <code>clear</code> command)<br>
+Reverses the 'clear' and 'delete 1' commands and reapplies both commands.</p>
 </li>
 </ul>
 </div>
@@ -598,4 +609,4 @@ e.g.<code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-04 05:36:57 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-07 05:13:05 UTC</div></div></div></body></html>
