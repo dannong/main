@@ -258,7 +258,7 @@ It ia stored internally and implements the following operations:</p>
 <p><code>FlashCards#s()</code>&#8201;&#8212;&#8201;(skip) Skip the current flash card and move on to the next. The flash card skipped will move to the back of the line.</p>
 </li>
 <li>
-<p><code>FlashCards#c()</code>&#8201;&#8212;&#8201;(change) Closes the flash cards in the current subject and move on to the next subject selected/in line.</p>
+<p><code>FlashCards#c()</code>&#8201;&#8212;&#8201;(change) Closes the flash cards in the current flashcard and move on to the next flashcard selected/in line.</p>
 </li>
 </ul>
 </div>
@@ -270,12 +270,12 @@ It ia stored internally and implements the following operations:</p>
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The Modes of Quizzing feature is facilitated by <code>FlashCards</code>.
-For each subject the user has, he/she can create flash cards specifically for the topic. The user can also choose the testing mode he/she wishes to be tested on. These are the different modes available:</p>
+For each flashcard the user has, he/she can create flash cards specifically for the topic. The user can also choose the testing mode he/she wishes to be tested on. These are the different modes available:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>"Subject" Knowledge Testing Mode</code>&#8201;&#8212;&#8201;From the pool of flash cards under the selected subject, the user will choose the number of flash cards and there will be a mixture of frequency levels from the subject pool. This mode will focus on a specific subject and can be used for revision before mini quizzes held in school.</p>
+<p><code>"Subject" Knowledge Testing Mode</code>&#8201;&#8212;&#8201;From the pool of flash cards under the selected flashcard, the user will choose the number of flash cards and there will be a mixture of frequency levels from the flashcard pool. This mode will focus on a specific flashcard and can be used for revision before mini quizzes held in school.</p>
 </li>
 <li>
 <p><code>"Focus" Subject Testing Mode</code>&#8201;&#8212;&#8201;This mode will be largely focused on weaker concepts and cards with higher frequency of being chosen from the database “FlashCards”. The frequency level can be toggled in this mode for the user to focus more on weaker concepts or strengthen their concepts. This mode is encouraged when exam dates are drawing near.</p>
@@ -295,19 +295,20 @@ For each subject the user has, he/she can create flash cards specifically for th
 <p>The user can determine how long the flash cards will exist in the database “FlashCards”.
 The following operations are available:
 * <code>FlashCards#clearall()</code>&#8201;&#8212;&#8201;Clears the entire database.
-* <code>FlashCards#clear()</code>&#8201;&#8212;&#8201;Clears a specific subject when in "Subject" Knowledge Testing Mode.</p>
+* <code>FlashCards#clear()</code>&#8201;&#8212;&#8201;Clears a specific flashcard when in "Subject" Knowledge Testing Mode.
+* <code>FlashCards#deadline()</code> or <code>FlashCards#exam()</code>&#8201;&#8212;&#8201;Adds a deadline/exam for the specified flashcard.</p>
 </div>
 <div class="paragraph">
-<p>For easier modes of implementation, the user can also choose to set a date whereby the flash cards would be unavailable thereafter. For example, in the event where the user knows the specific exam date for the selected subject, he/she can set the exam date under the “Subject Details” and the flash cards will be available for another month after the exam before the auto deletion function is activated.</p>
+<p>For easier modes of implementation, the user can also choose to set a date whereby the flash cards would be unavailable thereafter. To activate this function, the user can type in <code>deadline</code> or <code>exam</code>, followed by the index and the date. For example, in the event where the user knows the specific exam date for the selected flashcard, he/she can set the exam date under the “Subject Details” and the flash cards will be available for another month after the exam before the auto deletion function is activated.</p>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> and <code>Model#redoAddressBook()</code> respectively.</p>
+<p>These operations are exposed in the <code>Logic</code> interface as <code>Logic#clearall()</code>, <code>Logic#clear()</code>, <code>Logic#deadline()</code> and <code>Logic#exam()</code> respectively.</p>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
+<p>Given below is an example usage scenario and how the deadline/exam mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial address book state, and the <code>currentStatePointer</code> pointing to that single address book state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedFlashCards</code> will be initialized with the initial flash card state, and the <code>currentStatePointer</code> pointing to that single flash card state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -315,7 +316,7 @@ The following operations are available:
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th subject in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
+<p>Step 2. The user executes <code>list</code> command to list all the available flashcards in the FlashCards. The <code>list</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the flash card after the <code>list</code> command executes to be saved in the <code>flashCardStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted flash card state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -323,7 +324,7 @@ The following operations are available:
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new subject. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
+<p>Step 3. The user executes <code>deadline 1 d/&#8230;&#8203;</code> or <code>exam 1 d/&#8230;&#8203;</code> to add a new deadline or exam date for the specified flashcard. The <code>deadline</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -343,7 +344,10 @@ If a command fails its execution, it will not call <code>Model#commitAddressBook
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the subject was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
+<p>Step 4. The user now decides that the deadline/exam is over and do not wish to save the flashcard in the flash card. By executing the <code>clear</code> command, he can delete all the respective flash cards under the specified flashcard. The <code>clear</code> command will call <code>Logic#Clear()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous flash card state, and clear all the respective flash cards of the specified flashcard.</p>
+</div>
+<div class="paragraph">
+<p>Step 5: Alternatively, the user can execute the <code>clearall</code> command which will delete all the flash cards in the FlashCards. The <code>clearall</code> command will call <code>Logic#Clearall()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous flash card state, and clear all the respective flash cards in FlashCards.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -413,31 +417,31 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<h5 id="aspect-how-deadline-exam-executes"><a class="link" href="#aspect-how-deadline-exam-executes">Aspect: How deadline/exam executes</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
+<p><strong>Alternative 1 (current choice):</strong> Auto deletion of the flash cards.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement.</p>
+<p>Pros: Easy to implement and convenient for the user.</p>
 </li>
 <li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
+<p>Cons: Need to have additional internal calendar for the auto deletion.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
+<p><strong>Alternative 2:</strong> Manual deletion of the flash cards.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the subject being deleted).</p>
+<p>Pros: Allow the user to have the choice of keeping the flash cards or removing it.</p>
 </li>
 <li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
+<p>Cons: Might be too troublesome for some users.</p>
 </li>
 </ul>
 </div>
@@ -446,31 +450,31 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
+<h5 id="aspect-data-structure-to-support-the-deadline-exam-commands"><a class="link" href="#aspect-data-structure-to-support-the-deadline-exam-commands">Aspect: Data structure to support the deadline/exam commands</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
+<p><strong>Alternative 1 (current choice):</strong> Implement an internal calendar to calculate the number of days left.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
+<p>Pros: Auto deletion of flash cards.</p>
 </li>
 <li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
+<p>Cons: Need to pay extra caution for Leap years.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
+<p><strong>Alternative 2:</strong> Use the <code>clear</code> or <code>clearall</code> functions.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
+<p>Pros: Give the user the choice to keep or delete.</p>
 </li>
 <li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
+<p>Cons: Troublesome for users.</p>
 </li>
 </ul>
 </div>
@@ -496,4 +500,4 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-20 16:52:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-21 03:28:13 UTC</div></div></div></body></html>

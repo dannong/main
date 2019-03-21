@@ -88,7 +88,7 @@
 <li><a href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-subject">H.2. Deleting a subject</a></li>
+<li><a href="#deleting-a-flashcard">H.2. Deleting a flashcard</a></li>
 <li><a href="#saving-data">H.3. Saving data</a></li>
 </ul>
 </li>
@@ -473,7 +473,7 @@ The following class plays an important role at the architecture level:</p>
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
 </li>
 <li>
-<p>The command execution can affect the <code>Model</code> (e.g. adding a subject).</p>
+<p>The command execution can affect the <code>Model</code> (e.g. adding a flashcard).</p>
 </li>
 <li>
 <p>The result of the command execution is encapsulated as a <code>CommandResult</code> object which is passed back to the <code>Ui</code>.</p>
@@ -516,7 +516,7 @@ The following class plays an important role at the architecture level:</p>
 <p>stores the Address Book data.</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>exposes an unmodifiable <code>ObservableList&lt;Flashcard&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
@@ -530,7 +530,7 @@ The following class plays an important role at the architecture level:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book</code>, which <code>Person</code> can reference. This would allow <code>Address Book</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Person</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
+As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book</code>, which <code>Flashcard</code> can reference. This would allow <code>Address Book</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Flashcard</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
 <br>
 <span class="image"><img src="images/ModelClassBetterOopDiagram.png" alt="ModelClassBetterOopDiagram" width="800"></span>
 </td>
@@ -597,7 +597,7 @@ It ia stored internally and implements the following operations:</p>
 <p><code>FlashCards#s()</code>&#8201;&#8212;&#8201;(skip) Skip the current flash card and move on to the next. The flash card skipped will move to the back of the line.</p>
 </li>
 <li>
-<p><code>FlashCards#c()</code>&#8201;&#8212;&#8201;(change) Closes the flash cards in the current subject and move on to the next subject selected/in line.</p>
+<p><code>FlashCards#c()</code>&#8201;&#8212;&#8201;(change) Closes the flash cards in the current flashcard and move on to the next flashcard selected/in line.</p>
 </li>
 </ul>
 </div>
@@ -609,12 +609,12 @@ It ia stored internally and implements the following operations:</p>
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The Modes of Quizzing feature is facilitated by <code>FlashCards</code>.
-For each subject the user has, he/she can create flash cards specifically for the topic. The user can also choose the testing mode he/she wishes to be tested on. These are the different modes available:</p>
+For each flashcard the user has, he/she can create flash cards specifically for the topic. The user can also choose the testing mode he/she wishes to be tested on. These are the different modes available:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>"Subject" Knowledge Testing Mode</code>&#8201;&#8212;&#8201;From the pool of flash cards under the selected subject, the user will choose the number of flash cards and there will be a mixture of frequency levels from the subject pool. This mode will focus on a specific subject and can be used for revision before mini quizzes held in school.</p>
+<p><code>"Subject" Knowledge Testing Mode</code>&#8201;&#8212;&#8201;From the pool of flash cards under the selected flashcard, the user will choose the number of flash cards and there will be a mixture of frequency levels from the flashcard pool. This mode will focus on a specific flashcard and can be used for revision before mini quizzes held in school.</p>
 </li>
 <li>
 <p><code>"Focus" Subject Testing Mode</code>&#8201;&#8212;&#8201;This mode will be largely focused on weaker concepts and cards with higher frequency of being chosen from the database “FlashCards”. The frequency level can be toggled in this mode for the user to focus more on weaker concepts or strengthen their concepts. This mode is encouraged when exam dates are drawing near.</p>
@@ -634,19 +634,20 @@ For each subject the user has, he/she can create flash cards specifically for th
 <p>The user can determine how long the flash cards will exist in the database “FlashCards”.
 The following operations are available:
 * <code>FlashCards#clearall()</code>&#8201;&#8212;&#8201;Clears the entire database.
-* <code>FlashCards#clear()</code>&#8201;&#8212;&#8201;Clears a specific subject when in "Subject" Knowledge Testing Mode.</p>
+* <code>FlashCards#clear()</code>&#8201;&#8212;&#8201;Clears a specific flashcard when in "Subject" Knowledge Testing Mode.
+* <code>FlashCards#deadline()</code> or <code>FlashCards#exam()</code>&#8201;&#8212;&#8201;Adds a deadline/exam for the specified flashcard.</p>
 </div>
 <div class="paragraph">
-<p>For easier modes of implementation, the user can also choose to set a date whereby the flash cards would be unavailable thereafter. For example, in the event where the user knows the specific exam date for the selected subject, he/she can set the exam date under the “Subject Details” and the flash cards will be available for another month after the exam before the auto deletion function is activated.</p>
+<p>For easier modes of implementation, the user can also choose to set a date whereby the flash cards would be unavailable thereafter. To activate this function, the user can type in <code>deadline</code> or <code>exam</code>, followed by the index and the date. For example, in the event where the user knows the specific exam date for the selected flashcard, he/she can set the exam date under the “Subject Details” and the flash cards will be available for another month after the exam before the auto deletion function is activated.</p>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> and <code>Model#redoAddressBook()</code> respectively.</p>
+<p>These operations are exposed in the <code>Logic</code> interface as <code>Logic#clearall()</code>, <code>Logic#clear()</code>, <code>Logic#deadline()</code> and <code>Logic#exam()</code> respectively.</p>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
+<p>Given below is an example usage scenario and how the deadline/exam mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial address book state, and the <code>currentStatePointer</code> pointing to that single address book state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedFlashCards</code> will be initialized with the initial flash card state, and the <code>currentStatePointer</code> pointing to that single flash card state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -654,7 +655,7 @@ The following operations are available:
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th subject in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
+<p>Step 2. The user executes <code>list</code> command to list all the available flashcards in the FlashCards. The <code>list</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the flash card after the <code>list</code> command executes to be saved in the <code>flashCardStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted flash card state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -662,7 +663,7 @@ The following operations are available:
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new subject. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
+<p>Step 3. The user executes <code>deadline 1 d/&#8230;&#8203;</code> or <code>exam 1 d/&#8230;&#8203;</code> to add a new deadline or exam date for the specified flashcard. The <code>deadline</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -682,7 +683,10 @@ If a command fails its execution, it will not call <code>Model#commitAddressBook
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the subject was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
+<p>Step 4. The user now decides that the deadline/exam is over and do not wish to save the flashcard in the flash card. By executing the <code>clear</code> command, he can delete all the respective flash cards under the specified flashcard. The <code>clear</code> command will call <code>Logic#Clear()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous flash card state, and clear all the respective flash cards of the specified flashcard.</p>
+</div>
+<div class="paragraph">
+<p>Step 5: Alternatively, the user can execute the <code>clearall</code> command which will delete all the flash cards in the FlashCards. The <code>clearall</code> command will call <code>Logic#Clearall()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous flash card state, and clear all the respective flash cards in FlashCards.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -752,31 +756,31 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">3.3.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<h5 id="aspect-how-deadline-exam-executes"><a class="link" href="#aspect-how-deadline-exam-executes">Aspect: How deadline/exam executes</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
+<p><strong>Alternative 1 (current choice):</strong> Auto deletion of the flash cards.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement.</p>
+<p>Pros: Easy to implement and convenient for the user.</p>
 </li>
 <li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
+<p>Cons: Need to have additional internal calendar for the auto deletion.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
+<p><strong>Alternative 2:</strong> Manual deletion of the flash cards.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the subject being deleted).</p>
+<p>Pros: Allow the user to have the choice of keeping the flash cards or removing it.</p>
 </li>
 <li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
+<p>Cons: Might be too troublesome for some users.</p>
 </li>
 </ul>
 </div>
@@ -785,31 +789,31 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
+<h5 id="aspect-data-structure-to-support-the-deadline-exam-commands"><a class="link" href="#aspect-data-structure-to-support-the-deadline-exam-commands">Aspect: Data structure to support the deadline/exam commands</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
+<p><strong>Alternative 1 (current choice):</strong> Implement an internal calendar to calculate the number of days left.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
+<p>Pros: Auto deletion of flash cards.</p>
 </li>
 <li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
+<p>Cons: Need to pay extra caution for Leap years.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
+<p><strong>Alternative 2:</strong> Use the <code>clear</code> or <code>clearall</code> functions.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
+<p>Pros: Give the user the choice to keep or delete.</p>
 </li>
 <li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
+<p>Cons: Troublesome for users.</p>
 </li>
 </ul>
 </div>
@@ -1310,7 +1314,7 @@ Do take a look at <a href="#Design-Logic">Section 2.3, &#8220;Logic component&#8
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add a shorthand equivalent alias for each of the individual commands. For example, besides typing <code>clear</code>, the user can also type <code>c</code> to remove all subjects in the list.</p>
+<p>Add a shorthand equivalent alias for each of the individual commands. For example, besides typing <code>clear</code>, the user can also type <code>c</code> to remove all flashcards in the list.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
@@ -1389,7 +1393,7 @@ Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8
 <p>Think about how you can use SLAP to design the method. Where should we place the main logic of deleting tags?</p>
 </li>
 <li>
-<p>Find out which of the existing API methods in  <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> and <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/subject/Person.java"><code>Person</code></a> classes can be used to implement the tag removal logic. <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> allows you to update a subject, and <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/subject/Person.java"><code>Person</code></a> allows you to update the tags.</p>
+<p>Find out which of the existing API methods in  <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> and <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/flashcard/Flashcard.java"><code>Flashcard</code></a> classes can be used to implement the tag removal logic. <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a> allows you to update a flashcard, and <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/flashcard/Flashcard.java"><code>Flashcard</code></a> allows you to update the tags.</p>
 </li>
 </ul>
 </div>
@@ -1399,7 +1403,7 @@ Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8
 <div class="ulist">
 <ul>
 <li>
-<p>Implement a <code>removeTag(Tag)</code> method in <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a>. Loop through each subject, and remove the <code>tag</code> from each subject.</p>
+<p>Implement a <code>removeTag(Tag)</code> method in <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/AddressBook.java"><code>AddressBook</code></a>. Loop through each flashcard, and remove the <code>tag</code> from each flashcard.</p>
 </li>
 <li>
 <p>Add a new API method <code>deleteTag(Tag)</code> in <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a>. Your <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/ModelManager.java"><code>ModelManager</code></a> should call <code>AddressBook#removeTag(Tag)</code>.</p>
@@ -1422,7 +1426,7 @@ Do take a look at <a href="#Design-Model">Section 2.4, &#8220;Model component&#8
 </div>
 <h4 id="code-ui-code-component" class="discrete"><code>Ui</code> component</h4>
 <div class="paragraph">
-<p><strong>Scenario:</strong> You are in charge of <code>ui</code>. During a beta testing session, your team is observing how the users use your address book application. You realize that one of the users occasionally tries to delete non-existent tags from a contact, because the tags all look the same visually, and the user got confused. Another user made a typing mistake in his command, but did not realize he had done so because the error message wasn&#8217;t prominent enough. A third user keeps scrolling down the list, because he keeps forgetting the index of the last subject in the list. Your job is to implement improvements to the UI to solve all these problems.</p>
+<p><strong>Scenario:</strong> You are in charge of <code>ui</code>. During a beta testing session, your team is observing how the users use your address book application. You realize that one of the users occasionally tries to delete non-existent tags from a contact, because the tags all look the same visually, and the user got confused. Another user made a typing mistake in his command, but did not realize he had done so because the error message wasn&#8217;t prominent enough. A third user keeps scrolling down the list, because he keeps forgetting the index of the last flashcard in the list. Your job is to implement improvements to the UI to solve all these problems.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1439,7 +1443,7 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Use different colors for different tags inside subject cards. For example, <code>friends</code> tags can be all in brown, and <code>colleagues</code> tags can be all in yellow.</p>
+<p>Use different colors for different tags inside flashcard cards. For example, <code>friends</code> tags can be all in brown, and <code>colleagues</code> tags can be all in yellow.</p>
 <div class="paragraph">
 <p><strong>Before</strong></p>
 </div>
@@ -1617,16 +1621,16 @@ Do take a look at <a href="#Design-Ui">Section 2.2, &#8220;UI component&#8221;</
 <div class="ulist">
 <ul>
 <li>
-<p>Modify the constructor of <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to take in the number of subjects when the application just started.</p>
+<p>Modify the constructor of <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter</code></a> to take in the number of flashcards when the application just started.</p>
 </li>
 <li>
-<p>Use <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter#handleAddressBookChangedEvent(AddressBookChangedEvent)</code></a> to update the number of subjects whenever there are new changes to the addressbook.</p>
+<p>Use <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/ui/StatusBarFooter.java"><code>StatusBarFooter#handleAddressBookChangedEvent(AddressBookChangedEvent)</code></a> to update the number of flashcards whenever there are new changes to the addressbook.</p>
 </li>
 <li>
 <p>For tests, modify <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/test/java/guitests/guihandles/StatusBarFooterHandle.java"><code>StatusBarFooterHandle</code></a> by adding a state-saving functionality for the total number of people status, just like what we did for save location and sync status.</p>
 </li>
 <li>
-<p>For system tests, modify <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest</code></a> to also verify the new total number of subjects status bar.</p>
+<p>For system tests, modify <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/test/java/systemtests/AddressBookSystemTest.java"><code>AddressBookSystemTest</code></a> to also verify the new total number of flashcards status bar.</p>
 </li>
 <li>
 <p>See this <a href="https://github.com/se-edu/addressbook-level4/pull/803">PR</a> for the full solution.</p>
@@ -1707,7 +1711,7 @@ Do take a look at <a href="#Design-Storage">Section 2.5, &#8220;Storage componen
 <div class="sect3">
 <h4 id="description"><a class="link" href="#description">A.2.1. Description</a></h4>
 <div class="paragraph">
-<p>Edits the remark for a subject specified in the <code>INDEX</code>.<br>
+<p>Edits the remark for a flashcard specified in the <code>INDEX</code>.<br>
 Format: <code>remark INDEX r/[REMARK]</code></p>
 </div>
 <div class="paragraph">
@@ -1717,11 +1721,11 @@ Format: <code>remark INDEX r/[REMARK]</code></p>
 <ul>
 <li>
 <p><code>remark 1 r/Likes to drink coffee.</code><br>
-Edits the remark for the first subject to <code>Likes to drink coffee.</code></p>
+Edits the remark for the first flashcard to <code>Likes to drink coffee.</code></p>
 </li>
 <li>
 <p><code>remark 1 r/</code><br>
-Removes the remark for the first subject.</p>
+Removes the remark for the first flashcard.</p>
 </li>
 </ul>
 </div>
@@ -1802,7 +1806,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-3-ui-add-a-placeholder-for-remark-in-code-personcard-code"><a class="link" href="#step-3-ui-add-a-placeholder-for-remark-in-code-personcard-code">[Step 3] Ui: Add a placeholder for remark in <code>PersonCard</code></a></h5>
 <div class="paragraph">
-<p>Let&#8217;s add a placeholder on all our <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> s to display a remark for each subject later.</p>
+<p>Let&#8217;s add a placeholder on all our <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a> s to display a remark for each flashcard later.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -1831,7 +1835,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-4-model-add-code-remark-code-class"><a class="link" href="#step-4-model-add-code-remark-code-class">[Step 4] Model: Add <code>Remark</code> class</a></h5>
 <div class="paragraph">
-<p>We have to properly encapsulate the remark in our <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/subject/Person.java"><code>Person</code></a> class. Instead of just using a <code>String</code>, let&#8217;s follow the conventional class structure that the codebase already uses by adding a <code>Remark</code> class.</p>
+<p>We have to properly encapsulate the remark in our <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/flashcard/Flashcard.java"><code>Flashcard</code></a> class. Instead of just using a <code>String</code>, let&#8217;s follow the conventional class structure that the codebase already uses by adding a <code>Remark</code> class.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -1839,7 +1843,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add <code>Remark</code> to model component (you can copy from <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/subject/Address.java"><code>Address</code></a>, remove the regex and change the names accordingly).</p>
+<p>Add <code>Remark</code> to model component (you can copy from <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/flashcard/Address.java"><code>Address</code></a>, remove the regex and change the names accordingly).</p>
 </li>
 <li>
 <p>Modify <code>RemarkCommand</code> to now take in a <code>Remark</code> instead of a <code>String</code>.</p>
@@ -1858,9 +1862,9 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="step-5-model-modify-code-person-code-to-support-a-code-remark-code-field"><a class="link" href="#step-5-model-modify-code-person-code-to-support-a-code-remark-code-field">[Step 5] Model: Modify <code>Person</code> to support a <code>Remark</code> field</a></h5>
+<h5 id="step-5-model-modify-code-flashcard-code-to-support-a-code-remark-code-field"><a class="link" href="#step-5-model-modify-code-flashcard-code-to-support-a-code-remark-code-field">[Step 5] Model: Modify <code>Flashcard</code> to support a <code>Remark</code> field</a></h5>
 <div class="paragraph">
-<p>Now we have the <code>Remark</code> class, we need to actually use it inside <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/subject/Person.java"><code>Person</code></a>.</p>
+<p>Now we have the <code>Remark</code> class, we need to actually use it inside <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/flashcard/Flashcard.java"><code>Flashcard</code></a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -1868,10 +1872,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add <code>getRemark()</code> in <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/subject/Person.java"><code>Person</code></a>.</p>
+<p>Add <code>getRemark()</code> in <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/flashcard/Flashcard.java"><code>Flashcard</code></a>.</p>
 </li>
 <li>
-<p>You may assume that the user will not be able to use the <code>add</code> and <code>edit</code> commands to modify the remarks field (i.e. the subject will be created without a remark).</p>
+<p>You may assume that the user will not be able to use the <code>add</code> and <code>edit</code> commands to modify the remarks field (i.e. the flashcard will be created without a remark).</p>
 </li>
 <li>
 <p>Modify <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/util/SampleDataUtil.java/"><code>SampleDataUtil</code></a> to add remarks for the sample data (delete your <code>data/addressbook.json</code> so that the application will load the sample data when you launch it.)</p>
@@ -1882,7 +1886,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-6-storage-add-code-remark-code-field-to-code-jsonadaptedperson-code-class"><a class="link" href="#step-6-storage-add-code-remark-code-field-to-code-jsonadaptedperson-code-class">[Step 6] Storage: Add <code>Remark</code> field to <code>JsonAdaptedPerson</code> class</a></h5>
 <div class="paragraph">
-<p>We now have <code>Remark</code> s for <code>Person</code> s, but they will be gone when we exit the application. Let&#8217;s modify <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/storage/JsonAdaptedPerson.java"><code>JsonAdaptedPerson</code></a> to include a <code>Remark</code> field so that it will be saved.</p>
+<p>We now have <code>Remark</code> s for <code>Flashcard</code> s, but they will be gone when we exit the application. Let&#8217;s modify <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/storage/JsonAdaptedPerson.java"><code>JsonAdaptedPerson</code></a> to include a <code>Remark</code> field so that it will be saved.</p>
 </div>
 <div class="paragraph">
 <p><strong>Main:</strong></p>
@@ -1908,7 +1912,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect4">
 <h5 id="step-6b-test-add-withremark-for-code-personbuilder-code"><a class="link" href="#step-6b-test-add-withremark-for-code-personbuilder-code">[Step 6b] Test: Add withRemark() for <code>PersonBuilder</code></a></h5>
 <div class="paragraph">
-<p>Since <code>Person</code> can now have a <code>Remark</code>, we should add a helper method to <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>, so that users are able to create remarks when building a <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/subject/Person.java"><code>Person</code></a>.</p>
+<p>Since <code>Flashcard</code> can now have a <code>Remark</code>, we should add a helper method to <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>, so that users are able to create remarks when building a <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/model/flashcard/Flashcard.java"><code>Flashcard</code></a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Tests:</strong></p>
@@ -1916,10 +1920,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add a new method <code>withRemark()</code> for <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>. This method will create a new <code>Remark</code> for the subject that it is currently building.</p>
+<p>Add a new method <code>withRemark()</code> for <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/test/java/seedu/address/testutil/PersonBuilder.java"><code>PersonBuilder</code></a>. This method will create a new <code>Remark</code> for the flashcard that it is currently building.</p>
 </li>
 <li>
-<p>Try and use the method on any sample <code>Person</code> in <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/test/java/seedu/address/testutil/TypicalPersons.java"><code>TypicalPersons</code></a>.</p>
+<p>Try and use the method on any sample <code>Flashcard</code> in <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/test/java/seedu/address/testutil/TypicalPersons.java"><code>TypicalPersons</code></a>.</p>
 </li>
 </ol>
 </div>
@@ -1935,7 +1939,8 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Modify <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a>'s constructor to bind the <code>Remark</code> field to the <code>Person</code> 's remark.</p>
+<p>Modify <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/ui/PersonCard.java"><code>PersonCard</code></a>'s constructor to bind the <code>Remark</code> field to the `Flashcard
+` 's remark.</p>
 </li>
 </ol>
 </div>
@@ -1961,7 +1966,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Replace the logic in <code>RemarkCommand#execute()</code> (that currently just throws an <code>Exception</code>), with the actual logic to modify the remarks of a subject.</p>
+<p>Replace the logic in <code>RemarkCommand#execute()</code> (that currently just throws an <code>Exception</code>), with the actual logic to modify the remarks of a flashcard.</p>
 </li>
 </ol>
 </div>
@@ -1998,7 +2003,7 @@ for <code>RemarkCommandParser</code>.</p>
 <p>(Mainly) Secondary School students</p>
 </li>
 <li>
-<p>Has a need to memorise notes across different subjects</p>
+<p>Has a need to memorise notes across different flashcards</p>
 </li>
 <li>
 <p>Prefer digital notes over paper and pen</p>
@@ -2014,10 +2019,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Digitizes notes for each subject</p>
+<p>Digitizes notes for each flashcard</p>
 </li>
 <li>
-<p>One-stop platform to get all one&#8217;s notes for different subjects</p>
+<p>One-stop platform to get all one&#8217;s notes for different flashcards</p>
 </li>
 <li>
 <p>Help with the memorisation of notes through the use of flash cards (e.g. before exams)</p>
@@ -2061,7 +2066,7 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">New User</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Create a new account</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Only see flash cards and subjects that are related and customised for me</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Only see flash cards and flashcards that are related and customised for me</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2090,7 +2095,7 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List flash cards categorized by subjects</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List flash cards categorized by flashcards</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Have an overview of the flash cards I currently have</p></td>
 </tr>
 <tr>
@@ -2205,7 +2210,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User enters subject and data to add as a flash card</p>
+<p>User enters flashcard and data to add as a flash card</p>
 </li>
 <li>
 <p>FlashCards displays the flash card that was just added</p>
@@ -2222,10 +2227,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User enters the subject of the flash card to be edited</p>
+<p>User enters the flashcard of the flash card to be edited</p>
 </li>
 <li>
-<p>FlashCards displays a list of flash cards belonging to the same subject</p>
+<p>FlashCards displays a list of flash cards belonging to the same flashcard</p>
 </li>
 <li>
 <p>User selects the index of the flash card to edit</p>
@@ -2251,10 +2256,10 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User enters the subject of the flash card to be deleted</p>
+<p>User enters the flashcard of the flash card to be deleted</p>
 </li>
 <li>
-<p>FlashCards displays a list of flash cards belonging to the same subject</p>
+<p>FlashCards displays a list of flash cards belonging to the same flashcard</p>
 </li>
 <li>
 <p>User selects the index of the flash card to delete</p>
@@ -2274,7 +2279,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>FlashCards displays an indexed list of flash cards categorized by subjects</p>
+<p>FlashCards displays an indexed list of flash cards categorized by flashcards</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2342,7 +2347,7 @@ for <code>RemarkCommandParser</code>.</p>
 <p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>9</code> or higher installed.</p>
 </li>
 <li>
-<p>Should be able to hold up to 1000 subjects without a noticeable sluggishness in performance for typical usage.</p>
+<p>Should be able to hold up to 1000 flashcards without a noticeable sluggishness in performance for typical usage.</p>
 </li>
 <li>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
@@ -2370,7 +2375,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect2">
 <h3 id="operational-requirement"><a class="link" href="#operational-requirement">E.4. Operational Requirement</a></h3>
 <div class="paragraph">
-<p>The system is capable of categorizing the cards based on the subjects and allows easy access to cards when searching for one.</p>
+<p>The system is capable of categorizing the cards based on the flashcards and allows easy access to cards when searching for one.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2501,15 +2506,15 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-subject"><a class="link" href="#deleting-a-subject">H.2. Deleting a subject</a></h3>
+<h3 id="deleting-a-flashcard"><a class="link" href="#deleting-a-flashcard">H.2. Deleting a flashcard</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Deleting a subject while all subjects are listed</p>
+<p>Deleting a flashcard while all flashcards are listed</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all subjects using the <code>list</code> command. Multiple subjects in the list.</p>
+<p>Prerequisites: List all flashcards using the <code>list</code> command. Multiple flashcards in the list.</p>
 </li>
 <li>
 <p>Test case: <code>delete 1</code><br>
@@ -2517,7 +2522,7 @@ Expected: First contact is deleted from the list. Details of the deleted contact
 </li>
 <li>
 <p>Test case: <code>delete 0</code><br>
-Expected: No subject is deleted. Error details shown in the status message. Status bar remains the same.</p>
+Expected: No flashcard is deleted. Error details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
 <p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
@@ -2553,4 +2558,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-20 16:52:19 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-21 03:28:13 UTC</div></div></div></body></html>
