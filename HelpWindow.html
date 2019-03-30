@@ -193,11 +193,6 @@ The user can login using the username and password to be "John Doe" and "john123
 <p>Adds a flashcard with subject and data field.<br>
 Format: <code>add t/TOPIC diff/DIFFICULTY c/CONTENT d/DEADLINE s/SUBJECT</code></p>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>Summary of Fields:</strong></p>
-</div>
 <div class="ulist">
 <ul>
 <li>
@@ -217,10 +212,8 @@ Format: <code>add t/TOPIC diff/DIFFICULTY c/CONTENT d/DEADLINE s/SUBJECT</code><
 </li>
 </ul>
 </div>
-</div>
-</div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Examples:</strong></p>
 </div>
 <div class="ulist">
 <ul>
@@ -255,29 +248,22 @@ Format: <code>list</code> or <code>l</code></p>
 <div class="paragraph">
 <p>Edits the content of a flashcard.<br>
 Enter the index of the flashcard to edit.<br>
-Format: <code>edit INDEX [t/TOPIC] [diff/DIFFICULTY] [c/CONTENT] [d/DEADLINE] [s/SUBJECT]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>Summary of Fields:</strong></p>
+Format: <code>edit INDEX [t/TOPIC] [diff/DIFFICULTY] [c/CONTENT] [d/DEADLINE] [s/SUBJECT]</code><br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p><code>INDEX</code>: Index number of the flashcard to be edited. This index number will be shown in the displayed list of flashcards.
-<strong>Must be a positive integer</strong> such as 1, 2, 3, &#8230;&#8203;</p>
+<strong>Must be a positive integer</strong> such as 1, 2, 3, &#8230;&#8203;<br></p>
 </li>
 <li>
 <p><code>[t/TOPIC] [diff/DIFFICULTY] [c/CONTENT] [d/DEADLINE] [s/SUBJECT]</code>: <strong>At least one</strong> of these fields enclosed in [ ]
-must be present.</p>
+must be present.<br></p>
 </li>
 </ul>
 </div>
-</div>
-</div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Examples:</strong><br></p>
 </div>
 <div class="ulist">
 <ul>
@@ -299,24 +285,20 @@ Edits flashcard with index "2" and replaces its existing content with "The quick
 <h3 id="finding-a-flashcard-based-on-topic-code-find-code-or-code-f-code"><a class="link" href="#finding-a-flashcard-based-on-topic-code-find-code-or-code-f-code">3.7. Finding a flashcard based on topic: <code>find</code> or <code>f</code></a></h3>
 <div class="paragraph">
 <p>Find flashcards based on the given keyword.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>Summary of Fields:</strong></p>
+Format: <code>find KEYWORD [MORE_KEYWORDS]</code><br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>KEYWORD</code>: The keyword to find flashcards with</p>
+<p><code>KEYWORD</code>: The keyword to find flashcards with<br></p>
 </li>
 <li>
-<p><code>[MORE_KEYWORDS]</code>: More than one keyword is accepted but <strong>at least one</strong> keyword is needed.</p>
+<p><code>[MORE_KEYWORDS]</code>: More than one keyword is accepted but <strong>at least one</strong> keyword is needed.<br></p>
 </li>
 </ul>
 </div>
-</div>
+<div class="paragraph">
+<p><strong>Things to note:</strong><br></p>
 </div>
 <div class="ulist">
 <ul>
@@ -338,7 +320,7 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Examples:</strong><br></p>
 </div>
 <div class="ulist">
 <ul>
@@ -361,38 +343,34 @@ Returns any flashcards whose topic contains <code>sun</code> or <code>fox</code>
 <div class="paragraph">
 <p>Deletes the specified flashcard.<br>
 Enter the index of a flashcard to be deleted.<br>
-Format: <code>delete INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>Summary of Field:</strong></p>
+Format: <code>delete INDEX</code><br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p><code>INDEX</code>: Index number of the flashcard to be deleted. This index number will be shown in the displayed list of flashcards.
-<strong>Must be a positive integer</strong> such as 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Use the <code>list</code> command (see section 3.5) to display the list of all flashcards; or</p>
-</li>
-<li>
-<p>Use the <code>find</code> command (see section 3.7) to find a flashcard based on its topic.</p>
-</li>
-<li>
-<p>Select the index of the flashcard to delete.</p>
+<strong>Must be a positive integer</strong> such as 1, 2, 3, &#8230;&#8203;<br></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Steps to delete a flashcard:</strong><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the <code>list</code> command (see section 3.5) to display the list of all flashcards; or<br></p>
+</li>
+<li>
+<p>Use the <code>find</code> command (see section 3.7) to find a flashcard based on its topic.<br></p>
+</li>
+<li>
+<p>Select the index of the flashcard to delete.<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong><br></p>
 </div>
 <div class="ulist">
 <ul>
@@ -418,38 +396,34 @@ Deletes the specified flashcard at index 1.</p>
 <h3 id="selecting-a-flashcard-code-select-code"><a class="link" href="#selecting-a-flashcard-code-select-code">3.9. Selecting a flashcard : <code>select</code></a></h3>
 <div class="paragraph">
 <p>Selects the flashcard identified by the index number used in the displayed flashcards list.<br>
-Format: <code>select INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>Summary of Field:</strong></p>
+Format: <code>select INDEX</code><br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p><code>INDEX</code>: Index number of the flashcard to be selected. This index number will be shown in the displayed list of flashcards.
-<strong>Must be a positive integer</strong> such as 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Use the <code>list</code> command (see Section 3.5) to display the list of all flashcards; or</p>
-</li>
-<li>
-<p>Use the <code>find</code> command (see Section 3.7) to find a flashcard based on its topic.</p>
-</li>
-<li>
-<p>Select the index of the flashcard.</p>
+<strong>Must be a positive integer</strong> such as 1, 2, 3, &#8230;&#8203;<br></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Steps to select a flashcard:</strong><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the <code>list</code> command (see Section 3.5) to display the list of all flashcards; or<br></p>
+</li>
+<li>
+<p>Use the <code>find</code> command (see Section 3.7) to find a flashcard based on its topic.<br></p>
+</li>
+<li>
+<p>Select the index of the flashcard.<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong><br></p>
 </div>
 <div class="ulist">
 <ul>
@@ -471,25 +445,31 @@ Selects the 1st flashcard in the displayed results of the <code>find</code> comm
 <div class="sect2">
 <h3 id="viewing-the-next-flashcard-code-next-code-or-code-n-code"><a class="link" href="#viewing-the-next-flashcard-code-next-code-or-code-n-code">3.10. Viewing the next flashcard : <code>next</code> or <code>n</code></a></h3>
 <div class="paragraph">
-<p>Views the next flashcard in line.
-<br>
-Format: <code>next</code> or <code>n</code></p>
+<p>Views the next flashcard in line.<br>
+Format: <code>next</code> or <code>n</code><br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Selects the next flashcard and displays its content</p>
-</li>
-<li>
-<p>Use the <code>select</code> command (see Section 3.9) to select a flashcard first.</p>
-</li>
-<li>
-<p>Use this <code>next</code> / <code>n</code> command to go to the next flashcard.</p>
+<p>Selects the next flashcard and displays its content<br></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Steps to view next flashcard:</strong><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the <code>select</code> command (see Section 3.9) to select a flashcard first.<br></p>
+</li>
+<li>
+<p>Use this <code>next</code> / <code>n</code> command to go to the next flashcard.<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong><br></p>
 </div>
 <div class="ulist">
 <ul>
@@ -517,23 +497,30 @@ Displays the content of this flashcard.</p>
 <h3 id="viewing-the-next-flashcard-code-previous-code-or-code-p-code"><a class="link" href="#viewing-the-next-flashcard-code-previous-code-or-code-p-code">3.11. Viewing the next flashcard : <code>previous</code> or <code>p</code></a></h3>
 <div class="paragraph">
 <p>Views the previous flashcard in line.<br>
-Format: <code>previous</code> or <code>p</code></p>
+Format: <code>previous</code> or <code>p</code><br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Selects the previous flashcard and displays its content</p>
-</li>
-<li>
-<p>Use the <code>select</code> command (see Section 3.9) to select a flashcard first.</p>
-</li>
-<li>
-<p>Use this <code>previous</code> / <code>p</code> command to go to the previous flashcard.</p>
+<p>Selects the previous flashcard and displays its content<br></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Steps to view previous flashcard:</strong><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the <code>select</code> command (see Section 3.9) to select a flashcard first.<br></p>
+</li>
+<li>
+<p>Use this <code>previous</code> / <code>p</code> command to go to the previous flashcard.<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>*Examples:<br></p>
 </div>
 <div class="ulist">
 <ul>
@@ -765,4 +752,4 @@ e.g.<code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-30 07:51:43 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-30 08:11:08 UTC</div></div></div></body></html>
