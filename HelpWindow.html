@@ -17,17 +17,17 @@
 <li><a href="#logging-in-code-login-code">3.2. Logging in: <code>login</code></a></li>
 <li><a href="#viewing-help-code-help-code">3.3. Viewing help : <code>help</code></a></li>
 <li><a href="#adding-a-subject-or-flashcard-code-add-code">3.4. Adding a subject or flashcard: <code>add</code></a></li>
-<li><a href="#listing-all-flashcards-categorized-by-subjects-code-list-code-code-l-code">3.5. Listing all flashcards categorized by subjects : <code>list</code> <code>l</code></a></li>
-<li><a href="#editing-a-flashcard-code-edit-code-code-e-code">3.6. Editing a flashcard : <code>edit</code> <code>e</code></a></li>
-<li><a href="#finding-a-flashcard-code-find-code-code-f-code">3.7. Finding a flashcard: <code>find</code> <code>f</code></a></li>
-<li><a href="#deleting-a-subject-or-flashcard-code-delete-code-code-d-code">3.8. Deleting a subject or flashcard : <code>delete</code> <code>d</code></a></li>
+<li><a href="#listing-all-flashcards-categorized-by-subjects-code-list-code-or-code-l-code">3.5. Listing all flashcards categorized by subjects : <code>list</code> or <code>l</code></a></li>
+<li><a href="#editing-a-flashcard-code-edit-code-or-code-e-code">3.6. Editing a flashcard : <code>edit</code> or <code>e</code></a></li>
+<li><a href="#finding-a-flashcard-based-on-topic-code-find-code-or-code-f-code">3.7. Finding a flashcard based on topic: <code>find</code> or <code>f</code></a></li>
+<li><a href="#deleting-a-flashcard-code-delete-code-or-code-d-code">3.8. Deleting a flashcard : <code>delete</code> or <code>d</code></a></li>
 <li><a href="#selecting-a-flashcard-code-select-code">3.9. Selecting a flashcard : <code>select</code></a></li>
-<li><a href="#viewing-the-next-flashcard-code-next-code-code-n-code">3.10. Viewing the next flashcard : <code>next</code> <code>n</code></a></li>
-<li><a href="#viewing-the-next-flashcard-code-previous-code-code-p-code">3.11. Viewing the next flashcard : <code>previous</code> <code>p</code></a></li>
+<li><a href="#viewing-the-next-flashcard-code-next-code-or-code-n-code">3.10. Viewing the next flashcard : <code>next</code> or <code>n</code></a></li>
+<li><a href="#viewing-the-next-flashcard-code-previous-code-or-code-p-code">3.11. Viewing the next flashcard : <code>previous</code> or <code>p</code></a></li>
 <li><a href="#listing-entered-commands-code-history-code">3.12. Listing entered commands : <code>history</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code">3.13. Undoing previous command : <code>undo</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">3.14. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-flashcards-code-clear-code-code-c-code">3.15. Clearing all flashcards : <code>clear</code> <code>c</code></a></li>
+<li><a href="#clearing-all-flashcards-code-clear-code-or-code-c-code">3.15. Clearing all flashcards : <code>clear</code> or <code>c</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.16. Exiting the program : <code>exit</code></a></li>
 <li><a href="#saving-the-data">3.17. Saving the data</a></li>
 <li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.18. Encrypting data files <code>[coming in v2.0]</code></a></li>
@@ -59,7 +59,7 @@ More importantly, FlashCards is <strong>optimized for those who prefer to work w
 <p>Download the latest <code>flashcard.jar</code> <a href="https://github.com/cs2113-ay1819s2-m11-3/main//releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your FlashCardBook.</p>
+<p>Copy the file to the folder you want to use as the home folder for this FlashCard application.</p>
 </li>
 <li>
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
@@ -73,29 +73,41 @@ More importantly, FlashCards is <strong>optimized for those who prefer to work w
 <p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
 e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
 </li>
-<li>
-<p>Some example commands you can try:</p>
+</ol>
+</div>
+<div class="paragraph">
+<p>Other example commands you can try:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
 <p><strong><code>list</code></strong> : lists all flashcards</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>t/Pythagoras Theorem c/a<sup>2+b</sup>2=c^2 d/21 March 2019 s/Math</code> : adds a flashcard named <code>Pythagoras Theorem</code> under the subject <code>Math</code> to the FlashCards Book.</p>
+<p><strong><code>add</code></strong><code>t/Pythagoras Theorem diff/1 c/a^2 + b^2 = c^2 d/30-03-2019 s/Math</code></p>
 </li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Adds a flashcard named <code>Pythagoras Theorem</code> under the subject <code>Math</code> to the list of flashcards.
+It has a difficulty level of <code>1</code> with the content <code>a^2 + b^2 = c^2</code> and should be memorised by <code>30-03-2019</code>.</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd flashcard shown in the current list</p>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exits the app</p>
-</li>
-</ul>
-</div>
-</li>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
 </li>
 </ol>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -110,7 +122,8 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add t/TOPIC</code>, <code>TOPIC</code> is a parameter which can be used as <code>add t/Pythagoras Theorem</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user
+e.g. in <code>add t/TOPIC</code>, <code>TOPIC</code> is a parameter which can be used as <code>add t/Pythagoras Theorem</code>.</p>
 </li>
 <li>
 <p>Parameters can be in any order e.g. if the command specifies <code>t/TOPIC c/CONTENT</code>, <code>c/CONTENT t/TOPIC</code> is also acceptable.</p>
@@ -178,7 +191,33 @@ The user can login using the username and password to be "John Doe" and "john123
 <h3 id="adding-a-subject-or-flashcard-code-add-code"><a class="link" href="#adding-a-subject-or-flashcard-code-add-code">3.4. Adding a subject or flashcard: <code>add</code></a></h3>
 <div class="paragraph">
 <p>Adds a flashcard with subject and data field.<br>
-Format: <code>add t/TOPIC c/CONTENT d/DEADLINE s/SUBJECT</code></p>
+Format: <code>add t/TOPIC diff/DIFFICULTY c/CONTENT d/DEADLINE s/SUBJECT</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Summary of Fields:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>TOPIC</code>: Title of the flashcard.</p>
+</li>
+<li>
+<p><code>DIFFICULTY</code>: Difficulty level of the flashcard&#8217;s content indicated by a positive integer 1, 2, or 3 only.</p>
+</li>
+<li>
+<p><code>CONTENT</code>: Content of the flashcard.</p>
+</li>
+<li>
+<p><code>DEADLINE</code>: Date of when the flashcard should be memorised by in the format (dd-mm-yyyy).</p>
+</li>
+<li>
+<p><code>SUBJECT</code>: Subject of the flashcard.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -186,21 +225,23 @@ Format: <code>add t/TOPIC c/CONTENT d/DEADLINE s/SUBJECT</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add t/Pythagoras Theorem c/a^2 + b^2 = c^2 d/21 March 2019 s/Math</code>
-Adds the flashcard named "Pythagoras Theorem" with content "a^2 + b^2 = c^2" and tagged under the subject "Math". Assigns an expiry deadline "21 March 2019".</p>
+<p><code>add t/Pythagoras Theorem diff/1 c/a^2 + b^2 = c^2 d/30-03-2019 s/Math</code><br>
+Adds a flashcard named "Pythagoras Theorem" under the subject "Math" to the list of flashcards.
+It has a difficulty level of "1" with the content "a^2 + b^2 = c^2" and should be memorised by "30-03-2019".</p>
 </li>
 <li>
-<p><code>add t/Photosynthesis c/A chemical reaction that takes place inside a plant, producing food for the plant to survive d/22 March 2019 s/Science</code>
-Adds the flashcard named "Photosynthesis" with the content "A chemical reaction that takes place inside a plant, producing food for the plant to survive" and tagged under the subject "Science". Assigns an expiry deadline "22 March 2019".</p>
+<p><code>add t/Photosynthesis diff/1 c/A chemical reaction that takes place inside a plant, producing food for the plant to survive d/01-04-2019 s/Science</code><br>
+Adds a flashcard named "Photosynthesis" under the subject "Science" to the list of flashcards.
+It has a difficulty level of "1" with the content "A chemical reaction that takes place inside a plant, producing food for the plant to survive" and should be memorised by "01-04-2019".</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Lists the flashcard that was just added.</p>
+<p>The flashcard that was just added will be displayed.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-flashcards-categorized-by-subjects-code-list-code-code-l-code"><a class="link" href="#listing-all-flashcards-categorized-by-subjects-code-list-code-code-l-code">3.5. Listing all flashcards categorized by subjects : <code>list</code> <code>l</code></a></h3>
+<h3 id="listing-all-flashcards-categorized-by-subjects-code-list-code-or-code-l-code"><a class="link" href="#listing-all-flashcards-categorized-by-subjects-code-list-code-or-code-l-code">3.5. Listing all flashcards categorized by subjects : <code>list</code> or <code>l</code></a></h3>
 <div class="paragraph">
 <p>Displays an indexed list of flashcards categorized by subjects.<br>
 Format: <code>list</code> or <code>l</code></p>
@@ -210,36 +251,26 @@ Format: <code>list</code> or <code>l</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-flashcard-code-edit-code-code-e-code"><a class="link" href="#editing-a-flashcard-code-edit-code-code-e-code">3.6. Editing a flashcard : <code>edit</code> <code>e</code></a></h3>
+<h3 id="editing-a-flashcard-code-edit-code-or-code-e-code"><a class="link" href="#editing-a-flashcard-code-edit-code-or-code-e-code">3.6. Editing a flashcard : <code>edit</code> or <code>e</code></a></h3>
 <div class="paragraph">
 <p>Edits the content of a flashcard.<br>
-Enter the subject that the flashcard belongs to.
-Format: <code>edit INDEX SUBJECT</code></p>
+Enter the index of the flashcard to edit.<br>
+Format: <code>edit INDEX [t/TOPIC] [diff/DIFFICULTY] [c/CONTENT] [d/DEADLINE] [s/SUBJECT]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
+<div class="paragraph">
+<p><strong>Summary of Fields:</strong></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the flashcard at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed subject list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p><code>INDEX</code>: Index number of the flashcard to be edited. This index number will be shown in the displayed list of flashcards.
+<strong>Must be a positive integer</strong> such as 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>A list of flashcards belonging to that subject will be displayed.</p>
-</li>
-<li>
-<p>Select the index of the flashcard to edit.</p>
-</li>
-<li>
-<p>Existing values will be updated to the input values.</p>
-</li>
-<li>
-<p>The updated flashcard will be displayed.</p>
-</li>
-<li>
-<p>When editing flashcards, the existing tags of the flashcard will be removed i.e adding of tags is not cumulative.</p>
+<p><code>[t/TOPIC] [diff/DIFFICULTY] [c/CONTENT] [d/DEADLINE] [s/SUBJECT]</code>: <strong>At least one</strong> of these fields enclosed in [ ]
+must be present.</p>
 </li>
 </ul>
 </div>
@@ -251,44 +282,60 @@ Format: <code>edit INDEX SUBJECT</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 definition</code><br>
-Edits the content of flashcard.</p>
+<p><code>edit 1 s/Science</code><br>
+Edits flashcard with index "1" and replaces its existing subject with "Science".</p>
 </li>
 <li>
-<p><code>e 2 definition</code><br>
-Edits the content of flashcard.</p>
+<p><code>e 2 c/The quick brown fox</code><br>
+Edits flashcard with index "2" and replaces its existing content with "The quick brown fox".</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>The edited flashcard will be updated and displayed in the list of flashcards.</p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="finding-a-flashcard-code-find-code-code-f-code"><a class="link" href="#finding-a-flashcard-code-find-code-code-f-code">3.7. Finding a flashcard: <code>find</code> <code>f</code></a></h3>
+<h3 id="finding-a-flashcard-based-on-topic-code-find-code-or-code-f-code"><a class="link" href="#finding-a-flashcard-based-on-topic-code-find-code-or-code-f-code">3.7. Finding a flashcard based on topic: <code>find</code> or <code>f</code></a></h3>
 <div class="paragraph">
 <p>Find flashcards based on the given keyword.<br>
-Format: <code>find &lt;KEYWORD&gt; [MORE_KEYWORDS]</code></p>
+Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
+<div class="paragraph">
+<p><strong>Summary of Fields:</strong></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>The search is case insensitive. e.g <code>hans</code> will not match <code>Hans</code></p>
+<p><code>KEYWORD</code>: The keyword to find flashcards with</p>
 </li>
 <li>
-<p>The order of the keywords does not matter. e.g. <code>Pythagoras Theorem</code> will match <code>Theorem Pythagoras</code></p>
-</li>
-<li>
-<p>The search is based on the flashcard&#8217;s content.</p>
-</li>
-<li>
-<p>Only full words will be matched e.g. <code>Theorem</code> will not match <code>Theorems</code></p>
-</li>
-<li>
-<p>Flashcards containing the keyword will be displayed (i.e. <code>OR</code> search). e.g. <code>Photosynthesis Theorem</code> will return <code>Photosynthesis</code>, <code>Pythagoras Theorem</code></p>
+<p><code>[MORE_KEYWORDS]</code>: More than one keyword is accepted but <strong>at least one</strong> keyword is needed.</p>
 </li>
 </ul>
 </div>
 </div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>fox</code> will match <code>Fox</code>.</p>
+</li>
+<li>
+<p>The order of the keywords does not matter. e.g. <code>Pythagoras Theorem</code> will match <code>Theorem Pythagoras</code>.</p>
+</li>
+<li>
+<p>The search is based on the flashcard&#8217;s topic.</p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>Theorem</code> will not match <code>Theorems</code>.</p>
+</li>
+<li>
+<p>Flashcards containing the keyword will be displayed (i.e. <code>OR</code> search). e.g. <code>Photosynthesis Theorem</code> will return <code>Photosynthesis</code> and <code>Pythagoras Theorem</code> flashcards.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -296,48 +343,53 @@ Format: <code>find &lt;KEYWORD&gt; [MORE_KEYWORDS]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find math</code><br>
-Returns <code>math</code> and <code>Mathematics</code></p>
+<p><code>find Theorem</code><br>
+Returns "Pythagoras Theorem" and "Bayes Theorem" flashcards and any flashcards whose topic contains <code>Theorem</code>.</p>
 </li>
 <li>
-<p><code>f science english math</code><br>
-Returns any flashcards having names <code>science</code>, <code>english</code>, or <code>math</code></p>
+<p><code>f sun fox</code><br>
+Returns any flashcards whose topic contains <code>sun</code> or <code>fox</code> such as "Brown fox" and "Rising sun" flashcards.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The flashcard(s) whose topic matches any of the keywords given will be displayed in the list of flashcards.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-flashcard-code-delete-code-or-code-d-code"><a class="link" href="#deleting-a-flashcard-code-delete-code-or-code-d-code">3.8. Deleting a flashcard : <code>delete</code> or <code>d</code></a></h3>
+<div class="paragraph">
+<p>Deletes the specified flashcard.<br>
+Enter the index of a flashcard to be deleted.<br>
+Format: <code>delete INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Summary of Field:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>INDEX</code>: Index number of the flashcard to be deleted. This index number will be shown in the displayed list of flashcards.
+<strong>Must be a positive integer</strong> such as 1, 2, 3, &#8230;&#8203;</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="deleting-a-subject-or-flashcard-code-delete-code-code-d-code"><a class="link" href="#deleting-a-subject-or-flashcard-code-delete-code-code-d-code">3.8. Deleting a subject or flashcard : <code>delete</code> <code>d</code></a></h3>
-<div class="paragraph">
-<p>Deletes the specified subject or flashcard.<br>
-Enter the subject that the flashcard belongs to.<br>
-Format: <code>delete INDEX &lt;subject&gt;</code></p>
 </div>
-<div class="sidebarblock">
-<div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>A list of flashcards belonging to the subject will be displayed.</p>
+<p>Use the <code>list</code> command (see section 3.5) to display the list of all flashcards; or</p>
+</li>
+<li>
+<p>Use the <code>find</code> command (see section 3.7) to find a flashcard based on its topic.</p>
 </li>
 <li>
 <p>Select the index of the flashcard to delete.</p>
 </li>
-<li>
-<p>Deletes the flashcard at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the displayed subject list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p>The updated list of flashcards will be displayed.</p>
-</li>
 </ul>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -346,39 +398,55 @@ Format: <code>delete INDEX &lt;subject&gt;</code></p>
 <ul>
 <li>
 <p><code>list</code><br>
+Lists all flashcards.<br>
 <code>delete 2</code><br>
-Deletes the specified content of index 2.</p>
+Deletes the specified flashcard at index 2.</p>
 </li>
 <li>
 <p><code>f Pythagoras Theorem</code><br>
+Find flashcards with keywords "Pythagoras" and "Theorem".<br>
 <code>d 1</code><br>
-Deletes the specified content of index 1.</p>
+Deletes the specified flashcard at index 1.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>The updated list of flashcards will be displayed.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="selecting-a-flashcard-code-select-code"><a class="link" href="#selecting-a-flashcard-code-select-code">3.9. Selecting a flashcard : <code>select</code></a></h3>
 <div class="paragraph">
-<p>Selects the flashcard identified by the index number used in the displayed list.<br>
+<p>Selects the flashcard identified by the index number used in the displayed flashcards list.<br>
 Format: <code>select INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
+<div class="paragraph">
+<p><strong>Summary of Field:</strong></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Selects the flashcard and loads the content of the flashcard at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the displayed list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+<p><code>INDEX</code>: Index number of the flashcard to be selected. This index number will be shown in the displayed list of flashcards.
+<strong>Must be a positive integer</strong> such as 1, 2, 3, &#8230;&#8203;</p>
 </li>
 </ul>
 </div>
 </div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the <code>list</code> command (see Section 3.5) to display the list of all flashcards; or</p>
+</li>
+<li>
+<p>Use the <code>find</code> command (see Section 3.7) to find a flashcard based on its topic.</p>
+</li>
+<li>
+<p>Select the index of the flashcard.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -387,40 +455,38 @@ Format: <code>select INDEX</code></p>
 <ul>
 <li>
 <p><code>list</code><br>
+Lists all flashcards.<br>
 <code>select 2</code><br>
 Selects the 2nd flashcard in the list.</p>
 </li>
 <li>
 <p><code>find definition</code><br>
+Find flashcards with the keyword "definition".<br>
 <code>select 1</code><br>
-Selects the 1st flashcard in the results of the <code>find</code> command.</p>
+Selects the 1st flashcard in the displayed results of the <code>find</code> command.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-the-next-flashcard-code-next-code-code-n-code"><a class="link" href="#viewing-the-next-flashcard-code-next-code-code-n-code">3.10. Viewing the next flashcard : <code>next</code> <code>n</code></a></h3>
+<h3 id="viewing-the-next-flashcard-code-next-code-or-code-n-code"><a class="link" href="#viewing-the-next-flashcard-code-next-code-or-code-n-code">3.10. Viewing the next flashcard : <code>next</code> or <code>n</code></a></h3>
 <div class="paragraph">
-<p>Views the next flashcard that is next in line for the chosen subject.
+<p>Views the next flashcard in line.
 <br>
 Format: <code>next</code> or <code>n</code></p>
 </div>
-<div class="sidebarblock">
-<div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Displays the next flashcard and loads the content of the flashcard of the next index.</p>
+<p>Selects the next flashcard and displays its content</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed list.</p>
+<p>Use the <code>select</code> command (see Section 3.9) to select a flashcard first.</p>
 </li>
 <li>
-<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+<p>Use this <code>next</code> / <code>n</code> command to go to the next flashcard.</p>
 </li>
 </ul>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -429,40 +495,42 @@ Format: <code>next</code> or <code>n</code></p>
 <ul>
 <li>
 <p><code>select 2</code><br>
+Selects the 2nd flashcard in the list.<br>
 <code>next</code><br>
-Displays the 3rd flashcard in the list.</p>
+Selects the next flashcard in the list (i.e. the 3rd flashcard); and<br>
+Displays the content of this flashcard.</p>
 </li>
 <li>
 <p><code>select 5</code><br>
+Selects the 5th flashcard in the list.<br>
 <code>n</code><br>
-Displays the 5th flashcard in the list.</p>
+Displays the next flashcard in the list (i.e. the 6th flashcard); and<br>
+Displays the content of this flashcard.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>The next flashcard in line will be selected and its content will be displayed.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-the-next-flashcard-code-previous-code-code-p-code"><a class="link" href="#viewing-the-next-flashcard-code-previous-code-code-p-code">3.11. Viewing the next flashcard : <code>previous</code> <code>p</code></a></h3>
+<h3 id="viewing-the-next-flashcard-code-previous-code-or-code-p-code"><a class="link" href="#viewing-the-next-flashcard-code-previous-code-or-code-p-code">3.11. Viewing the next flashcard : <code>previous</code> or <code>p</code></a></h3>
 <div class="paragraph">
-<p>Views the previous flashcard that is next in line for the chosen subject.
-<br>
+<p>Views the previous flashcard in line.<br>
 Format: <code>previous</code> or <code>p</code></p>
 </div>
-<div class="sidebarblock">
-<div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Displays the previous flashcard and loads the content of the flashcard of the next index.</p>
+<p>Selects the previous flashcard and displays its content</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed list.</p>
+<p>Use the <code>select</code> command (see Section 3.9) to select a flashcard first.</p>
 </li>
 <li>
-<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+<p>Use this <code>previous</code> / <code>p</code> command to go to the previous flashcard.</p>
 </li>
 </ul>
-</div>
-</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -471,15 +539,22 @@ Format: <code>previous</code> or <code>p</code></p>
 <ul>
 <li>
 <p><code>select 2</code><br>
+Selects the 2nd flashcard in the list.<br>
 <code>previous</code><br>
-Displays the 1st flashcard in the list.</p>
+Selects the previous flashcard in the list (i.e. the 1st flashcard); and<br>
+Displays the content of this flashcard.</p>
 </li>
 <li>
 <p><code>select 5</code><br>
+Selects the 5th flashcard in the list.<br>
 <code>p</code><br>
-Displays the 4th flashcard in the list.</p>
+Selects the previous flashcard in the list (i.e. the 4th flashcard); and<br>
+Displays the content of this flashcard.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>The previous flashcard in line will be selected and its content will be displayed.</p>
 </div>
 </div>
 <div class="sect2">
@@ -530,22 +605,29 @@ Format: <code>undo</code></p>
 <ul>
 <li>
 <p><code>delete 1</code><br>
+Deletes the 1st flashcard in the list.<br>
 <code>list</code><br>
+Lists all flashcards.<br>
 <code>undo</code><br>
-Reverses the <code>delete 1</code> command with the 'undo' command.</p>
+Reverses the <code>delete 1</code> command.</p>
 </li>
 <li>
 <p><code>select 1</code><br>
+Selects the 1st flashcard in the list.<br>
 <code>list</code><br>
+Lists all flashcards.<br>
 <code>undo</code><br>
 The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
 </li>
 <li>
 <p><code>delete 1</code><br>
+Deletes the 1st flashcard in the list.<br>
 <code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-Reverses both the 'clear' and 'delete 1' command.</p>
+Clear all flashcards.<br>
+<code>undo</code><br>
+Reverses the <code>clear</code> command<br>
+<code>undo</code><br>
+Reverses the <code>delete 1</code> command<br></p>
 </li>
 </ul>
 </div>
@@ -563,31 +645,39 @@ Format: <code>redo</code></p>
 <ul>
 <li>
 <p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-Reverses and reapplies the 'delete 1' command.</p>
+Deletes the 1st flashcard in the list.<br>
+<code>undo</code><br>
+Reverses the <code>delete 1</code> command<br>
+<code>redo</code><br>
+Reapplies the <code>delete 1</code> command<br></p>
 </li>
 <li>
 <p><code>delete 1</code><br>
+Deletes the 1st flashcard in the list.<br>
 <code>redo</code><br>
 The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
 </li>
 <li>
 <p><code>delete 1</code><br>
+Deletes the 1st flashcard in the list.<br>
 <code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br>
-Reverses the 'clear' and 'delete 1' commands and reapplies both commands.</p>
+Clears all flashcards.<br>
+<code>undo</code><br>
+Reverses the <code>clear</code> command<br>
+<code>undo</code><br>
+Reverses the <code>delete 1</code> command<br>
+<code>redo</code><br>
+Reapplies the <code>delete 1</code> command<br>
+<code>redo</code><br>
+Reapplies the <code>clear</code> command<br></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-flashcards-code-clear-code-code-c-code"><a class="link" href="#clearing-all-flashcards-code-clear-code-code-c-code">3.15. Clearing all flashcards : <code>clear</code> <code>c</code></a></h3>
+<h3 id="clearing-all-flashcards-code-clear-code-or-code-c-code"><a class="link" href="#clearing-all-flashcards-code-clear-code-or-code-c-code">3.15. Clearing all flashcards : <code>clear</code> or <code>c</code></a></h3>
 <div class="paragraph">
-<p>Clears all flashcards belonging to user.<br>
+<p>Clears all flashcards.<br>
 Format: <code>clear</code> or <code>c</code></p>
 </div>
 </div>
@@ -628,8 +718,9 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add &lt;topic&gt; &lt;content&gt; &lt;deadline&gt; &lt;subject&gt;</code><br>
-e.g. <code>add t/Pythagoras Theorem c/a<sup>2+b</sup>2=c^2 d/21 March 2019 s/Math</code></p>
+<p><strong>Add</strong> :
+<code>add t/TOPIC diff/DIFFICULTY c/CONTENT d/DEADLINE s/SUBJECT</code><br>
+e.g. <code>add t/Pythagoras Theorem diff/1 c/a^2 + b^2 = c^2 d/30-03-2019 s/Math</code></p>
 </li>
 <li>
 <p><strong>Clear</strong> : <code>clear</code> or <code>c</code></p>
@@ -639,14 +730,12 @@ e.g. <code>add t/Pythagoras Theorem c/a<sup>2+b</sup>2=c^2 d/21 March 2019 s/Mat
 e.g. <code>delete 3</code> or <code>d 3</code></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit INDEX &lt;flashcard&gt;</code><br>
-e.g. <code>edit 2 definition</code> or
-e.g. <code>e 2 definition</code></p>
+<p><strong>Edit</strong> : <code>edit INDEX [t/TOPIC] [diff/DIFFICULTY] [c/CONTENT] [d/DEADLINE] [s/SUBJECT]</code><br>
+e.g. <code>edit 2 s/Science</code> or <code>e 2 c/The quick brown fox</code></p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find &lt;KEYWORD&gt; [MORE_KEYWORDS]</code><br>
-e.g. <code>find math</code> or
-e.g. <code>f science english math</code></p>
+<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
+e.g. <code>find Theorem</code> or <code>f sun fox</code></p>
 </li>
 <li>
 <p><strong>Help</strong> : <code>help</code></p>
@@ -676,4 +765,4 @@ e.g.<code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-30 07:02:16 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-03-30 07:51:43 UTC</div></div></div></body></html>
