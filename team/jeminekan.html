@@ -144,6 +144,108 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="viewing-the-next-flashcard-code-next-code-or-code-n-code"><a class="link" href="#viewing-the-next-flashcard-code-next-code-or-code-n-code">Viewing the next flashcard : <code>next</code> or <code>n</code></a></h3>
+<div class="paragraph">
+<p>Views the next flashcard in line.<br>
+Format: <code>next</code> or <code>n</code><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Selects the next flashcard and displays its content<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Steps to view next flashcard:</strong><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the <code>select</code> command (see Section 3.9) to select a flashcard first.<br></p>
+</li>
+<li>
+<p>Use this <code>next</code> / <code>n</code> command to go to the next flashcard.<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>select 2</code><br>
+Selects the 2nd flashcard in the list.<br>
+<code>next</code><br>
+Selects the next flashcard in the list (i.e. the 3rd flashcard); and<br>
+Displays the content of this flashcard.</p>
+</li>
+<li>
+<p><code>select 5</code><br>
+Selects the 5th flashcard in the list.<br>
+<code>n</code><br>
+Displays the next flashcard in the list (i.e. the 6th flashcard); and<br>
+Displays the content of this flashcard.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The next flashcard in line will be selected and its content will be displayed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-the-next-flashcard-code-previous-code-or-code-p-code"><a class="link" href="#viewing-the-next-flashcard-code-previous-code-or-code-p-code">Viewing the next flashcard : <code>previous</code> or <code>p</code></a></h3>
+<div class="paragraph">
+<p>Views the previous flashcard in line.<br>
+Format: <code>previous</code> or <code>p</code><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Selects the previous flashcard and displays its content<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Steps to view previous flashcard:</strong><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the <code>select</code> command (see Section 3.9) to select a flashcard first.<br></p>
+</li>
+<li>
+<p>Use this <code>previous</code> / <code>p</code> command to go to the previous flashcard.<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>*Examples:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>select 2</code><br>
+Selects the 2nd flashcard in the list.<br>
+<code>previous</code><br>
+Selects the previous flashcard in the list (i.e. the 1st flashcard); and<br>
+Displays the content of this flashcard.</p>
+</li>
+<li>
+<p><code>select 5</code><br>
+Selects the 5th flashcard in the list.<br>
+<code>p</code><br>
+Selects the previous flashcard in the list (i.e. the 4th flashcard); and<br>
+Displays the content of this flashcard.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The previous flashcard in line will be selected and its content will be displayed.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -271,6 +373,173 @@ Flashcard with next 1 will be displayed for the example above.<br></p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="quizzing-by-difficulty"><a class="link" href="#quizzing-by-difficulty">Quizzing by Difficulty</a></h3>
+<div class="paragraph">
+<p>This mode will be largely focused on viewing flashcard based on a chosen difficulty. Flashcards are added with a difficulty level set by the user. The difficulty level can be toggled in this mode for the user to focus more on difficult concepts or easier concepts. This mode can be used along side <code>"Subject" Testing Mode</code> to get a further filtered list of flashcards with both chosen subject and difficulty.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>This mode of quizzing is facilitated by <code>SortCommand</code>. This command filters all the flashcard with the same difficulty level.<br>
+When a flashcard is added, user must input a difficulty level 1 (easy), 2 (medium) or 3 (difficult) for each flashcard.<br>
+The <code>SortCommand</code> will help students to focus on one chosen difficulty level, helping them prioritize their time well.</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below illustrate how <code>SortCommand</code> is executed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SortCommandSD.png" alt="SortCommandSD" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Filters flashcard and displays all flashcard with chosen difficulty.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: Only get to see flashcards under 1 difficulty level.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Displays flashcards in ascending or descending difficulty level.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Can view more flashcards at once.</p>
+</li>
+<li>
+<p>Cons: Difficult to implement.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="toggle-feature-2"><a class="link" href="#toggle-feature-2">Toggle feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The toggling feature is mainly facilitated by 2 classes, <code>NextCommand</code> and <code>PreviousCommand</code>. For either commands to work, <code>SelectCommand</code> is first executed to retrieve the choice of <code>Index</code> of the flashcard to begin toggling.
+Following that, <code>NextCommand</code> or <code>PreviousCommand</code> can be called interchangeably to toggle the flashcard being displayed in the rightmost panel.</p>
+</div>
+<div class="paragraph">
+<p>For <code>NextCommand</code>, the following operations are implemented:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>NextCommand#getNextInteger(Index index)</code>&#8201;&#8212;&#8201;retrieves the current flash card&#8217;s Index from <code>SelectCommand</code> class.</p>
+</li>
+<li>
+<p><code>NextCommand#setNextInteger(Index index, int start)</code>&#8201;&#8212;&#8201; pass the index currently being used in <code>NextCommand</code> to <code>PreviousCommand</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Similarly, for <code>PreviousCommand</code>, the following operations are implemented:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>PreviousCommand#getPreviousIndex(Index index)</code>&#8201;&#8212;&#8201;retrieves the current flash card&#8217;s Index from <code>SelectCommand</code> class.</p>
+</li>
+<li>
+<p><code>NextCommand#setPreviousInteger(Index index, int start)</code>&#8201;&#8212;&#8201;pass the index currently being used in <code>PreviousCommand</code> to <code>NextCommand</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below illustrates the execution of <code>SelectCommand</code> and how the index will be passed to both <code>NextCommand</code> and <code>PreviousCommand</code> class.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/selectCommandSD.png" alt="selectCommandSD" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>After <code>SelectCommand</code> is being called, <code>NextCommand</code> or <code>PreviousCommand</code> can be called interchangeably.<br></p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram belows illustrates the execution of <code>NextCommand</code> and how the index value will be passed to <code>PreviousCommand</code> class.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/NextCommandSD.png" alt="NextCommandSD" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>To execute toggling of next flashcard, execute the following commands:<br></p>
+</div>
+<div class="paragraph">
+<p>1) <code>select 2</code> [2 is just an example, choose index of choice]<br>
+2) <code>next</code><br>
+Flashcard with next 3 will be displayed for the example above.<br></p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below illustrates the execution of <code>PreviousCommand</code> and how the index value will be passed to <code>NextCommand</code> class.<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/PreviousCommandSD.png" alt="PreviousCommandSD" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>To execute toggling of previous flashcard, execute the following commands:<br></p>
+</div>
+<div class="paragraph">
+<p>1) <code>select 2</code> [2 is just an example, choose index of choice]<br>
+2) <code>previous</code><br>
+Flashcard with next 1 will be displayed for the example above.<br></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Obtain the index after select command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and convenient for the user.</p>
+</li>
+<li>
+<p>Cons: Have to manually select the first card to choose from.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Toggling will begin from the first index.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Saves the user the step of having to select the index of choice.</p>
+</li>
+<li>
+<p>Cons: Might be too troublesome for some users who wants to being from a flashcard index that is large.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -281,4 +550,4 @@ Flashcard with next 1 will be displayed for the example above.<br></p>
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 15:51:04 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 15:51:15 UTC</div></div></div></body></html>
