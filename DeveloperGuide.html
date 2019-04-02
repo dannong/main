@@ -31,11 +31,12 @@
 <li><a href="#implementation">4. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#toggle-feature">4.1. Toggle feature</a></li>
-<li><a href="#modes-of-quizzing-feature">4.2. Modes of Quizzing feature</a></li>
-<li><a href="#shelf-life-of-flashcards">4.3. Shelf-Life of FlashCards</a></li>
-<li><a href="#proposed-data-encryption">4.4. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">4.5. Logging</a></li>
-<li><a href="#Implementation-Configuration">4.6. Configuration</a></li>
+<li><a href="#quizzing-by-subject">4.2. Quizzing by Subject</a></li>
+<li><a href="#quizzing-by-difficulty">4.3. Quizzing by Difficulty</a></li>
+<li><a href="#shelf-life-of-flashcards">4.4. Shelf-Life of FlashCards</a></li>
+<li><a href="#proposed-data-encryption">4.5. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">4.6. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.7. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -583,20 +584,6 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <div class="sect2">
 <h3 id="toggle-feature"><a class="link" href="#toggle-feature">4.1. Toggle feature</a></h3>
-<div class="paragraph">
-<p>The toggle feature is facilitated by <code>FlashCards</code>.
-It ia stored internally and implements the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>Flashcards#n(next)</code>&#8201;&#8212;&#8201;Opens the next flash card in line.</p>
-</li>
-<li>
-<p><code>Flashcards#p(previous)</code>&#8201;&#8212;&#8201; Restore the previous flash card.</p>
-</li>
-</ul>
-</div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">4.1.1. Current Implementation</a></h4>
 <div class="paragraph">
@@ -674,7 +661,7 @@ Flashcard with next 1 will be displayed for the example above.<br></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-consideration"><a class="link" href="#design-consideration">4.1.2. Design Consideration</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.2. Design Considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -708,37 +695,348 @@ Flashcard with next 1 will be displayed for the example above.<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="modes-of-quizzing-feature"><a class="link" href="#modes-of-quizzing-feature">4.2. Modes of Quizzing feature</a></h3>
+<h3 id="quizzing-by-subject"><a class="link" href="#quizzing-by-subject">4.2. Quizzing by Subject</a></h3>
 <div class="paragraph">
-<p>The Modes of Quizzing feature is facilitated by <code>FlashCards</code>.
-For each flashcard the user has, he/she can create flash cards specifically for the topic. The user can also choose the testing mode he/she wishes to be tested on. These are the different modes available:<br></p>
-</div>
-<div class="paragraph">
-<p>1) <code>"Subject" Testing Mode</code><br>
-2) <code>"Focus" Testing Mode</code><br>
-3) <code>"Random" Testing Mode</code> [Coming in v1.4]&#8201;&#8212;&#8201;After selecting the number of cards to be tested, random flash cards will be chosen from the database “FlashCards” with varying frequency for the user to quiz himself/herself. This mode is encouraged if the user has free time or to pass time when travelling.</p>
+<p>A subject that is selected will have all the flashcards pertaining to it shown.
+This mode will help users focus on a specific subject before their tests/exams/quizzes.</p>
 </div>
 <div class="sect3">
-<h4 id="code-subject-testing-mode-code"><a class="link" href="#code-subject-testing-mode-code">4.2.1. <code>"Subject" Testing Mode</code></a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">4.2.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>This mode will be largely focused on viewing flash cards based on a particular subject. From the pool of flash cards, the user can choose to select all flash cards that are under the same subject. This mode will focus on a specific subject and can be used for revision before mini quizzes of that particular subject.</p>
+<p>The FlashCards UI is divided into three panels from left to right – Subjects, Flashcards, and Content.<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Subjects Panel (facilitated by <code>SubjectListPanel</code>):<br>
+Displays:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Subject tag</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Flashcards Panel (facilitated by <code>FlashcardListPanel</code>):<br>
+Displays information in this order:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Topic of flashcard</p>
+</li>
+<li>
+<p>Difficulty level of flashcard</p>
+</li>
+<li>
+<p>(Optional) Deadline to memorize flashcard</p>
+</li>
+<li>
+<p>Subject tag displayed as a coloured tag</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Content Panel (facilitated by <code>RightPanel</code>):<br>
+This panel is further sectioned into 2:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Topic of flashcard</p>
+</li>
+<li>
+<p>Content of flashcard</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Upon adding a flashcard with the <code>add</code> command, (e.g. <code>add t/Pythagoras Theorem diff/1 c/a^2 + b^2 = c^2 s/Math</code>),
+the subject tag "Math" will be added to a <code>SubjectBook</code> and <code>UniqueSubjectList</code> before being displayed in the <code>SubjectListPanel</code>.<br></p>
+</div>
+<div class="paragraph">
+<p>An example scenario of adding a flashcard (Step 1) and displaying the flashcards for each subject (Step 2) is shown below.</p>
 </div>
 <div class="sect4">
-<h5 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h5>
-
+<h5 id="step-1-adding-a-flashcard"><a class="link" href="#step-1-adding-a-flashcard">Step 1: Adding a Flashcard</a></h5>
+<div class="paragraph">
+<p>There are 2 possible cases when adding a flashcard:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Subject tag is unique among other flashcards</strong><br>
+The Subject tag will be added to the <code>UniqueSubjectList</code> object.</p>
+<div class="paragraph">
+<p>Shown below is the adding mechanism of a flashcard with a unique subject among other flashcards is added:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Each time a flashcard is added using the Logic component&#8217;s <code>AddCommand()</code>, the adding will be facilitated by <code>addSubject()</code> in the Model component.</p>
+</li>
+<li>
+<p>The Model component&#8217;s <code>addSubject()</code> will use <code>SubjectBook</code> 's <code>addSubject()</code> to add the subject to a list containing only unique subjects.</p>
+</li>
+<li>
+<p><code>SubjectBook</code> will create a <code>UniqueSubjectList</code> object that stores all unique subjects.</p>
+</li>
+<li>
+<p>The <code>UniqueSubjectList</code> object will invoke its <code>addSubject()</code> function. This function will check if the current <code>UniqueSubjectList</code> object contains the subject tag of the current flashcard to be added.
+Since it is unique in this scenario, the subject tag of the current flashcard will be added to this <code>UniqueSubjectList</code> object.</p>
+</li>
+<li>
+<p>The <code>SubjectListPanel</code> then displays this newly added subject.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Subject tag already exists in other flashcards</strong><br>
+No Subject tag is added to the <code>UniqueSubjectList</code> object.</p>
+<div class="paragraph">
+<p>Shown below is the adding mechanism of a flashcard whose subject already exists in other flashcards is added:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Each time a flashcard is added using the Logic component&#8217;s <code>AddCommand()</code>, the adding will be facilitated by <code>addSubject()</code> in the Model component.</p>
+</li>
+<li>
+<p>The Model component&#8217;s <code>addSubject()</code> will use <code>SubjectBook</code> 's <code>addSubject()</code> to add the subject to a list containing only unique subjects.</p>
+</li>
+<li>
+<p><code>SubjectBook</code> will create a <code>UniqueSubjectList</code> object that stores all unique subjects.</p>
+</li>
+<li>
+<p>The <code>UniqueSubjectList</code> object will invoke its <code>addSubject()</code> function. This function will check if the current <code>UniqueSubjectList</code> object contains the subject tag of the current flashcard to be added.
+Since it is not unique in this scenario, the subject tag <strong>will not</strong> be added to the <code>UniqueSubjectList</code> object.</p>
+</li>
+<li>
+<p>The <code>SubjectListPanel</code> remains unchanged.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram summarises what happens in this Step 1:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SubjectQuizzingFeature-addSubject.png" alt="SubjectQuizzingFeature addSubject" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Figure: Sequence Diagram of successfully adding a flashcard<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Blue:&#8201;&#8212;&#8201;Logic and Model component</p>
+</li>
+<li>
+<p>Yellow&#8201;&#8212;&#8201;JavaFX component</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect4">
-<h5 id="design-consideration-2"><a class="link" href="#design-consideration-2">Design Consideration</a></h5>
-
+<h5 id="step-2-displaying-flashcards-according-to-subjects"><a class="link" href="#step-2-displaying-flashcards-according-to-subjects">Step 2: Displaying Flashcards According to Subjects</a></h5>
+<div class="paragraph">
+<p>After a flashcard is added, the following sequence of events will happen:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The UI component&#8217;s <code>MainWindow</code> will create a new <code>SubjectListPanel</code> object that takes in and invokes:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Logic component&#8217;s <code>getFilteredSubjectList()</code>&#8201;&#8212;&#8201;returns <code>filteredSubjects</code> which contains a list of unique subjects</p>
+</li>
+<li>
+<p>Logic component&#8217;s <code>selectedSubjectProperty()</code>&#8201;&#8212;&#8201;returns the <code>selectedSubject</code> tag clicked by the user</p>
+</li>
+<li>
+<p>Logic component&#8217;s <code>setSelectedSubject()</code>&#8201;&#8212;&#8201;replaces previously selected subject with the newly selected subject</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In <code>SubjectListPanel</code>, <code>setItems()</code> and <code>setCellFactory()</code> of JavaFX will populate the panel with the unique subject list from <code>getFilteredSubjectList()</code>.</p>
+</li>
+<li>
+<p>The UI component&#8217;s <code>MainWindow</code> will create a new <code>FlashcardListPanel</code> object that takes in and invokes:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Logic component&#8217;s <code>getFilteredFlashcardList()</code>&#8201;&#8212;&#8201;returns <code>filteredFlashcards</code> which contains a list of unique flashcards</p>
+</li>
+<li>
+<p>Logic component&#8217;s <code>selectedSubjectProperty()</code>&#8201;&#8212;&#8201;returns the <code>selectedSubject</code> tag clicked by the user</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In <code>FlashcardListPanel</code>, <code>setItems()</code> and <code>setCellFactory()</code> of JavaFX will populate the panel with the unique flashcard list from <code>getFilteredFlashcardList()</code>.</p>
+</li>
+<li>
+<p>A listener is attached to the <code>selectedSubjectProperty</code> value passed into <code>FlashcardListPanel</code> in order to detect if another subject is selected.</p>
+</li>
+<li>
+<p>When a new subject is selected, <code>FlashcardListPanel</code> invokes <code>updateFlashcardList()</code>.
+It matches the subject tag of flashcards from <code>getFilteredFlashcardList()</code> with the newly selected subject.
+If the subject tag matches, this flashcard is added to a <code>newFlashcardList</code>.</p>
+</li>
+<li>
+<p>The flashcard panel is then populated with flashcards from <code>newFlashcardList</code> using <code>setItems()</code> and <code>setCellFactory()</code> of JavaFX.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram summarizes what happens in Step 2:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SubjectQuizzingFeature-UI.png" alt="SubjectQuizzingFeature UI" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Figure: Sequence Diagram of displaying flashcards according to subject<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Purple&#8201;&#8212;&#8201;UI component</p>
+</li>
+<li>
+<p>Blue&#8201;&#8212;&#8201;Model component</p>
+</li>
+<li>
+<p>Yellow&#8201;&#8212;&#8201;JavaFX component</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-focus-testing-mode-code"><a class="link" href="#code-focus-testing-mode-code">4.2.2. <code>"Focus" Testing Mode</code></a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.2.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-when-to-add-a-unique-subject-to-the-code-uniquesubjectlist-code-object"><a class="link" href="#aspect-when-to-add-a-unique-subject-to-the-code-uniquesubjectlist-code-object">Aspect: When to add a unique subject to the <code>UniqueSubjectList</code> object</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Check if subject is unique in <code>addSubject()</code> of <code>UniqueSubjectList</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Supports code reusability.</p>
+</li>
+<li>
+<p>Cons: More tedious to implement.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Check if subject is unique in <code>AddCommand()</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and faster way of checking.</p>
+</li>
+<li>
+<p>Cons: Does not support code reusability.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-populating-subjects-list-on-application-start-up"><a class="link" href="#aspect-populating-subjects-list-on-application-start-up">Aspect: Populating subjects list on application start up</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Populate the subject list after the flashcard list is populated</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: No need additional storage for subject list</p>
+</li>
+<li>
+<p>Cons: Harder to implement.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Populate subject list using what was stored in <code>SubjectBook</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement. Populates subject list the same way as how flashcard list is populated.</p>
+</li>
+<li>
+<p>Cons: Need to create additional storage for subject list.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-displaying-subject-name-as-a-text-label-or-a-coloured-subject-tag"><a class="link" href="#aspect-displaying-subject-name-as-a-text-label-or-a-coloured-subject-tag">Aspect: Displaying subject name as a text label or a coloured subject tag</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Text label</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to implement and UI is not overly colourful which makes it easier for users' eyes to adapt.</p>
+</li>
+<li>
+<p>Cons: Inconsistency when displaying subject (i.e. plain text in <code>SubjectListPanel</code> but coloured tag in <code>FlashcardListPanel</code>).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Coloured subject tag</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More consistency when displaying subject in <code>SubjectListPanel</code> and <code>FlashcardListPanel</code>.</p>
+</li>
+<li>
+<p>Cons: Harder to implement. Might also be harsher on the users' eyes and they might not know where to focus on.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="quizzing-by-difficulty"><a class="link" href="#quizzing-by-difficulty">4.3. Quizzing by Difficulty</a></h3>
 <div class="paragraph">
 <p>This mode will be largely focused on viewing flashcard based on a chosen difficulty. Flashcards are added with a difficulty level set by the user. The difficulty level can be toggled in this mode for the user to focus more on difficult concepts or easier concepts. This mode can be used along side <code>"Subject" Testing Mode</code> to get a further filtered list of flashcards with both chosen subject and difficulty.</p>
 </div>
-<div class="sect4">
-<h5 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h5>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">4.3.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>This mode of quizzing is facilitated by <code>SortCommand</code>. This command filters all the flashcard with the same difficulty level.<br>
 When a flashcard is added, user must input a difficulty level 1 (easy), 2 (medium) or 3 (difficult) for each flashcard.<br>
@@ -753,8 +1051,8 @@ The <code>SortCommand</code> will help students to focus on one chosen difficult
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="design-consideration-3"><a class="link" href="#design-consideration-3">Design Consideration</a></h5>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.3.2. Design Considerations</a></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -787,11 +1085,10 @@ The <code>SortCommand</code> will help students to focus on one chosen difficult
 </div>
 </div>
 </div>
-</div>
 <div class="sect2">
-<h3 id="shelf-life-of-flashcards"><a class="link" href="#shelf-life-of-flashcards">4.3. Shelf-Life of FlashCards</a></h3>
+<h3 id="shelf-life-of-flashcards"><a class="link" href="#shelf-life-of-flashcards">4.4. Shelf-Life of FlashCards</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.3.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.4.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The user can determine how long the flash cards will exist in the database “FlashCards”.
 The following operations are available:</p>
@@ -926,7 +1223,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">4.3.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.4.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-deadline-exam-executes"><a class="link" href="#aspect-how-deadline-exam-executes">Aspect: How deadline/exam executes</a></h5>
 <div class="ulist">
@@ -1002,20 +1299,20 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">4.4. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">4.5. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.5. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.6. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.6, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.7, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1046,7 +1343,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.6. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.7. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2736,4 +3033,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 13:17:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 13:32:10 UTC</div></div></div></body></html>

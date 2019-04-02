@@ -10,7 +10,8 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>FlashCards is a desktop application used for helping secondary school students memorise their content.
+It also helps them manage all their notes by keeping them in a single application. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
 </div>
 </div>
 </div>
@@ -20,29 +21,30 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: Made enhancement to <strong>GUI</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: Allows the user to select a certain subject and only flashcards belonging to that subject will be listed.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: This feature helps the user filter flashcards based on their subject with the ability to click via the GUI.
+It can help them to focus on a particular subject&#8217;s notes when studying.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Highlights: This enhancement affects the existing GUI and <code>add</code> command.
+It gives the user a better user experience and helps them study more effectively.
+Furthermore, no separate storage is needed even though the subject list is seemingly saved every time the user exits.
+On the next start up, the subject panel will contain the subject list that existed before the user exited the application.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Minor enhancement</strong>: Added colours to different subject tags so the same subject will have the same colour. This helps users to differentiate flashcards better based on the subject when all flashcards are listed.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/73">Functional code</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -53,7 +55,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Managed relevant documentations (e.g. User Guide etc.) by ensuring everything is correct and well-documented.</p>
 </li>
 </ul>
 </div>
@@ -63,10 +65,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Updated tags to have different colours (Pull request <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/6">#6</a>)</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Enhanced <code>AddCommand()</code> to check for unique subjects before adding the subject to a <code>UniqueSubjectList</code> object</p>
 </li>
 </ul>
 </div>
@@ -76,7 +78,20 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/77/files">#77</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ensured the consistency in language</p>
+</li>
+<li>
+<p>Ensured there were no spelling and grammatical errors</p>
+</li>
+<li>
+<p>Tidied up the formatting of documents</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -86,29 +101,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/30">#30</a> <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/80">#80</a> <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/86">#86</a></p>
 </li>
 </ul>
 </div>
@@ -117,9 +110,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -137,105 +127,138 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">Undoing previous command : <code>undo</code></a></h3>
+<h3 id="adding-a-subject-or-flashcard-code-add-code"><a class="link" href="#adding-a-subject-or-flashcard-code-add-code">Adding a subject or flashcard: <code>add</code></a></h3>
 <div class="paragraph">
-<p>Restores the flashcard to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Undoable commands: those commands that modify the flashcard&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
+<p>Adds a flashcard with subject and data field.<br>
+Format: <code>add t/TOPIC diff/DIFFICULTY c/CONTENT s/SUBJECT</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete 1</code><br>
-Deletes the 1st flashcard in the list.<br>
-<code>list</code><br>
-Lists all flashcards.<br>
-<code>undo</code><br>
-Reverses the <code>delete 1</code> command.</p>
+<p><code>TOPIC</code>: Title of the flashcard.</p>
 </li>
 <li>
-<p><code>select 1</code><br>
-Selects the 1st flashcard in the list.<br>
-<code>list</code><br>
-Lists all flashcards.<br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
+<p><code>DIFFICULTY</code>: Difficulty level of the flashcard&#8217;s content indicated by a positive integer 1, 2, or 3 only.</p>
 </li>
 <li>
-<p><code>delete 1</code><br>
-Deletes the 1st flashcard in the list.<br>
-<code>clear</code><br>
-Clear all flashcards.<br>
-<code>undo</code><br>
-Reverses the <code>clear</code> command<br>
-<code>undo</code><br>
-Reverses the <code>delete 1</code> command<br></p>
+<p><code>CONTENT</code>: Content of the flashcard.</p>
+</li>
+<li>
+<p><code>SUBJECT</code>: Subject of the flashcard.</p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
+<p><strong>Examples:</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete 1</code><br>
-Deletes the 1st flashcard in the list.<br>
-<code>undo</code><br>
-Reverses the <code>delete 1</code> command<br>
-<code>redo</code><br>
-Reapplies the <code>delete 1</code> command<br></p>
+<p><code>add t/Pythagoras Theorem diff/1 c/a^2 + b^2 = c^2 s/Math</code><br>
+Adds a flashcard named "Pythagoras Theorem" under the subject "Math" to the list of flashcards.
+It has a difficulty level of "1" with the content "a^2 + b^2 = c^2".</p>
 </li>
 <li>
-<p><code>delete 1</code><br>
-Deletes the 1st flashcard in the list.<br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-Deletes the 1st flashcard in the list.<br>
-<code>clear</code><br>
-Clears all flashcards.<br>
-<code>undo</code><br>
-Reverses the <code>clear</code> command<br>
-<code>undo</code><br>
-Reverses the <code>delete 1</code> command<br>
-<code>redo</code><br>
-Reapplies the <code>delete 1</code> command<br>
-<code>redo</code><br>
-Reapplies the <code>clear</code> command<br></p>
+<p><code>add t/Photosynthesis diff/1 c/A chemical reaction that takes place inside a plant, producing food for the plant to survive s/Science</code><br>
+Adds a flashcard named "Photosynthesis" under the subject "Science" to the list of flashcards.
+It has a difficulty level of "1" with the content "A chemical reaction that takes place inside a plant, producing food for the plant to survive".</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>The flashcard that was just added will be displayed.</p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="editing-a-flashcard-code-edit-code-or-code-e-code"><a class="link" href="#editing-a-flashcard-code-edit-code-or-code-e-code">Editing a flashcard : <code>edit</code> or <code>e</code></a></h3>
 <div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p>Edits the content of a flashcard.<br>
+Enter the index of the flashcard to edit.<br>
+Format: <code>edit INDEX [t/TOPIC] [diff/DIFFICULTY] [c/CONTENT] [d/DEADLINE] [s/SUBJECT]</code><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>INDEX</code>: Index number of the flashcard to be edited. This index number will be shown in the displayed list of flashcards.
+<strong>Must be a positive integer</strong> such as 1, 2, 3, &#8230;&#8203;<br></p>
+</li>
+<li>
+<p><code>[t/TOPIC] [diff/DIFFICULTY] [c/CONTENT] [d/DEADLINE] [s/SUBJECT]</code>: <strong>At least one</strong> of these fields enclosed in [ ]
+must be present.<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit 1 s/Science</code><br>
+Edits flashcard with index "1" and replaces its existing subject with "Science".</p>
+</li>
+<li>
+<p><code>e 2 c/The quick brown fox</code><br>
+Edits flashcard with index "2" and replaces its existing content with "The quick brown fox".</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The edited flashcard will be updated and displayed in the list of flashcards.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-flashcard-code-delete-code-or-code-d-code"><a class="link" href="#deleting-a-flashcard-code-delete-code-or-code-d-code">Deleting a flashcard : <code>delete</code> or <code>d</code></a></h3>
+<div class="paragraph">
+<p>Deletes the specified flashcard.<br>
+Enter the index of a flashcard to be deleted.<br>
+Format: <code>delete INDEX</code><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>INDEX</code>: Index number of the flashcard to be deleted. This index number will be shown in the displayed list of flashcards.
+<strong>Must be a positive integer</strong> such as 1, 2, 3, &#8230;&#8203;<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Steps to delete a flashcard:</strong><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the <code>list</code> command (see section 3.5) to display the list of all flashcards; or<br></p>
+</li>
+<li>
+<p>Use the <code>find</code> command (see section 3.7) to find a flashcard based on its topic.<br></p>
+</li>
+<li>
+<p>Select the index of the flashcard to delete.<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+Lists all flashcards.<br>
+<code>delete 2</code><br>
+Deletes the specified flashcard at index 2.</p>
+</li>
+<li>
+<p><code>f Pythagoras Theorem</code><br>
+Find flashcards with keywords "Pythagoras" and "Theorem".<br>
+<code>d 1</code><br>
+Deletes the specified flashcard at index 1.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The updated list of flashcards will be displayed.</p>
 </div>
 </div>
 </div>
@@ -254,439 +277,340 @@ Reapplies the <code>clear</code> command<br></p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="toggle-feature"><a class="link" href="#toggle-feature">Toggle feature</a></h3>
+<h3 id="quizzing-by-subject"><a class="link" href="#quizzing-by-subject">Quizzing by Subject</a></h3>
 <div class="paragraph">
-<p>The toggle feature is facilitated by <code>FlashCards</code>.
-It ia stored internally and implements the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>Flashcards#n(next)</code>&#8201;&#8212;&#8201;Opens the next flash card in line.</p>
-</li>
-<li>
-<p><code>Flashcards#p(previous)</code>&#8201;&#8212;&#8201; Restore the previous flash card.</p>
-</li>
-</ul>
+<p>A subject that is selected will have all the flashcards pertaining to it shown.
+This mode will help users focus on a specific subject before their tests/exams/quizzes.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The toggling feature is mainly facilitated by 2 classes, <code>NextCommand</code> and <code>PreviousCommand</code>. For either commands to work, <code>SelectCommand</code> is first executed to retrieve the choice of <code>Index</code> of the flashcard to begin toggling.
-Following that, <code>NextCommand</code> or <code>PreviousCommand</code> can be called interchangeably to toggle the flashcard being displayed in the rightmost panel.</p>
-</div>
-<div class="paragraph">
-<p>For <code>NextCommand</code>, the following operations are implemented:</p>
+<p>The FlashCards UI is divided into three panels from left to right – Subjects, Flashcards, and Content.<br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>NextCommand#getNextInteger(Index index)</code>&#8201;&#8212;&#8201;retrieves the current flash card&#8217;s Index from <code>SelectCommand</code> class.</p>
-</li>
-<li>
-<p><code>NextCommand#setNextInteger(Index index, int start)</code>&#8201;&#8212;&#8201; pass the index currently being used in <code>NextCommand</code> to <code>PreviousCommand</code>.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Similarly, for <code>PreviousCommand</code>, the following operations are implemented:</p>
-</div>
+<p>Subjects Panel (facilitated by <code>SubjectListPanel</code>):<br>
+Displays:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>PreviousCommand#getPreviousIndex(Index index)</code>&#8201;&#8212;&#8201;retrieves the current flash card&#8217;s Index from <code>SelectCommand</code> class.</p>
-</li>
-<li>
-<p><code>NextCommand#setPreviousInteger(Index index, int start)</code>&#8201;&#8212;&#8201;pass the index currently being used in <code>PreviousCommand</code> to <code>NextCommand</code>.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The sequence diagram below illustrates the execution of <code>SelectCommand</code> and how the index will be passed to both <code>NextCommand</code> and <code>PreviousCommand</code> class.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/selectCommandSD.png" alt="selectCommandSD" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>After <code>SelectCommand</code> is being called, <code>NextCommand</code> or <code>PreviousCommand</code> can be called interchangeably.<br></p>
-</div>
-<div class="paragraph">
-<p>The sequence diagram belows illustrates the execution of <code>NextCommand</code> and how the index value will be passed to <code>PreviousCommand</code> class.<br></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/NextCommandSD.png" alt="NextCommandSD" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>To execute toggling of next flashcard, execute the following commands:<br></p>
-</div>
-<div class="paragraph">
-<p>1) <code>select 2</code> [2 is just an example, choose index of choice]<br>
-2) <code>next</code><br>
-Flashcard with next 3 will be displayed for the example above.<br></p>
-</div>
-<div class="paragraph">
-<p>The sequence diagram below illustrates the execution of <code>PreviousCommand</code> and how the index value will be passed to <code>NextCommand</code> class.<br></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/PreviousCommandSD.png" alt="PreviousCommandSD" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>To execute toggling of previous flashcard, execute the following commands:<br></p>
-</div>
-<div class="paragraph">
-<p>1) <code>select 2</code> [2 is just an example, choose index of choice]<br>
-2) <code>previous</code><br>
-Flashcard with next 1 will be displayed for the example above.<br></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-consideration"><a class="link" href="#design-consideration">Design Consideration</a></h4>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Obtain the index after select command.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement and convenient for the user.</p>
-</li>
-<li>
-<p>Cons: Have to manually select the first card to choose from.</p>
+<p>Subject tag</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Toggling will begin from the first index.</p>
+<p>Flashcards Panel (facilitated by <code>FlashcardListPanel</code>):<br>
+Displays information in this order:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Saves the user the step of having to select the index of choice.</p>
+<p>Topic of flashcard</p>
 </li>
 <li>
-<p>Cons: Might be too troublesome for some users who wants to being from a flashcard index that is large.</p>
+<p>Difficulty level of flashcard</p>
+</li>
+<li>
+<p>(Optional) Deadline to memorize flashcard</p>
+</li>
+<li>
+<p>Subject tag displayed as a coloured tag</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Content Panel (facilitated by <code>RightPanel</code>):<br>
+This panel is further sectioned into 2:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Topic of flashcard</p>
+</li>
+<li>
+<p>Content of flashcard</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="modes-of-quizzing-feature"><a class="link" href="#modes-of-quizzing-feature">Modes of Quizzing feature</a></h3>
 <div class="paragraph">
-<p>The Modes of Quizzing feature is facilitated by <code>FlashCards</code>.
-For each flashcard the user has, he/she can create flash cards specifically for the topic. The user can also choose the testing mode he/she wishes to be tested on. These are the different modes available:<br></p>
+<p>Upon adding a flashcard with the <code>add</code> command, (e.g. <code>add t/Pythagoras Theorem diff/1 c/a^2 + b^2 = c^2 s/Math</code>),
+the subject tag "Math" will be added to a <code>SubjectBook</code> and <code>UniqueSubjectList</code> before being displayed in the <code>SubjectListPanel</code>.<br></p>
 </div>
 <div class="paragraph">
-<p>1) <code>"Subject" Testing Mode</code><br>
-2) <code>"Focus" Testing Mode</code><br>
-3) <code>"Random" Testing Mode</code> [Coming in v1.4]&#8201;&#8212;&#8201;After selecting the number of cards to be tested, random flash cards will be chosen from the database “FlashCards” with varying frequency for the user to quiz himself/herself. This mode is encouraged if the user has free time or to pass time when travelling.</p>
-</div>
-<div class="sect3">
-<h4 id="code-subject-testing-mode-code"><a class="link" href="#code-subject-testing-mode-code"><code>"Subject" Testing Mode</code></a></h4>
-<div class="paragraph">
-<p>This mode will be largely focused on viewing flash cards based on a particular subject. From the pool of flash cards, the user can choose to select all flash cards that are under the same subject. This mode will focus on a specific subject and can be used for revision before mini quizzes of that particular subject.</p>
+<p>An example scenario of adding a flashcard (Step 1) and displaying the flashcards for each subject (Step 2) is shown below.</p>
 </div>
 <div class="sect4">
-<h5 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h5>
-
-</div>
-<div class="sect4">
-<h5 id="design-consideration-2"><a class="link" href="#design-consideration-2">Design Consideration</a></h5>
-
-</div>
-</div>
-<div class="sect3">
-<h4 id="code-focus-testing-mode-code"><a class="link" href="#code-focus-testing-mode-code"><code>"Focus" Testing Mode</code></a></h4>
+<h5 id="step-1-adding-a-flashcard"><a class="link" href="#step-1-adding-a-flashcard">Step 1: Adding a Flashcard</a></h5>
 <div class="paragraph">
-<p>This mode will be largely focused on viewing flashcard based on a chosen difficulty. Flashcards are added with a difficulty level set by the user. The difficulty level can be toggled in this mode for the user to focus more on difficult concepts or easier concepts. This mode can be used along side <code>"Subject" Testing Mode</code> to get a further filtered list of flashcards with both chosen subject and difficulty.</p>
+<p>There are 2 possible cases when adding a flashcard:</p>
 </div>
-<div class="sect4">
-<h5 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Subject tag is unique among other flashcards</strong><br>
+The Subject tag will be added to the <code>UniqueSubjectList</code> object.</p>
 <div class="paragraph">
-<p>This mode of quizzing is facilitated by <code>SortCommand</code>. This command filters all the flashcard with the same difficulty level.<br>
-When a flashcard is added, user must input a difficulty level 1 (easy), 2 (medium) or 3 (difficult) for each flashcard.<br>
-The <code>SortCommand</code> will help students to focus on one chosen difficulty level, helping them prioritize their time well.</p>
+<p>Shown below is the adding mechanism of a flashcard with a unique subject among other flashcards is added:<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Each time a flashcard is added using the Logic component&#8217;s <code>AddCommand()</code>, the adding will be facilitated by <code>addSubject()</code> in the Model component.</p>
+</li>
+<li>
+<p>The Model component&#8217;s <code>addSubject()</code> will use <code>SubjectBook</code> 's <code>addSubject()</code> to add the subject to a list containing only unique subjects.</p>
+</li>
+<li>
+<p><code>SubjectBook</code> will create a <code>UniqueSubjectList</code> object that stores all unique subjects.</p>
+</li>
+<li>
+<p>The <code>UniqueSubjectList</code> object will invoke its <code>addSubject()</code> function. This function will check if the current <code>UniqueSubjectList</code> object contains the subject tag of the current flashcard to be added.
+Since it is unique in this scenario, the subject tag of the current flashcard will be added to this <code>UniqueSubjectList</code> object.</p>
+</li>
+<li>
+<p>The <code>SubjectListPanel</code> then displays this newly added subject.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Subject tag already exists in other flashcards</strong><br>
+No Subject tag is added to the <code>UniqueSubjectList</code> object.</p>
+<div class="paragraph">
+<p>Shown below is the adding mechanism of a flashcard whose subject already exists in other flashcards is added:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Each time a flashcard is added using the Logic component&#8217;s <code>AddCommand()</code>, the adding will be facilitated by <code>addSubject()</code> in the Model component.</p>
+</li>
+<li>
+<p>The Model component&#8217;s <code>addSubject()</code> will use <code>SubjectBook</code> 's <code>addSubject()</code> to add the subject to a list containing only unique subjects.</p>
+</li>
+<li>
+<p><code>SubjectBook</code> will create a <code>UniqueSubjectList</code> object that stores all unique subjects.</p>
+</li>
+<li>
+<p>The <code>UniqueSubjectList</code> object will invoke its <code>addSubject()</code> function. This function will check if the current <code>UniqueSubjectList</code> object contains the subject tag of the current flashcard to be added.
+Since it is not unique in this scenario, the subject tag <strong>will not</strong> be added to the <code>UniqueSubjectList</code> object.</p>
+</li>
+<li>
+<p>The <code>SubjectListPanel</code> remains unchanged.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>The sequence diagram below illustrate how <code>SortCommand</code> is executed.</p>
+<p>The following sequence diagram summarises what happens in this Step 1:<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/SortCommandSD.png" alt="SortCommandSD" width="800">
+<img src="../images/SubjectQuizzingFeature-addSubject.png" alt="SubjectQuizzingFeature addSubject" width="800">
 </div>
+</div>
+<div class="paragraph">
+<p>Figure: Sequence Diagram of successfully adding a flashcard<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Blue:&#8201;&#8212;&#8201;Logic and Model component</p>
+</li>
+<li>
+<p>Yellow&#8201;&#8212;&#8201;JavaFX component</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect4">
-<h5 id="design-consideration-3"><a class="link" href="#design-consideration-3">Design Consideration</a></h5>
+<h5 id="step-2-displaying-flashcards-according-to-subjects"><a class="link" href="#step-2-displaying-flashcards-according-to-subjects">Step 2: Displaying Flashcards According to Subjects</a></h5>
+<div class="paragraph">
+<p>After a flashcard is added, the following sequence of events will happen:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Filters flashcard and displays all flashcard with chosen difficulty.</p>
+<p>The UI component&#8217;s <code>MainWindow</code> will create a new <code>SubjectListPanel</code> object that takes in and invokes:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement.</p>
+<p>Logic component&#8217;s <code>getFilteredSubjectList()</code>&#8201;&#8212;&#8201;returns <code>filteredSubjects</code> which contains a list of unique subjects</p>
 </li>
 <li>
-<p>Cons: Only get to see flashcards under 1 difficulty level.</p>
+<p>Logic component&#8217;s <code>selectedSubjectProperty()</code>&#8201;&#8212;&#8201;returns the <code>selectedSubject</code> tag clicked by the user</p>
+</li>
+<li>
+<p>Logic component&#8217;s <code>setSelectedSubject()</code>&#8201;&#8212;&#8201;replaces previously selected subject with the newly selected subject</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Displays flashcards in ascending or descending difficulty level.</p>
+<p>In <code>SubjectListPanel</code>, <code>setItems()</code> and <code>setCellFactory()</code> of JavaFX will populate the panel with the unique subject list from <code>getFilteredSubjectList()</code>.</p>
+</li>
+<li>
+<p>The UI component&#8217;s <code>MainWindow</code> will create a new <code>FlashcardListPanel</code> object that takes in and invokes:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Can view more flashcards at once.</p>
+<p>Logic component&#8217;s <code>getFilteredFlashcardList()</code>&#8201;&#8212;&#8201;returns <code>filteredFlashcards</code> which contains a list of unique flashcards</p>
 </li>
 <li>
-<p>Cons: Difficult to implement.</p>
+<p>Logic component&#8217;s <code>selectedSubjectProperty()</code>&#8201;&#8212;&#8201;returns the <code>selectedSubject</code> tag clicked by the user</p>
 </li>
 </ul>
 </div>
 </li>
+<li>
+<p>In <code>FlashcardListPanel</code>, <code>setItems()</code> and <code>setCellFactory()</code> of JavaFX will populate the panel with the unique flashcard list from <code>getFilteredFlashcardList()</code>.</p>
+</li>
+<li>
+<p>A listener is attached to the <code>selectedSubjectProperty</code> value passed into <code>FlashcardListPanel</code> in order to detect if another subject is selected.</p>
+</li>
+<li>
+<p>When a new subject is selected, <code>FlashcardListPanel</code> invokes <code>updateFlashcardList()</code>.
+It matches the subject tag of flashcards from <code>getFilteredFlashcardList()</code> with the newly selected subject.
+If the subject tag matches, this flashcard is added to a <code>newFlashcardList</code>.</p>
+</li>
+<li>
+<p>The flashcard panel is then populated with flashcards from <code>newFlashcardList</code> using <code>setItems()</code> and <code>setCellFactory()</code> of JavaFX.</p>
+</li>
 </ul>
 </div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="shelf-life-of-flashcards"><a class="link" href="#shelf-life-of-flashcards">Shelf-Life of FlashCards</a></h3>
-<div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The user can determine how long the flash cards will exist in the database “FlashCards”.
-The following operations are available:</p>
+<p>The following sequence diagram summarizes what happens in Step 2:<br></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SubjectQuizzingFeature-UI.png" alt="SubjectQuizzingFeature UI" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Figure: Sequence Diagram of displaying flashcards according to subject<br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>FlashCards#clearall()</code>&#8201;&#8212;&#8201;Clears the entire database.</p>
+<p>Purple&#8201;&#8212;&#8201;UI component</p>
 </li>
 <li>
-<p><code>FlashCards#clear()</code>&#8201;&#8212;&#8201;Clears a specific flashcard when in "Subject" Knowledge Testing Mode.</p>
+<p>Blue&#8201;&#8212;&#8201;Model component</p>
 </li>
 <li>
-<p><code>FlashCards#deadline()</code> or <code>FlashCards#exam()</code>&#8201;&#8212;&#8201;Adds a deadline/exam for the specified flashcard.</p>
+<p>Yellow&#8201;&#8212;&#8201;JavaFX component</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>For easier modes of implementation, the user can also choose to set a date whereby the flash cards would be unavailable thereafter. To activate this function, the user can type in <code>deadline</code> or <code>exam</code>, followed by the index and the date. For example, in the event where the user knows the specific exam date for the selected flashcard, he/she can set the exam date under the “Subject Details” and the flash cards will be available for another month after the exam before the auto deletion function is activated.</p>
-</div>
-<div class="paragraph">
-<p>These operations are exposed in the <code>Logic</code> interface as <code>Logic#clearall()</code>, <code>Logic#clear()</code>, <code>Logic#deadline()</code> and <code>Logic#exam()</code> respectively.</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the deadline/exam mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedFlashCards</code> will be initialized with the initial flash card state, and the <code>currentStatePointer</code> pointing to that single flash card state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>list</code> command to list all the available flashcards in the FlashCards. The <code>list</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the flash card after the <code>list</code> command executes to be saved in the <code>flashCardStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted flash card state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>deadline 1 d/&#8230;&#8203;</code> or <code>exam 1 d/&#8230;&#8203;</code> to add a new deadline or exam date for the specified flashcard. The <code>deadline</code> command also calls <code>Model#commitFlashBook()</code>, causing another modified flash book state to be saved into the <code>addressBookStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitFlashBook()</code>, so the flash book state will not be saved into the <code>flashBookStateList</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 4. The user now decides that the deadline/exam is over and do not wish to save the flashcard in the flash card. By executing the <code>clear</code> command, he can delete all the respective flash cards under the specified flashcard. The <code>clear</code> command will call <code>Logic#Clear()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous flash card state, and clear all the respective flash cards of the specified flashcard.</p>
-</div>
-<div class="paragraph">
-<p>Step 5: Alternatively, the user can execute the <code>clearall</code> command which will delete all the flash cards in the FlashCards. The <code>clearall</code> command will call <code>Logic#Clearall()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous flash card state, and clear all the respective flash cards in FlashCards.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/undoredoExecuteUndoStateListDiagram.png" alt="undoredoExecuteUndoStateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial flash book state, then there are no previous flash book states to restore. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the flash book to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>, pointing to the latest flash book state, then there are no undone flash book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the flash book, such as <code>list</code>, will usually not call <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or <code>Model#redoAddressBook()</code>. Thus, the <code>addressBookStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitAddressBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>addressBookStateList</code>, all flash book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-deadline-exam-executes"><a class="link" href="#aspect-how-deadline-exam-executes">Aspect: How deadline/exam executes</a></h5>
+<h5 id="aspect-when-to-add-a-unique-subject-to-the-code-uniquesubjectlist-code-object"><a class="link" href="#aspect-when-to-add-a-unique-subject-to-the-code-uniquesubjectlist-code-object">Aspect: When to add a unique subject to the <code>UniqueSubjectList</code> object</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Auto deletion of the flash cards.</p>
+<p><strong>Alternative 1 (current choice):</strong> Check if subject is unique in <code>addSubject()</code> of <code>UniqueSubjectList</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement and convenient for the user.</p>
+<p>Pros: Supports code reusability.</p>
 </li>
 <li>
-<p>Cons: Need to have additional internal calendar for the auto deletion.</p>
+<p>Cons: More tedious to implement.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Manual deletion of the flash cards.</p>
+<p><strong>Alternative 2:</strong> Check if subject is unique in <code>AddCommand()</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Allow the user to have the choice of keeping the flash cards or removing it.</p>
+<p>Pros: Easy to implement and faster way of checking.</p>
 </li>
 <li>
-<p>Cons: Might be troublesome for some users.</p>
+<p>Cons: Does not support code reusability.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>Alternative 1 is chosen to prevent overloading of overdue flashcards, which will take up excess storage if the user does not manually delete.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-deadline-exam-commands"><a class="link" href="#aspect-data-structure-to-support-the-deadline-exam-commands">Aspect: Data structure to support the deadline/exam commands</a></h5>
+<h5 id="aspect-populating-subjects-list-on-application-start-up"><a class="link" href="#aspect-populating-subjects-list-on-application-start-up">Aspect: Populating subjects list on application start up</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Implement an internal calendar to calculate the number of days left.</p>
+<p><strong>Alternative 1 (current choice):</strong> Populate the subject list after the flashcard list is populated</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Auto deletion of flash cards.</p>
+<p>Pros: No need additional storage for subject list</p>
 </li>
 <li>
-<p>Cons: Need to pay extra caution for Leap years.</p>
+<p>Cons: Harder to implement.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use the <code>clear</code> or <code>clearall</code> function to manually delete.</p>
+<p><strong>Alternative 2:</strong> Populate subject list using what was stored in <code>SubjectBook</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Give the user the choice to keep or delete.</p>
+<p>Pros: Easy to implement. Populates subject list the same way as how flashcard list is populated.</p>
 </li>
 <li>
-<p>Cons: Might be troublesome for some users.</p>
+<p>Cons: Need to create additional storage for subject list.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>Alternative 1 is chosen to prevent overloading of overdue flashcards, which will take up excess storage if the user does not manually delete.</p>
+</div>
+<div class="sect4">
+<h5 id="aspect-displaying-subject-name-as-a-text-label-or-a-coloured-subject-tag"><a class="link" href="#aspect-displaying-subject-name-as-a-text-label-or-a-coloured-subject-tag">Aspect: Displaying subject name as a text label or a coloured subject tag</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Text label</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier to implement and UI is not overly colourful which makes it easier for users' eyes to adapt.</p>
+</li>
+<li>
+<p>Cons: Inconsistency when displaying subject (i.e. plain text in <code>SubjectListPanel</code> but coloured tag in <code>FlashcardListPanel</code>).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Coloured subject tag</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More consistency when displaying subject in <code>SubjectListPanel</code> and <code>FlashcardListPanel</code>.</p>
+</li>
+<li>
+<p>Cons: Harder to implement. Might also be harsher on the users' eyes and they might not know where to focus on.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 13:17:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 13:32:10 UTC</div></div></div></body></html>

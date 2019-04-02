@@ -17,20 +17,16 @@
 <li><a href="#logging-in-code-login-code">3.2. Logging in: <code>login</code></a></li>
 <li><a href="#viewing-help-code-help-code">3.3. Viewing help : <code>help</code></a></li>
 <li><a href="#adding-a-subject-or-flashcard-code-add-code">3.4. Adding a subject or flashcard: <code>add</code></a></li>
-<li><a href="#listing-all-flashcards-categorized-by-subjects-code-list-code-or-code-l-code">3.5. Listing all flashcards categorized by subjects : <code>list</code> or <code>l</code></a></li>
-<li><a href="#editing-a-flashcard-code-edit-code-or-code-e-code">3.6. Editing a flashcard : <code>edit</code> or <code>e</code></a></li>
-<li><a href="#finding-a-flashcard-based-on-topic-code-find-code-or-code-f-code">3.7. Finding a flashcard based on topic: <code>find</code> or <code>f</code></a></li>
-<li><a href="#deleting-a-flashcard-code-delete-code-or-code-d-code">3.8. Deleting a flashcard : <code>delete</code> or <code>d</code></a></li>
-<li><a href="#selecting-a-flashcard-code-select-code">3.9. Selecting a flashcard : <code>select</code></a></li>
-<li><a href="#viewing-the-next-flashcard-code-next-code-or-code-n-code">3.10. Viewing the next flashcard : <code>next</code> or <code>n</code></a></li>
-<li><a href="#viewing-the-next-flashcard-code-previous-code-or-code-p-code">3.11. Viewing the next flashcard : <code>previous</code> or <code>p</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.12. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.13. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.14. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-flashcards-code-clear-code-or-code-c-code">3.15. Clearing all flashcards : <code>clear</code> or <code>c</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.16. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.17. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.18. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#editing-a-flashcard-code-edit-code-or-code-e-code">3.5. Editing a flashcard : <code>edit</code> or <code>e</code></a></li>
+<li><a href="#viewing-the-next-flashcard-code-next-code-or-code-n-code">3.6. Viewing the next flashcard : <code>next</code> or <code>n</code></a></li>
+<li><a href="#viewing-the-next-flashcard-code-previous-code-or-code-p-code">3.7. Viewing the next flashcard : <code>previous</code> or <code>p</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#clearing-all-flashcards-code-clear-code-or-code-c-code">3.11. Clearing all flashcards : <code>clear</code> or <code>c</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.13. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -191,7 +187,7 @@ The user can login using the username and password to be "John Doe" and "john123
 <h3 id="adding-a-subject-or-flashcard-code-add-code"><a class="link" href="#adding-a-subject-or-flashcard-code-add-code">3.4. Adding a subject or flashcard: <code>add</code></a></h3>
 <div class="paragraph">
 <p>Adds a flashcard with subject and data field.<br>
-Format: <code>add t/TOPIC diff/DIFFICULTY c/CONTENT d/DEADLINE s/SUBJECT</code></p>
+Format: <code>add t/TOPIC diff/DIFFICULTY c/CONTENT s/SUBJECT</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -205,9 +201,6 @@ Format: <code>add t/TOPIC diff/DIFFICULTY c/CONTENT d/DEADLINE s/SUBJECT</code><
 <p><code>CONTENT</code>: Content of the flashcard.</p>
 </li>
 <li>
-<p><code>DEADLINE</code>: Date of when the flashcard should be memorised by in the format (dd-mm-yyyy).</p>
-</li>
-<li>
 <p><code>SUBJECT</code>: Subject of the flashcard.</p>
 </li>
 </ul>
@@ -218,23 +211,21 @@ Format: <code>add t/TOPIC diff/DIFFICULTY c/CONTENT d/DEADLINE s/SUBJECT</code><
 <div class="ulist">
 <ul>
 <li>
-<p><code>add t/Pythagoras Theorem diff/1 c/a^2 + b^2 = c^2 d/30-03-2019 s/Math</code><br>
+<p><code>add t/Pythagoras Theorem diff/1 c/a^2 + b^2 = c^2 s/Math</code><br>
 Adds a flashcard named "Pythagoras Theorem" under the subject "Math" to the list of flashcards.
-It has a difficulty level of "1" with the content "a^2 + b^2 = c^2" and should be memorised by "30-03-2019".</p>
+It has a difficulty level of "1" with the content "a^2 + b^2 = c^2".</p>
 </li>
 <li>
-<p><code>add t/Photosynthesis diff/1 c/A chemical reaction that takes place inside a plant, producing food for the plant to survive d/01-04-2019 s/Science</code><br>
+<p><code>add t/Photosynthesis diff/1 c/A chemical reaction that takes place inside a plant, producing food for the plant to survive s/Science</code><br>
 Adds a flashcard named "Photosynthesis" under the subject "Science" to the list of flashcards.
-It has a difficulty level of "1" with the content "A chemical reaction that takes place inside a plant, producing food for the plant to survive" and should be memorised by "01-04-2019".</p>
+It has a difficulty level of "1" with the content "A chemical reaction that takes place inside a plant, producing food for the plant to survive".</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The flashcard that was just added will be displayed.</p>
+<p>The flashcard that was just added will be displayed.
+=== Listing all flashcards categorized by subjects : <code>list</code> or <code>l</code></p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="listing-all-flashcards-categorized-by-subjects-code-list-code-or-code-l-code"><a class="link" href="#listing-all-flashcards-categorized-by-subjects-code-list-code-or-code-l-code">3.5. Listing all flashcards categorized by subjects : <code>list</code> or <code>l</code></a></h3>
 <div class="paragraph">
 <p>Displays an indexed list of flashcards categorized by subjects.<br>
 Format: <code>list</code> or <code>l</code></p>
@@ -244,7 +235,7 @@ Format: <code>list</code> or <code>l</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-flashcard-code-edit-code-or-code-e-code"><a class="link" href="#editing-a-flashcard-code-edit-code-or-code-e-code">3.6. Editing a flashcard : <code>edit</code> or <code>e</code></a></h3>
+<h3 id="editing-a-flashcard-code-edit-code-or-code-e-code"><a class="link" href="#editing-a-flashcard-code-edit-code-or-code-e-code">3.5. Editing a flashcard : <code>edit</code> or <code>e</code></a></h3>
 <div class="paragraph">
 <p>Edits the content of a flashcard.<br>
 Enter the index of the flashcard to edit.<br>
@@ -278,11 +269,9 @@ Edits flashcard with index "2" and replaces its existing content with "The quick
 </ul>
 </div>
 <div class="paragraph">
-<p>The edited flashcard will be updated and displayed in the list of flashcards.</p>
+<p>The edited flashcard will be updated and displayed in the list of flashcards.
+=== Finding a flashcard based on topic: <code>find</code> or <code>f</code></p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="finding-a-flashcard-based-on-topic-code-find-code-or-code-f-code"><a class="link" href="#finding-a-flashcard-based-on-topic-code-find-code-or-code-f-code">3.7. Finding a flashcard based on topic: <code>find</code> or <code>f</code></a></h3>
 <div class="paragraph">
 <p>Find flashcards based on the given keyword.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS]</code><br></p>
@@ -335,11 +324,9 @@ Returns any flashcards whose topic contains <code>sun</code> or <code>fox</code>
 </ul>
 </div>
 <div class="paragraph">
-<p>The flashcard(s) whose topic matches any of the keywords given will be displayed in the list of flashcards.</p>
+<p>The flashcard(s) whose topic matches any of the keywords given will be displayed in the list of flashcards.
+=== Deleting a flashcard : <code>delete</code> or <code>d</code></p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="deleting-a-flashcard-code-delete-code-or-code-d-code"><a class="link" href="#deleting-a-flashcard-code-delete-code-or-code-d-code">3.8. Deleting a flashcard : <code>delete</code> or <code>d</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified flashcard.<br>
 Enter the index of a flashcard to be deleted.<br>
@@ -389,11 +376,9 @@ Deletes the specified flashcard at index 1.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The updated list of flashcards will be displayed.</p>
+<p>The updated list of flashcards will be displayed.
+=== Selecting a flashcard : <code>select</code></p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="selecting-a-flashcard-code-select-code"><a class="link" href="#selecting-a-flashcard-code-select-code">3.9. Selecting a flashcard : <code>select</code></a></h3>
 <div class="paragraph">
 <p>Selects the flashcard identified by the index number used in the displayed flashcards list.<br>
 Format: <code>select INDEX</code><br></p>
@@ -443,7 +428,7 @@ Selects the 1st flashcard in the displayed results of the <code>find</code> comm
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-the-next-flashcard-code-next-code-or-code-n-code"><a class="link" href="#viewing-the-next-flashcard-code-next-code-or-code-n-code">3.10. Viewing the next flashcard : <code>next</code> or <code>n</code></a></h3>
+<h3 id="viewing-the-next-flashcard-code-next-code-or-code-n-code"><a class="link" href="#viewing-the-next-flashcard-code-next-code-or-code-n-code">3.6. Viewing the next flashcard : <code>next</code> or <code>n</code></a></h3>
 <div class="paragraph">
 <p>Views the next flashcard in line.<br>
 Format: <code>next</code> or <code>n</code><br></p>
@@ -494,7 +479,7 @@ Displays the content of this flashcard.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-the-next-flashcard-code-previous-code-or-code-p-code"><a class="link" href="#viewing-the-next-flashcard-code-previous-code-or-code-p-code">3.11. Viewing the next flashcard : <code>previous</code> or <code>p</code></a></h3>
+<h3 id="viewing-the-next-flashcard-code-previous-code-or-code-p-code"><a class="link" href="#viewing-the-next-flashcard-code-previous-code-or-code-p-code">3.7. Viewing the next flashcard : <code>previous</code> or <code>p</code></a></h3>
 <div class="paragraph">
 <p>Views the previous flashcard in line.<br>
 Format: <code>previous</code> or <code>p</code><br></p>
@@ -545,7 +530,7 @@ Displays the content of this flashcard.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.12. Listing entered commands : <code>history</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -566,7 +551,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.13. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the flashcard to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -620,7 +605,7 @@ Reverses the <code>delete 1</code> command<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.14. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -662,28 +647,28 @@ Reapplies the <code>clear</code> command<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-flashcards-code-clear-code-or-code-c-code"><a class="link" href="#clearing-all-flashcards-code-clear-code-or-code-c-code">3.15. Clearing all flashcards : <code>clear</code> or <code>c</code></a></h3>
+<h3 id="clearing-all-flashcards-code-clear-code-or-code-c-code"><a class="link" href="#clearing-all-flashcards-code-clear-code-or-code-c-code">3.11. Clearing all flashcards : <code>clear</code> or <code>c</code></a></h3>
 <div class="paragraph">
 <p>Clears all flashcards.<br>
 Format: <code>clear</code> or <code>c</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.16. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.17. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.13. Saving the data</a></h3>
 <div class="paragraph">
 <p>FlashCards data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.18. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.14. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -752,4 +737,4 @@ e.g.<code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 13:17:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-02 13:32:10 UTC</div></div></div></body></html>
