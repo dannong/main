@@ -127,9 +127,9 @@ On the next start up, the subject panel will contain the subject list that exist
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="adding-a-subject-or-flashcard-code-add-code"><a class="link" href="#adding-a-subject-or-flashcard-code-add-code">Adding a subject or flashcard: <code>add</code></a></h3>
+<h3 id="adding-a-flashcard-code-add-code"><a class="link" href="#adding-a-flashcard-code-add-code">Adding a flashcard: <code>add</code></a></h3>
 <div class="paragraph">
-<p>Adds a flashcard with subject and data field.<br>
+<p>Adds a flashcard.<br>
 Format: <code>add t/TOPIC diff/DIFFICULTY c/CONTENT s/SUBJECT</code></p>
 </div>
 <div class="ulist">
@@ -156,30 +156,32 @@ Format: <code>add t/TOPIC diff/DIFFICULTY c/CONTENT s/SUBJECT</code></p>
 <li>
 <p><code>add t/Pythagoras Theorem diff/1 c/a^2 + b^2 = c^2 s/Math</code><br>
 Adds a flashcard named "Pythagoras Theorem" under the subject "Math" to the list of flashcards.
-It has a difficulty level of "1" with the content "a^2 + b^2 = c^2".</p>
+It has the content "a^2 + b^2 = c^2" and a difficulty level of "1".</p>
 </li>
 <li>
 <p><code>add t/Photosynthesis diff/1 c/A chemical reaction that takes place inside a plant, producing food for the plant to survive s/Science</code><br>
 Adds a flashcard named "Photosynthesis" under the subject "Science" to the list of flashcards.
-It has a difficulty level of "1" with the content "A chemical reaction that takes place inside a plant, producing food for the plant to survive".</p>
+It has the content "A chemical reaction that takes place inside a plant, producing food for the plant to survive" and a difficulty level of "1".</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The flashcard that was just added will be displayed.</p>
+<p>The flashcard that was just added will be displayed in the flashcards panel.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-flashcard-code-edit-code-or-code-e-code"><a class="link" href="#editing-a-flashcard-code-edit-code-or-code-e-code">Editing a flashcard : <code>edit</code> or <code>e</code></a></h3>
+<h3 id="editing-a-flashcard-code-edit-code-or-code-e-code"><a class="link" href="#editing-a-flashcard-code-edit-code-or-code-e-code">Editing a flashcard: <code>edit</code> or <code>e</code></a></h3>
 <div class="paragraph">
-<p>Edits the content of a flashcard.<br>
-Enter the index of the flashcard to edit.<br>
+<p>Edits field(s) of a specified flashcard.<br></p>
+</div>
+<div class="paragraph">
+<p>Enter the index of the flashcard to edit, followed by the field(s) you wish to edit.<br>
 Format: <code>edit INDEX [t/TOPIC] [diff/DIFFICULTY] [c/CONTENT] [d/DEADLINE] [s/SUBJECT]</code><br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>INDEX</code>: Index number of the flashcard to be edited. This index number will be shown in the displayed list of flashcards.
+<p><code>INDEX</code>: Index number of the flashcard to be edited. This index number will be shown in the displayed list of flashcards in the flashcards panel.
 <strong>Must be a positive integer</strong> such as 1, 2, 3, &#8230;&#8203;<br></p>
 </li>
 <li>
@@ -189,29 +191,69 @@ must be present.<br></p>
 </ul>
 </div>
 <div class="paragraph">
+<p><strong>Steps to edit a flashcard:</strong><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Click on a subject in the subjects panel; or<br></p>
+</li>
+<li>
+<p>Enter the <code>selectSubject</code> command to select a subject (see Section 3.9.); then<br></p>
+</li>
+<li>
+<p>Use the <code>edit</code> command to edit a flashcard<br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
 <p><strong>Examples:</strong><br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 s/Science</code><br>
-Edits flashcard with index "1" and replaces its existing subject with "Science".</p>
+<p><strong>Editing 1 field</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>After clicking on a subject e.g. Math, flashcards that are tagged under "Math" will be displayed in the flashcards panel.<br>
+Next, enter <code>edit 1 s/Science</code> or <code>e 1 s/Science</code> to edit the flashcard with index "1". It will replace the flashcard&#8217;s existing subject with "Science".</p>
 </li>
 <li>
-<p><code>e 2 c/The quick brown fox</code><br>
-Edits flashcard with index "2" and replaces its existing content with "The quick brown fox".</p>
+<p>After entering this command <code>selectSubject English</code>, all flashcards that are tagged under "English" will be displayed in the flashcards panel.<br>
+Next, enter <code>edit 2 c/The quick brown fox</code> or <code>e 2 c/The quick brown fox</code> to edit the flashcard with index "2". It will replace the flashcard&#8217;s existing content with "The quick brown fox".</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Editing more than 1 field</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>After clicking on a subject e.g. Math, flashcards that are tagged under "Math" will be displayed in the flashcards panel.<br>
+Next, enter <code>edit 1 c/Plants s/Science</code> or <code>e 1 c/Plants s/Science</code> to edit the flashcard with index "1". It will replace the flashcard&#8217;s existing content with "Plants" and subject with "Science".</p>
+</li>
+<li>
+<p>After entering this command <code>selectSubject English</code>, all flashcards that are tagged under "English" will be displayed in the flashcards panel.<br>
+Next, enter <code>edit 1 t/Brown Fox diff/1</code> or <code>e 1 t/Brown Fox diff/1</code> to edit the flashcard with index "1". It will replace the flashcard&#8217;s existing topic with "Brown Fox" and difficulty level with "1".</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The edited flashcard will be updated and displayed in the list of flashcards.</p>
+<p>The edited flashcard will be updated and displayed in the flashcards panel.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-flashcard-code-delete-code-or-code-d-code"><a class="link" href="#deleting-a-flashcard-code-delete-code-or-code-d-code">Deleting a flashcard : <code>delete</code> or <code>d</code></a></h3>
+<h3 id="deleting-a-flashcard-code-delete-code-or-code-d-code"><a class="link" href="#deleting-a-flashcard-code-delete-code-or-code-d-code">Deleting a flashcard: <code>delete</code> or <code>d</code></a></h3>
 <div class="paragraph">
-<p>Deletes the specified flashcard.<br>
-Enter the index of a flashcard to be deleted.<br>
+<p>Deletes the specified flashcard.<br></p>
+</div>
+<div class="paragraph">
+<p>Enter the index of a flashcard to be deleted.<br>
 Format: <code>delete INDEX</code><br></p>
 </div>
 <div class="ulist">
@@ -228,13 +270,13 @@ Format: <code>delete INDEX</code><br></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Use the <code>list</code> command (see section 3.5) to display the list of all flashcards; or<br></p>
+<p>Click on a subject in the subjects panel; or<br></p>
 </li>
 <li>
-<p>Use the <code>find</code> command (see section 3.7) to find a flashcard based on its topic.<br></p>
+<p>Enter the <code>selectSubject</code> command to select a subject (see Section 3.9.); then<br></p>
 </li>
 <li>
-<p>Select the index of the flashcard to delete.<br></p>
+<p>Use the <code>delete</code> command to delete a flashcard<br></p>
 </li>
 </ul>
 </div>
@@ -244,21 +286,17 @@ Format: <code>delete INDEX</code><br></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
-Lists all flashcards.<br>
-<code>delete 2</code><br>
-Deletes the specified flashcard at index 2.</p>
+<p>After clicking on a subject e.g. Math, flashcards that are tagged under "Math" will be displayed in the flashcards panel.<br>
+Next, enter <code>delete 2</code> or <code>d 2</code> to delete the specified flashcard at index 2.</p>
 </li>
 <li>
-<p><code>f Pythagoras Theorem</code><br>
-Find flashcards with keywords "Pythagoras" and "Theorem".<br>
-<code>d 1</code><br>
-Deletes the specified flashcard at index 1.</p>
+<p>After entering this command <code>selectSubject English</code>, all flashcards that are tagged under "English" will be displayed in the flashcards panel.<br>
+Next, enter <code>delete 1</code> or <code>d 1</code> to delete the specified flashcard at index 1.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The updated list of flashcards will be displayed.</p>
+<p>The updated list of flashcards will be displayed in the flashcards panel.</p>
 </div>
 </div>
 </div>
@@ -613,4 +651,4 @@ If the subject tag matches, this flashcard is added to a <code>newFlashcardList<
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 02:37:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 09:23:06 UTC</div></div></div></body></html>
