@@ -10,98 +10,156 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>FlashCards is a desktop application used for helping secondary school students memorise their content.
-It also helps them manage all their notes by keeping them in a single application. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>This portfolio serves as a documentation of my contributions to a desktop application my team and I developed in a software engineering module.
+The team consists of 3 members and the application was developed over the course of 6 weeks.
+Due to project constraints, the team needed to start from an existing code base (<a href="https://github.com/nusCS2113-AY1819S2/addressbook-level4">addressbook-level4</a>)
+and the user has to interact with the application mainly through the Command Line Interface (CLI).
+However, the user can also interact with the application through the Graphical User Interface (GUI) that is created with JavaFX.
+The entire application is written in Java and has about 10k lines of code.</p>
+</div>
+<div class="paragraph">
+<p>Our developed application is titled <strong>FlashCards</strong>.
+FlashCards is a desktop application that targets mainly secondary school students to help them memorise their notes.
+It further serves as a notes management platform by helping them organize all their notes based on the different subjects they have.</p>
+</div>
+<div class="paragraph">
+<p>My role was to develop the <strong>GUI</strong> and <strong>tagging</strong> feature.
+The following sections will depict my contributions in greater detail, as well as the relevant sections I have documented in our user and developer guide based on these enhancements.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of Contributions</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section will document the summary of features that I have coded, other helpful contributions to this project, and documentation done for this application.
+An overview of all my contributed code can be found <a href="https://nuscs2113-ay1819s2.github.io/dashboard-beta/#search=wanchinglim&amp;sort=displayName&amp;since=2019-02-10&amp;until=2019-04-14&amp;timeframe=day&amp;reverse=false&amp;repoSort=true">here</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="major-enhancement-gui"><a class="link" href="#major-enhancement-gui">Major Enhancement: GUI</a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: Made enhancement to <strong>GUI</strong></p>
+<p><strong>What it does:</strong> It allows the user to click a subject and only flashcards belonging to that subject will be listed.</p>
+</li>
+<li>
+<p><strong>Justification</strong>: This feature helps users access their notes for any subject with just a click.
+Since the flashcards are categorized based on their subject, users will be able to focus on a particular subject&#8217;s notes when studying.</p>
+</li>
+<li>
+<p><strong>Highlights:</strong> This enhancement affects the existing GUI and <code>add</code> command.
+It helps the user to automatically categorize their flashcards based on the subject without any additional steps.
+As such, not only will notes pertaining to each subject be easily available to the user, it also offers a better user experience and increases their efficiency when studying for a subject.
+Furthermore, no separate storage is needed even though the list of subjects is seemingly saved every time the user exits.
+The subject panel will still contain the list of subjects that existed before the user exited the application.</p>
+</li>
+<li>
+<p><strong>Code contributed:</strong>  Pull Requests <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/73">#73</a> and <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/94">#94</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="minor-enhancement-tagging-feature"><a class="link" href="#minor-enhancement-tagging-feature">Minor Enhancement: Tagging Feature</a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: Allows the user to select a certain subject and only flashcards belonging to that subject will be listed.</p>
+<p><strong>What is it:</strong> A unique colour was added to each subject tag so that different tags will have different colours.</p>
 </li>
 <li>
-<p>Justification: This feature helps the user filter flashcards based on their subject with the ability to click via the GUI.
-It can help them to focus on a particular subject&#8217;s notes when studying.</p>
+<p><strong>Justification:</strong> This helps users to differentiate flashcards better based on the subject tag colour when all flashcards are listed.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects the existing GUI and <code>add</code> command.
-It gives the user a better user experience and helps them study more effectively.
-Furthermore, no separate storage is needed even though the subject list is seemingly saved every time the user exits.
-On the next start up, the subject panel will contain the subject list that existed before the user exited the application.</p>
+<p><strong>Code contributed:</strong> Pull Request <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/6">#6</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other-contributions"><a class="link" href="#other-contributions">Other Contributions</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Project management:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed relevant documentation (e.g. User Guide, About Us etc.)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ensured everything is correct and well-documented</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: Added colours to different subject tags so the same subject will have the same colour. This helps users to differentiate flashcards better based on the subject when all flashcards are listed.</p>
-</li>
-<li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/73">Functional code</a>]</p>
-</li>
-<li>
-<p><strong>Other contributions</strong>:</p>
+<p><strong>Enhancements to existing features:</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
-<div class="ulist">
-<ul>
+<p>Enhanced tagging feature to display different tags in different colours (Pull Request <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/6">#6</a>)</p>
+</li>
 <li>
-<p>Managed relevant documentations (e.g. User Guide etc.) by ensuring everything is correct and well-documented.</p>
+<p>Enhanced <code>add</code> command to check if the subject of the flashcard to be added is unique (Pull Request <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/73">#73</a>)</p>
+</li>
+<li>
+<p>Enhanced <code>edit</code> command to edit a flashcard based on the index of the filtered list (Pull Requests <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/94">#94</a> and <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/97">#97</a>)</p>
+</li>
+<li>
+<p>Enhanced <code>delete</code> command to delete a flashcard based on the index of the filtered list (Pull Requests <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/94">#94</a> and <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/97">#97</a>)</p>
+</li>
+<li>
+<p>Enhanced <code>select</code> command to select a flashcard based on the index of the filtered list (Pull Request <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/97">#97</a>)</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Enhancements to existing features:</p>
+<p><strong>Testing:</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated tags to have different colours (Pull request <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/6">#6</a>)</p>
-</li>
-<li>
-<p>Enhanced <code>AddCommand()</code> to check for unique subjects before adding the subject to a <code>UniqueSubjectList</code> object</p>
+<p>Updated tests to match our application&#8217;s behaviour (Pull Requests <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/94">#94</a>, <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/97">#97</a>, and <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/103">#103</a>)</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Documentation:</p>
+<p><strong>Documentation:</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/77/files">#77</a></p>
+<p>Edited User Guide extensively (Pull Requests <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/77/files">#77</a>, <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/103">#103</a>)</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Ensured the consistency in language</p>
+<p>Ensured consistency in language</p>
 </li>
 <li>
 <p>Ensured there were no spelling and grammatical errors</p>
 </li>
 <li>
-<p>Tidied up the formatting of documents</p>
-</li>
-</ul>
-</div>
+<p>Tidied up the formatting of each section</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Community:</p>
+<p>Edited Developer Guide (Pull Requests <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/88">#88</a>, <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/108">#108</a>)</p>
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/30">#30</a> <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/80">#80</a> <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/86">#86</a></p>
+<p>Ensured consistency in language</p>
+</li>
+<li>
+<p>Ensured there were no spelling and grammatical errors</p>
+</li>
+<li>
+<p>Tidied up the formatting of each section</p>
 </li>
 </ul>
 </div>
@@ -109,12 +167,32 @@ On the next start up, the subject panel will contain the subject list that exist
 </ul>
 </div>
 </li>
+<li>
+<p><strong>Community:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reviewed Pull Requests by the team (Pull Requests <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/30">#30</a>, <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/80">#80</a>, and <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/86">#86</a>)</p>
+</li>
+<li>
+<p>Fixed bugs of the <code>selectSubject</code> command that my teammate was in charge of (Pull Request <a href="https://github.com/cs2113-ay1819s2-m11-3/main/pull/97">#97</a>)</p>
+</li>
+<li>
+<p>Reported bugs and suggestions for other teams (Issues <a href="https://github.com/CS2113-AY1819S2-T09-3/main/issues/153">#153</a>,
+<a href="https://github.com/CS2113-AY1819S2-T09-3/main/issues/160">#160</a>,
+<a href="https://github.com/CS2113-AY1819S2-T09-3/main/issues/164">#164</a>, and
+<a href="https://github.com/CS2113-AY1819S2-T09-3/main/issues/170">#170</a>)</p>
+</li>
 </ul>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to The User Guide</a></h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -122,7 +200,8 @@ On the next start up, the subject panel will contain the subject list that exist
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given the original user guide of the existing code base, we did extensive modifications and tailored it to suit our application.
+The following is an excerpt of our user guide that I documented, mainly the <code>add</code>, <code>edit</code>, <code>delete</code>, and <code>select</code> commands.</em></p></td>
 </tr>
 </tbody>
 </table>
@@ -167,84 +246,6 @@ It has the content "A chemical reaction that takes place inside a plant, produci
 </div>
 <div class="paragraph">
 <p>The flashcard that was just added will be displayed in the flashcards panel.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="editing-a-flashcard-code-edit-code-or-code-e-code"><a class="link" href="#editing-a-flashcard-code-edit-code-or-code-e-code">Editing a flashcard: <code>edit</code> or <code>e</code></a></h3>
-<div class="paragraph">
-<p>Edits field(s) of a specified flashcard.<br></p>
-</div>
-<div class="paragraph">
-<p>Enter the index of the flashcard to edit, followed by the field(s) you wish to edit.<br>
-Format: <code>edit INDEX [t/TOPIC] [diff/DIFFICULTY] [c/CONTENT] [d/DEADLINE] [s/SUBJECT]</code><br></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>INDEX</code>: Index number of the flashcard to be edited. This index number will be shown in the displayed list of flashcards in the flashcards panel.
-<strong>Must be a positive integer</strong> such as 1, 2, 3, &#8230;&#8203;<br></p>
-</li>
-<li>
-<p><code>[t/TOPIC] [diff/DIFFICULTY] [c/CONTENT] [d/DEADLINE] [s/SUBJECT]</code>: <strong>At least one</strong> of these fields enclosed in [ ]
-must be present.<br></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Steps to edit a flashcard:</strong><br></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Click on a subject in the subjects panel; or<br></p>
-</li>
-<li>
-<p>Enter the <code>selectSubject</code> command to select a subject (see Section 3.9.); then<br></p>
-</li>
-<li>
-<p>Use the <code>edit</code> command to edit a flashcard<br></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Examples:</strong><br></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Editing 1 field</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p>After clicking on a subject e.g. Math, flashcards that are tagged under "Math" will be displayed in the flashcards panel.<br>
-Next, enter <code>edit 1 s/Science</code> or <code>e 1 s/Science</code> to edit the flashcard with index "1". It will replace the flashcard&#8217;s existing subject with "Science".</p>
-</li>
-<li>
-<p>After entering this command <code>selectSubject English</code>, all flashcards that are tagged under "English" will be displayed in the flashcards panel.<br>
-Next, enter <code>edit 2 c/The quick brown fox</code> or <code>e 2 c/The quick brown fox</code> to edit the flashcard with index "2". It will replace the flashcard&#8217;s existing content with "The quick brown fox".</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Editing more than 1 field</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p>After clicking on a subject e.g. Math, flashcards that are tagged under "Math" will be displayed in the flashcards panel.<br>
-Next, enter <code>edit 1 c/Plants s/Science</code> or <code>e 1 c/Plants s/Science</code> to edit the flashcard with index "1". It will replace the flashcard&#8217;s existing content with "Plants" and subject with "Science".</p>
-</li>
-<li>
-<p>After entering this command <code>selectSubject English</code>, all flashcards that are tagged under "English" will be displayed in the flashcards panel.<br>
-Next, enter <code>edit 1 t/Brown Fox diff/1</code> or <code>e 1 t/Brown Fox diff/1</code> to edit the flashcard with index "1". It will replace the flashcard&#8217;s existing topic with "Brown Fox" and difficulty level with "1".</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The edited flashcard will be updated and displayed in the flashcards panel.</p>
 </div>
 </div>
 <div class="sect2">
@@ -299,10 +300,26 @@ Next, enter <code>delete 1</code> or <code>d 1</code> to delete the specified fl
 <p>The updated list of flashcards will be displayed in the flashcards panel.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="other-contributions-2"><a class="link" href="#other-contributions-2">Other Contributions</a></h3>
+<div class="paragraph">
+<p>Due to space constraints, you can find the remaining documentation that I have done for the user guide in the links below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://cs2113-ay1819s2-m11-3.github.io/main/UserGuide.html#editing-a-flashcard-code-edit-code-or-code-e-code">Edit command</a></p>
+</li>
+<li>
+<p><a href="https://cs2113-ay1819s2-m11-3.github.io/main/UserGuide.html#selecting-a-flashcard-code-select-code">Select command</a></p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to The Developer Guide</a></h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -310,7 +327,9 @@ Next, enter <code>delete 1</code> or <code>d 1</code> to delete the specified fl
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given the original developer guide of the existing code base, we modified various sections and tailored it to suit our application.
+This guide contains all the information regarding the development of this application, and the following will show an excerpt of it that was written by me.
+I took charge of the <strong>Quizzing by Subject</strong> section since it was the feature I had developed for this project.</em></p></td>
 </tr>
 </tbody>
 </table>
@@ -673,4 +692,4 @@ If the subject tag matches, this flashcard is added to a <code>newFlashcardList<
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 10:49:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 12:10:51 UTC</div></div></div></body></html>
