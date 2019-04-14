@@ -15,20 +15,23 @@
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
 <li><a href="#adding-a-flashcard-code-add-code">3.2. Adding a flashcard: <code>add</code></a></li>
-<li><a href="#listing-all-flashcards-categorized-by-subjects-code-list-code-or-code-l-code">3.3. Listing all flashcards categorized by subjects: <code>list</code> or <code>l</code></a></li>
-<li><a href="#editing-a-flashcard-code-edit-code-or-code-e-code">3.4. Editing a flashcard: <code>edit</code> or <code>e</code></a></li>
-<li><a href="#finding-a-flashcard-based-on-topic-code-find-code-or-code-f-code">3.5. Finding a flashcard based on topic: <code>find</code> or <code>f</code></a></li>
-<li><a href="#deleting-a-flashcard-code-delete-code-or-code-d-code">3.6. Deleting a flashcard: <code>delete</code> or <code>d</code></a></li>
-<li><a href="#selecting-a-subject-code-selectsubject-code">3.7. Selecting a subject: <code>selectSubject</code></a></li>
-<li><a href="#selecting-a-flashcard-code-select-code">3.8. Selecting a flashcard: <code>select</code></a></li>
-<li><a href="#viewing-the-next-flashcard-code-next-code-or-code-n-code">3.9. Viewing the next flashcard: <code>next</code> or <code>n</code></a></li>
-<li><a href="#viewing-the-next-flashcard-code-previous-code-or-code-p-code">3.10. Viewing the next flashcard: <code>previous</code> or <code>p</code></a></li>
-<li><a href="#selecting-a-flashcard-code-sort-difficulty-code">3.11. Selecting a flashcard: <code>sort DIFFICULTY</code></a></li>
-<li><a href="#clearing-all-flashcards-code-clear-code-or-code-c-code">3.12. Clearing all flashcards: <code>clear</code> or <code>c</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.13. Exiting the program: <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.14. Saving the data</a></li>
-<li><a href="#creating-an-account-coming-in-v2-0">3.15. Creating an account (coming in v2.0)</a></li>
-<li><a href="#logging-in-coming-in-v2-0">3.16. Logging in (coming in v2.0)</a></li>
+<li><a href="#adding-a-deadline-note-to-a-flashcard-code-deadline-code-or-code-note-code">3.3. Adding a Deadline/Note to a flashcard: <code>deadline</code> or <code>note</code></a></li>
+<li><a href="#listing-all-flashcards-categorized-by-subjects-code-list-code-or-code-l-code">3.4. Listing all flashcards categorized by subjects: <code>list</code> or <code>l</code></a></li>
+<li><a href="#editing-a-flashcard-code-edit-code-or-code-e-code">3.5. Editing a flashcard: <code>edit</code> or <code>e</code></a></li>
+<li><a href="#finding-a-flashcard-based-on-topic-code-find-code-or-code-f-code">3.6. Finding a flashcard based on topic: <code>find</code> or <code>f</code></a></li>
+<li><a href="#deleting-a-flashcard-code-delete-code-or-code-d-code">3.7. Deleting a flashcard: <code>delete</code> or <code>d</code></a></li>
+<li><a href="#deleting-a-subject-code-deletesubject-code">3.8. Deleting a subject: <code>deleteSubject</code></a></li>
+<li><a href="#selecting-a-subject-code-selectsubject-code">3.9. Selecting a subject: <code>selectSubject</code></a></li>
+<li><a href="#selecting-a-flashcard-code-select-code">3.10. Selecting a flashcard: <code>select</code></a></li>
+<li><a href="#viewing-the-next-flashcard-code-next-code-or-code-n-code">3.11. Viewing the next flashcard: <code>next</code> or <code>n</code></a></li>
+<li><a href="#viewing-the-next-flashcard-code-previous-code-or-code-p-code">3.12. Viewing the next flashcard: <code>previous</code> or <code>p</code></a></li>
+<li><a href="#selecting-a-flashcard-code-sort-difficulty-code">3.13. Selecting a flashcard: <code>sort DIFFICULTY</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">3.14. Listing entered commands: <code>history</code></a></li>
+<li><a href="#clearing-all-flashcards-code-clear-code-or-code-c-code">3.15. Clearing all flashcards: <code>clear</code> or <code>c</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.16. Exiting the program: <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.17. Saving the data</a></li>
+<li><a href="#creating-an-account-coming-in-v2-0">3.18. Creating an account (coming in v2.0)</a></li>
+<li><a href="#logging-in-coming-in-v2-0">3.19. Logging in (coming in v2.0)</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -166,6 +169,9 @@ Format: <code>add t/TOPIC diff/DIFFICULTY c/CONTENT s/SUBJECT</code></p>
 <li>
 <p><code>SUBJECT</code>: Subject of the flashcard.</p>
 </li>
+<li>
+<p><code>Deadline/Note</code> (optional): Deadline of the flashcard/Notes to be taken.</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -190,7 +196,42 @@ It has the content "A chemical reaction that takes place inside a plant, produci
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-flashcards-categorized-by-subjects-code-list-code-or-code-l-code"><a class="link" href="#listing-all-flashcards-categorized-by-subjects-code-list-code-or-code-l-code">3.3. Listing all flashcards categorized by subjects: <code>list</code> or <code>l</code></a></h3>
+<h3 id="adding-a-deadline-note-to-a-flashcard-code-deadline-code-or-code-note-code"><a class="link" href="#adding-a-deadline-note-to-a-flashcard-code-deadline-code-or-code-note-code">3.3. Adding a Deadline/Note to a flashcard: <code>deadline</code> or <code>note</code></a></h3>
+<div class="paragraph">
+<p>Adds a deadline or notes to the flashcard.<br>
+Format: <code>deadline INDEX d/DEADLINE</code> or <code>note INDEX d/NOTE</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DEADLINE</code>: Deadline of flashcard.</p>
+</li>
+<li>
+<p><code>NOTE</code>: Important notes to be added.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>deadline 1 d/12 January 2020</code><br>
+Adds a deadline "12 January 2020" into the flashcard with index 1.</p>
+</li>
+<li>
+<p><code>note 3 d/Clarify with Teacher</code><br>
+Adds a note into the flashcard with content "Clarify with Teacher".</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the case that a new date is to be added to a flashcard with an existing deadline or note, corrections can be made by overwriting the existing information with the same commands.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-all-flashcards-categorized-by-subjects-code-list-code-or-code-l-code"><a class="link" href="#listing-all-flashcards-categorized-by-subjects-code-list-code-or-code-l-code">3.4. Listing all flashcards categorized by subjects: <code>list</code> or <code>l</code></a></h3>
 <div class="paragraph">
 <p>Displays an indexed list of flashcards categorized by subjects.<br>
 Format: <code>list</code> or <code>l</code></p>
@@ -200,7 +241,7 @@ Format: <code>list</code> or <code>l</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-flashcard-code-edit-code-or-code-e-code"><a class="link" href="#editing-a-flashcard-code-edit-code-or-code-e-code">3.4. Editing a flashcard: <code>edit</code> or <code>e</code></a></h3>
+<h3 id="editing-a-flashcard-code-edit-code-or-code-e-code"><a class="link" href="#editing-a-flashcard-code-edit-code-or-code-e-code">3.5. Editing a flashcard: <code>edit</code> or <code>e</code></a></h3>
 <div class="paragraph">
 <p>Edits field(s) of a specified flashcard.<br></p>
 </div>
@@ -278,7 +319,7 @@ Next, enter <code>edit 1 t/Brown Fox diff/1</code> or <code>e 1 t/Brown Fox diff
 </div>
 </div>
 <div class="sect2">
-<h3 id="finding-a-flashcard-based-on-topic-code-find-code-or-code-f-code"><a class="link" href="#finding-a-flashcard-based-on-topic-code-find-code-or-code-f-code">3.5. Finding a flashcard based on topic: <code>find</code> or <code>f</code></a></h3>
+<h3 id="finding-a-flashcard-based-on-topic-code-find-code-or-code-f-code"><a class="link" href="#finding-a-flashcard-based-on-topic-code-find-code-or-code-f-code">3.6. Finding a flashcard based on topic: <code>find</code> or <code>f</code></a></h3>
 <div class="paragraph">
 <p>Find flashcards based on the given keyword.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS]</code><br></p>
@@ -335,7 +376,7 @@ Returns any flashcards whose topic contains <code>sun</code> or <code>fox</code>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-flashcard-code-delete-code-or-code-d-code"><a class="link" href="#deleting-a-flashcard-code-delete-code-or-code-d-code">3.6. Deleting a flashcard: <code>delete</code> or <code>d</code></a></h3>
+<h3 id="deleting-a-flashcard-code-delete-code-or-code-d-code"><a class="link" href="#deleting-a-flashcard-code-delete-code-or-code-d-code">3.7. Deleting a flashcard: <code>delete</code> or <code>d</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified flashcard.<br></p>
 </div>
@@ -387,7 +428,36 @@ Next, enter <code>delete 1</code> or <code>d 1</code> to delete the specified fl
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-subject-code-selectsubject-code"><a class="link" href="#selecting-a-subject-code-selectsubject-code">3.7. Selecting a subject: <code>selectSubject</code></a></h3>
+<h3 id="deleting-a-subject-code-deletesubject-code"><a class="link" href="#deleting-a-subject-code-deletesubject-code">3.8. Deleting a subject: <code>deleteSubject</code></a></h3>
+<div class="paragraph">
+<p>Deletes the specified subject.<br>
+Format: <code>deleteSubject SUBJECT</code><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>SUBJECT</code>: Subject to be deleted. This subject name can be found in the displayed list of subjects on the left panel.
+<strong>Must be a subject that is already in the subject list</strong><br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>deleteSubject Chemistry</code><br>
+All flashcards that are tagged under "Chemistry" will be deleted.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong> This action is not reversible. The <code>undo</code> and <code>redo</code> command do not apply to the deletion of subjects.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="selecting-a-subject-code-selectsubject-code"><a class="link" href="#selecting-a-subject-code-selectsubject-code">3.9. Selecting a subject: <code>selectSubject</code></a></h3>
 <div class="paragraph">
 <p>Selects the subject identified by the name used in the displayed list of subjects.+
 Format: <code>selectSubject SUBJECT</code><br></p>
@@ -422,7 +492,7 @@ Format: <code>selectSubject SUBJECT</code><br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-flashcard-code-select-code"><a class="link" href="#selecting-a-flashcard-code-select-code">3.8. Selecting a flashcard: <code>select</code></a></h3>
+<h3 id="selecting-a-flashcard-code-select-code"><a class="link" href="#selecting-a-flashcard-code-select-code">3.10. Selecting a flashcard: <code>select</code></a></h3>
 <div class="paragraph">
 <p>Selects the flashcard identified by the index number used in the displayed list of flashcards.<br>
 Format: <code>select INDEX</code><br></p>
@@ -468,7 +538,7 @@ Next, enter <code>select 1</code> to select the 1st flashcard of the subject "En
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-the-next-flashcard-code-next-code-or-code-n-code"><a class="link" href="#viewing-the-next-flashcard-code-next-code-or-code-n-code">3.9. Viewing the next flashcard: <code>next</code> or <code>n</code></a></h3>
+<h3 id="viewing-the-next-flashcard-code-next-code-or-code-n-code"><a class="link" href="#viewing-the-next-flashcard-code-next-code-or-code-n-code">3.11. Viewing the next flashcard: <code>next</code> or <code>n</code></a></h3>
 <div class="paragraph">
 <p>Views the next flashcard in line.<br>
 Format: <code>next</code> or <code>n</code><br></p>
@@ -524,7 +594,7 @@ Displays the next flashcard in the list (i.e. the 6th flashcard); and + displays
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-the-next-flashcard-code-previous-code-or-code-p-code"><a class="link" href="#viewing-the-next-flashcard-code-previous-code-or-code-p-code">3.10. Viewing the next flashcard: <code>previous</code> or <code>p</code></a></h3>
+<h3 id="viewing-the-next-flashcard-code-previous-code-or-code-p-code"><a class="link" href="#viewing-the-next-flashcard-code-previous-code-or-code-p-code">3.12. Viewing the next flashcard: <code>previous</code> or <code>p</code></a></h3>
 <div class="paragraph">
 <p>Views the previous flashcard in line.<br>
 Format: <code>previous</code> or <code>p</code><br></p>
@@ -580,7 +650,7 @@ Selects the previous flashcard in the list (i.e. the 4th flashcard); and display
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-flashcard-code-sort-difficulty-code"><a class="link" href="#selecting-a-flashcard-code-sort-difficulty-code">3.11. Selecting a flashcard: <code>sort DIFFICULTY</code></a></h3>
+<h3 id="selecting-a-flashcard-code-sort-difficulty-code"><a class="link" href="#selecting-a-flashcard-code-sort-difficulty-code">3.13. Selecting a flashcard: <code>sort DIFFICULTY</code></a></h3>
 <div class="paragraph">
 <p>Displays list of flashcards under the chosen difficulty.<br>
 Format: <code>sort DIFFICULTY</code><br></p>
@@ -620,11 +690,13 @@ Next, enter <code>select 2</code> to select the 2nd flashcard of the subject "Ma
 </li>
 <li>
 <p>After entering this command <code>selectSubject English</code>, all flashcards that are tagged under "English" will be displayed in the flashcards panel.<br>
-Next, enter <code>select 1</code> to select the 1st flashcard of the subject "English" in the flashcards panel.
-=== Listing entered commands: <code>history</code></p>
+Next, enter <code>select 1</code> to select the 1st flashcard of the subject "English" in the flashcards panel.</p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.14. Listing entered commands: <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -645,21 +717,35 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-flashcards-code-clear-code-or-code-c-code"><a class="link" href="#clearing-all-flashcards-code-clear-code-or-code-c-code">3.12. Clearing all flashcards: <code>clear</code> or <code>c</code></a></h3>
+<h3 id="clearing-all-flashcards-code-clear-code-or-code-c-code"><a class="link" href="#clearing-all-flashcards-code-clear-code-or-code-c-code">3.15. Clearing all flashcards: <code>clear</code> or <code>c</code></a></h3>
 <div class="paragraph">
 <p>Clears all flashcards.<br>
 Format: <code>clear</code> or <code>c</code></p>
 </div>
+<div class="paragraph">
+<p><strong>Examples:</strong><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>clear</code><br>
+All flashcards that are in the FlashBook will be deleted.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong> This action is not reversible. The <code>undo</code> and <code>redo</code> command do not apply to the clearing of flashcards and subjects simultaneously.</p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.13. Exiting the program: <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.16. Exiting the program: <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.14. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.17. Saving the data</a></h3>
 <div class="paragraph">
 <p>FlashCards data is saved in the hard disk automatically after any command that changes the data.<br></p>
 </div>
@@ -668,7 +754,7 @@ Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="creating-an-account-coming-in-v2-0"><a class="link" href="#creating-an-account-coming-in-v2-0">3.15. Creating an account (coming in v2.0)</a></h3>
+<h3 id="creating-an-account-coming-in-v2-0"><a class="link" href="#creating-an-account-coming-in-v2-0">3.18. Creating an account (coming in v2.0)</a></h3>
 <div class="paragraph">
 <p>Creates an account for the user.<br></p>
 </div>
@@ -677,7 +763,7 @@ Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging-in-coming-in-v2-0"><a class="link" href="#logging-in-coming-in-v2-0">3.16. Logging in (coming in v2.0)</a></h3>
+<h3 id="logging-in-coming-in-v2-0"><a class="link" href="#logging-in-coming-in-v2-0">3.19. Logging in (coming in v2.0)</a></h3>
 <div class="paragraph">
 <p>Enables users who already have an account to log in.<br></p>
 </div>
@@ -707,11 +793,20 @@ Format: <code>exit</code></p>
 e.g. <code>add t/Pythagoras Theorem diff/1 c/a^2 + b^2 = c^2 d/30-03-2019 s/Math</code></p>
 </li>
 <li>
+<p><strong>Add a Deadline/Note</strong> :
+<code>deadline INDEX d/DEADLINE</code> or <code>note INDEX d/NOTE</code><br>
+e.g. <code>deadline 3 d/12 December 2019</code> or <code>note 2 d/Clarify with Teacher</code></p>
+</li>
+<li>
 <p><strong>Clear</strong> : <code>clear</code> or <code>c</code></p>
 </li>
 <li>
 <p><strong>Delete</strong> : <code>delete INDEX</code><br>
 e.g. <code>delete 3</code> or <code>d 3</code></p>
+</li>
+<li>
+<p><strong>Delete Subject</strong> : <code>deleteSubject SUBJECT</code><br>
+e.g. <code>deleteSubject Chemistry</code></p>
 </li>
 <li>
 <p><strong>Edit</strong> : <code>edit INDEX [t/TOPIC] [diff/DIFFICULTY] [c/CONTENT] [d/DEADLINE] [s/SUBJECT]</code><br>
@@ -751,4 +846,4 @@ e.g.<code>sort 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 14:07:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 14:23:27 UTC</div></div></div></body></html>

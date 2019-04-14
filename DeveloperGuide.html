@@ -33,9 +33,8 @@
 <li><a href="#quizzing-by-subject">3.2. Quizzing by Subject</a></li>
 <li><a href="#quizzing-by-difficulty">3.3. Quizzing by Difficulty</a></li>
 <li><a href="#shelf-life-of-flashcards">3.4. Shelf-Life of FlashCards</a></li>
-<li><a href="#proposed-data-encryption">3.5. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.6. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
+<li><a href="#logging">3.5. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -848,6 +847,9 @@ the subject tag "Math" will be added to a <code>SubjectBook</code> object and <c
 <li>
 <p><strong>Subject tag is unique among other flashcards</strong><br>
 The Subject tag will be added to the <code>UniqueSubjectList</code> object.</p>
+</li>
+</ol>
+</div>
 <div class="paragraph">
 <p>Shown below is the adding mechanism of a flashcard with a unique subject among other flashcards:<br></p>
 </div>
@@ -868,13 +870,17 @@ Since it is unique in this scenario, the subject tag of the current flashcard wi
 </li>
 <li>
 <p>The <code>SubjectListPanel</code> class then displays this newly added subject in the subjects panel.</p>
-</li>
-</ul>
-</div>
-</li>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p><strong>Subject tag already exists in other flashcards</strong><br>
 No Subject tag is added to the <code>UniqueSubjectList</code> object.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p>Shown below is the adding mechanism of a flashcard whose subject already exists in other flashcards:</p>
 </div>
@@ -897,9 +903,6 @@ Since it is not unique in this scenario, the subject tag <strong>will not</stron
 <p>The subjects panel remains unchanged.</p>
 </li>
 </ul>
-</div>
-</li>
-</ol>
 </div>
 <div class="paragraph">
 <p>The following sequence diagram summarises what happens in Step 1:<br></p>
@@ -1181,54 +1184,72 @@ The <code>SortCommand</code> will help students to focus on one chosen difficult
 <div class="sect3">
 <h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The user can determine how long the flashcards will exist in the database “FlashCards”.
+<p>The user can determine set a deadline for the flashcards and determine how long the flash cards will exist in the database “FlashCards”.
 The following operations are available:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>FlashCards#clear()</code>&#8201;&#8212;&#8201;Clears the entire database.</p>
-</li>
-<li>
-<p><code>FlashCards#clear()</code>&#8201;&#8212;&#8201;Clears a specific flashcard when in "Subject" Knowledge Testing Mode.</p>
-</li>
-<li>
 <p><code>FlashCards#deadline()</code> or <code>FlashCards#note()</code>&#8201;&#8212;&#8201;Adds a deadline/note for the specified flashcard.</p>
+</li>
+<li>
+<p><code>FlashCards#deleteSubject()</code>&#8201;&#8212;&#8201;Deletes a specific subject when in "Subject" Knowledge Testing Mode.</p>
+</li>
+<li>
+<p><code>FlashCards#clear()</code>&#8201;&#8212;&#8201;Clears the entire database.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>For easier modes of implementation, the user can also choose to set a date whereby the flashcards would be unavailable thereafter. To activate this function, the user can type in <code>deadline</code> or <code>exam</code>, followed by the index and the date. For example, in the event where the user knows the specific exam date for the selected flashcard, he/she can set the exam date under the “Subject Details” and the flashcards will be available for another month after the exam before the auto deletion function is activated.</p>
+<p>These operations are exposed in the <code>Logic</code> interface as <code>Logic#deadline()</code>, <code>Logic#note()</code>, <code>Logic#deleteSubject()</code> and <code>Logic#clear()</code> respectively.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deadline-command"><a class="link" href="#deadline-command">3.4.2. Deadline Command</a></h4>
+<div class="paragraph">
+<p>For the <code>deadline</code> command, the user can input a date whereby the flashcards would be unavailable thereafter.</p>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Logic</code> interface as <code>Logic#clearall()</code>, <code>Logic#clear()</code>, <code>Logic#deadline()</code> and <code>Logic#exam()</code> respectively.</p>
+<p>Step 1. The user can input a deadline for the flashcard. An example of the command is <code>deadline 3 d/12 January 2020</code>.</p>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the deadline/exam mechanism behaves at each step.</p>
+<p>Step 2. Upon adding to a specified flashcard, the deadline <code>12 January 2020</code> will be added to the <code>index 3</code> flashcard.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedFlashCards</code> will be initialized with the initial flashcard state, and the <code>currentStatePointer</code> pointing to that single flashcard state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
-</div>
+<p>Step 3. The <code>deadline</code> command also calls <code>Model#commitFlashBook()</code>, causing another modified flash book state to be saved into the <code>flashBookStateList</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>list</code> command to list all the available flashcards in the FlashCards. The <code>list</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the flashcard after the <code>list</code> command executes to be saved in the <code>flashCardStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted flashcard state.</p>
+<p>Step 4. In the case that a new date is to be added to a flashcard with an existing deadline or note, corrections can be made by overwriting the existing information with the same commands.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
 </div>
+<div class="sect3">
+<h4 id="deleting-flashcards"><a class="link" href="#deleting-flashcards">3.4.3. Deleting Flashcards</a></h4>
+<div class="paragraph">
+<p>The user now decides that the deadline is over/the note is redundant and do not wish to save the flashcard in the database.
+For the user to delete the existing flashcards in the database, there are two options available:
+* Option 1: Deleting flashcards by subject. (<code>deleteSubject</code> command)
+* Option 2: Deleting all flashcards. (<code>clear</code> command)</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="option-1-deleting-flashcards-by-subject-code-deletesubject-code-command"><a class="link" href="#option-1-deleting-flashcards-by-subject-code-deletesubject-code-command">3.4.4. Option 1: Deleting flashcards by subject. (<code>deleteSubject</code> command)</a></h4>
+<div class="paragraph">
+<p>By executing the <code>deleteSubject</code> command, the user can delete all the flashcards under the specified subject. In this case, we will be deleting the subject <code>physics</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>deadline 1 d/&#8230;&#8203;</code> or <code>exam 1 d/&#8230;&#8203;</code> to add a new deadline or exam date for the specified flashcard. The <code>deadline</code> command also calls <code>Model#commitFlashBook()</code>, causing another modified flash book state to be saved into the <code>addressBookStateList</code>.</p>
+<p>Step 1. When the <code>deleteSubject</code> command is called, it will be executed by the <code>LogicManager</code>.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
+<div class="paragraph">
+<p>Step 2. Next, it will be parsed through the <code>FlashBookParser</code> with commandWord <code>deleteSubject()</code> under <code>parseCommand</code>.</p>
 </div>
+<div class="paragraph">
+<p>Step 3. The <code>deleteSubject()</code> in Model will then be executed and the specified subject <code>physics</code> will be deleted from the <code>VersionedFlashBook</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. The <code>deleteSubject</code> command calls <code>Model#commitFlashBook()</code>, causing another modified flash book state to be saved into the <code>flashBookStateList</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. The <code>SubjectListPanel</code> and <code>FlashCardListPanel</code> will also be updated with new indexes after the deletion.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1237,67 +1258,35 @@ The following operations are available:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not call <code>Model#commitFlashBook()</code>, so the flash book state will not be saved into the <code>flashBookStateList</code>.
+This action is not reversible. The <code>undo</code> and <code>redo</code> command do not apply to the deletion of subjects.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that the deadline/exam is over and do not wish to save the flashcard in the flashcard. By executing the <code>clear</code> command, he can delete all the respective flashcards under the specified flashcard. The <code>clear</code> command will call <code>Logic#Clear()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous flashcard state, and clear all the respective flashcards of the specified flashcard.</p>
+<p>The sequence diagram below illustrate how <code>deleteSubjectCommand</code> is executed.
+image::deleteSubjectSequenceDiagram.png[width="800"]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="option-2-deleting-all-flashcards-code-clear-code-command"><a class="link" href="#option-2-deleting-all-flashcards-code-clear-code-command">3.4.5. Option 2: Deleting all flashcards. (<code>clear</code> command)</a></h4>
+<div class="paragraph">
+<p>By executing the <code>clear</code> command, all the flashcards will be cleared from the database.</p>
 </div>
 <div class="paragraph">
-<p>Step 5: Alternatively, the user can execute the <code>clearall</code> command which will delete all the flashcards in the FlashCards. The <code>clearall</code> command will call <code>Logic#Clearall()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous flashcard state, and clear all the respective flashcards in FlashCards.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/undoredoExecuteUndoStateListDiagram.png" alt="undoredoExecuteUndoStateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial flash book state, then there are no previous flash book states to restore. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
+<p>Step 1. When the <code>clear</code> command is called, it will call <code>Logic#clear()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous flash card state, and clear all the respective flash cards in FlashCards.</p>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
+<p>Step 2. This command also calls <code>Model#commitAddressBook()</code>.</p>
 </div>
 <div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the flash book to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>, pointing to the latest flash book state, then there are no undone flash book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
+<p>Step 3. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>flashBookStateList</code>, all flash book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>clear</code> command. This is the behavior that most modern desktop applications follow.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the flash book, such as <code>list</code>, will usually not call <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or <code>Model#redoAddressBook()</code>. Thus, the <code>addressBookStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="800">
-</div>
+<p>Step 4. Hence, all flashcards and subjects will be deleted in the database.</p>
 </div>
 <div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitAddressBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>addressBookStateList</code>, all flash book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
+<p>Step 5. The FlashBook will then be in a clean slate, at fb3.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1305,35 +1294,34 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
+<p>The following activity diagram summarizes what happens when a user executes a 'clear' command:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This action is not reversible. The <code>undo</code> and <code>redo</code> command do not apply to the clearing of flashcards and subjects simultaneously.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.6. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-deadline-exam-executes"><a class="link" href="#aspect-how-deadline-exam-executes">Aspect: How deadline/exam executes</a></h5>
+<h5 id="aspect-how-deadline-note-executes"><a class="link" href="#aspect-how-deadline-note-executes">Aspect: How deadline/note executes</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Auto deletion of the flashcards.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement and convenient for the user.</p>
-</li>
-<li>
-<p>Cons: Need to have additional internal calendar for the auto deletion.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Manual deletion of the flashcards.</p>
+<p><strong>Alternative 1 (current choice):</strong> Manual deletion of the flashcards.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1345,38 +1333,53 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </ul>
 </div>
 </li>
+<li>
+<p><strong>Alternative 2:</strong> Auto deletion of the flashcards.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and convenient for the user. Deletes the flashcards right after the deadline.</p>
+</li>
+<li>
+<p>Cons: Need to have additional internal calendar for the auto deletion. E.g. Java Calendar</p>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Alternative 1 is chosen to prevent overloading of overdue flashcards, which will take up excess storage if the user does not manually delete.</p>
+<p>Alternative 1 is chosen to provide users with the choice of keeping and deleting flashcards as and when they want. Even though it will result in overloading of overdue flashcards
+and take up excess storage if the user does not manually delete, we designed the command in such a way that it accepts both dates and text. This provides two options for the users:
+He/She can choose to write a date or write a note under the flashcard, for example, <code>Clarify with the Teacher</code> or <code>Edit photosynthesis</code>. This will allow the user to have the freedom to write whatever they require rather than just deadlines.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-deadline-exam-commands"><a class="link" href="#aspect-data-structure-to-support-the-deadline-exam-commands">Aspect: Data structure to support the deadline/exam commands</a></h5>
+<h5 id="aspect-data-structure-to-support-the-deadline-note-commands"><a class="link" href="#aspect-data-structure-to-support-the-deadline-note-commands">Aspect: Data structure to support the deadline/note commands</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Implement an internal calendar to calculate the number of days left.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use the <code>deleteSubject</code> or <code>clear</code> command to manually delete flashcards.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Auto deletion of flashcards.</p>
+<p>Pros: Give the user the choice to keep or delete the flashcards. Also, the user can choose to delete the flashcards by subjects or delete all the flashcards altogether.</p>
 </li>
 <li>
-<p>Cons: Need to pay extra caution for Leap years.</p>
+<p>Cons: Both <code>deleteSubject</code> and <code>clear</code> commands cannot be undone once implemented.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use the <code>clear</code> or <code>clearall</code> function to manually delete.</p>
+<p><strong>Alternative 2:</strong> Implement an internal calendar to calculate the number of days left and auto-deletion of flashcards after the deadline.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Give the user the choice to keep or delete.</p>
+<p>Pros: Auto deletion of flash cards.</p>
 </li>
 <li>
-<p>Cons: Might be troublesome for some users.</p>
+<p>Cons: Need to pay extra caution for Leap years. Users do not have the choice of keeping flashcards after the deadline.</p>
 </li>
 </ul>
 </div>
@@ -1384,26 +1387,21 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </ul>
 </div>
 <div class="paragraph">
-<p>Alternative 1 is chosen to prevent overloading of overdue flashcards, which will take up excess storage if the user does not manually delete.</p>
+<p>Alternative 1 is chosen to provide users with the choice of deleting flashcards as and when they want. Even though it will take up extra storage if the user does not manually delete,
+the user will have better control over what they want to store and delete in the application.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.5. [Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1434,7 +1432,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2679,20 +2677,8 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add a deadline or exam date to a flashcard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add a deadline or note to a flashcard</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Aware of when the content is needed</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add a countdown calendar for my flashcards</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Aware of how many days left to be familiar with the content</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Delete unnecessary flashcards automatically</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Prevent overloading of flashcards</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2757,6 +2743,12 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add a countdown calendar for my flashcards</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aware of how many days left to be familiar with the content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Categorize each flashcard by importance</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Prioritise which information to study or memorise first</p></td>
 </tr>
@@ -2764,7 +2756,13 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Choose the color of the subject tag</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Personalize my flashbook</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Personalize my FlashBook</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete unnecessary flashcards automatically</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prevent overloading of flashcards</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -2829,6 +2827,19 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ol>
 </div>
+<h3 id="use-case-editing-a-flashcard" class="discrete">Use case: Editing a Flashcard</h3>
+<div class="paragraph">
+<p><strong>MSS</strong>
+1.  User enters the flashcard of the flashcard to be edited
+2.  FlashCards displays a list of flashcards belonging to the same flashcard
+3.  User selects the index of the flashcard to edit
+4.  FlashCards prompts for new data
+5. User enters new data
+6. FlashCards displays the updated flashcard</p>
+</div>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
 <h3 id="use-case-deleting-a-flashcard" class="discrete">Use case: Deleting a Flashcard</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -2850,34 +2861,22 @@ Use case ends.</p>
 </li>
 </ol>
 </div>
-<h3 id="use-case-editing-a-flashcard" class="discrete">Use case: Editing a Flashcard</h3>
+<h3 id="use-case-deleting-flashcards-based-on-subject" class="discrete">Use Case: Deleting Flashcards Based on Subject</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User enters the flashcard of the flashcard to be edited</p>
+<p>User selects a subject</p>
 </li>
 <li>
-<p>FlashCards displays a list of flashcards belonging to the same flashcard</p>
-</li>
-<li>
-<p>User selects the index of the flashcard to edit</p>
-</li>
-<li>
-<p>FlashCards prompts for new data</p>
-</li>
-<li>
-<p>User enters new data</p>
-</li>
-<li>
-<p>FlashCards displays the updated flashcard</p>
-</li>
-</ol>
-</div>
+<p>FlashCards deletes the list of flashcards for that subject.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
+</div>
+</li>
+</ol>
 </div>
 <h3 id="use-case-finding-a-flashcard" class="discrete">Use Case: Finding a Flashcard</h3>
 <div class="paragraph">
@@ -3301,4 +3300,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 14:07:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 14:23:27 UTC</div></div></div></body></html>

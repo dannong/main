@@ -186,24 +186,18 @@ Implementation of the command was simple and straightforward, however, implement
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="adding-a-flashcard-code-add-code"><a class="link" href="#adding-a-flashcard-code-add-code">Adding a flashcard: <code>add</code></a></h3>
+<h3 id="adding-a-deadline-note-to-a-flashcard-code-deadline-code-or-code-note-code"><a class="link" href="#adding-a-deadline-note-to-a-flashcard-code-deadline-code-or-code-note-code">Adding a Deadline/Note to a flashcard: <code>deadline</code> or <code>note</code></a></h3>
 <div class="paragraph">
-<p>Adds a flashcard.<br>
-Format: <code>add t/TOPIC diff/DIFFICULTY c/CONTENT s/SUBJECT</code></p>
+<p>Adds a deadline or notes to the flashcard.<br>
+Format: <code>deadline INDEX d/DEADLINE</code> or <code>note INDEX d/NOTE</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>TOPIC</code>: Title of the flashcard.</p>
+<p><code>DEADLINE</code>: Deadline of flashcard.</p>
 </li>
 <li>
-<p><code>DIFFICULTY</code>: Difficulty level of the flashcard&#8217;s content indicated by a positive integer 1, 2, or 3 only.</p>
-</li>
-<li>
-<p><code>CONTENT</code>: Content of the flashcard.</p>
-</li>
-<li>
-<p><code>SUBJECT</code>: Subject of the flashcard.</p>
+<p><code>NOTE</code>: Important notes to be added.</p>
 </li>
 </ul>
 </div>
@@ -213,53 +207,30 @@ Format: <code>add t/TOPIC diff/DIFFICULTY c/CONTENT s/SUBJECT</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add t/Pythagoras Theorem diff/1 c/a^2 + b^2 = c^2 s/Math</code><br>
-Adds a flashcard named "Pythagoras Theorem" under the subject "Math" to the list of flashcards.
-It has the content "a^2 + b^2 = c^2" and a difficulty level of "1".</p>
+<p><code>deadline 1 d/12 January 2020</code><br>
+Adds a deadline "12 January 2020" into the flashcard with index 1.</p>
 </li>
 <li>
-<p><code>add t/Photosynthesis diff/1 c/A chemical reaction that takes place inside a plant, producing food for the plant to survive s/Science</code><br>
-Adds a flashcard named "Photosynthesis" under the subject "Science" to the list of flashcards.
-It has the content "A chemical reaction that takes place inside a plant, producing food for the plant to survive" and a difficulty level of "1".</p>
+<p><code>note 3 d/Clarify with Teacher</code><br>
+Adds a note into the flashcard with content "Clarify with Teacher".</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The flashcard that was just added will be displayed in the flashcards panel.
-=== Editing a flashcard: <code>edit</code> or <code>e</code></p>
+<p>In the case that a new date is to be added to a flashcard with an existing deadline or note, corrections can be made by overwriting the existing information with the same commands.</p>
 </div>
-<div class="paragraph">
-<p>Edits field(s) of a specified flashcard.<br></p>
 </div>
+<div class="sect2">
+<h3 id="deleting-a-subject-code-deletesubject-code"><a class="link" href="#deleting-a-subject-code-deletesubject-code">Deleting a subject: <code>deleteSubject</code></a></h3>
 <div class="paragraph">
-<p>Enter the index of the flashcard to edit, followed by the field(s) you wish to edit.<br>
-Format: <code>edit INDEX [t/TOPIC] [diff/DIFFICULTY] [c/CONTENT] [d/DEADLINE] [s/SUBJECT]</code><br></p>
+<p>Deletes the specified subject.<br>
+Format: <code>deleteSubject SUBJECT</code><br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>INDEX</code>: Index number of the flashcard to be edited. This index number will be shown in the displayed list of flashcards in the flashcards panel.
-<strong>Must be a positive integer</strong> such as 1, 2, 3, &#8230;&#8203;<br></p>
-</li>
-<li>
-<p><code>[t/TOPIC] [diff/DIFFICULTY] [c/CONTENT] [d/DEADLINE] [s/SUBJECT]</code>: <strong>At least one</strong> of these fields enclosed in [ ]
-must be present.<br></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Steps to edit a flashcard:</strong><br></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Click on a subject in the subjects panel; or<br></p>
-</li>
-<li>
-<p>Enter the <code>selectSubject</code> command to select a subject (see Section 3.9.); then<br></p>
-</li>
-<li>
-<p>Use the <code>edit</code> command to edit a flashcard<br></p>
+<p><code>SUBJECT</code>: Subject to be deleted. This subject name can be found in the displayed list of subjects on the left panel.
+<strong>Must be a subject that is already in the subject list</strong><br></p>
 </li>
 </ul>
 </div>
@@ -269,39 +240,34 @@ must be present.<br></p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Editing 1 field</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p>After clicking on a subject e.g. Math, flashcards that are tagged under "Math" will be displayed in the flashcards panel.<br>
-Next, enter <code>edit 1 s/Science</code> or <code>e 1 s/Science</code> to edit the flashcard with index "1". It will replace the flashcard&#8217;s existing subject with "Science".</p>
-</li>
-<li>
-<p>After entering this command <code>selectSubject English</code>, all flashcards that are tagged under "English" will be displayed in the flashcards panel.<br>
-Next, enter <code>edit 2 c/The quick brown fox</code> or <code>e 2 c/The quick brown fox</code> to edit the flashcard with index "2". It will replace the flashcard&#8217;s existing content with "The quick brown fox".</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Editing more than 1 field</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p>After clicking on a subject e.g. Math, flashcards that are tagged under "Math" will be displayed in the flashcards panel.<br>
-Next, enter <code>edit 1 c/Plants s/Science</code> or <code>e 1 c/Plants s/Science</code> to edit the flashcard with index "1". It will replace the flashcard&#8217;s existing content with "Plants" and subject with "Science".</p>
-</li>
-<li>
-<p>After entering this command <code>selectSubject English</code>, all flashcards that are tagged under "English" will be displayed in the flashcards panel.<br>
-Next, enter <code>edit 1 t/Brown Fox diff/1</code> or <code>e 1 t/Brown Fox diff/1</code> to edit the flashcard with index "1". It will replace the flashcard&#8217;s existing topic with "Brown Fox" and difficulty level with "1".</p>
-</li>
-</ul>
-</div>
+<p><code>deleteSubject Chemistry</code><br>
+All flashcards that are tagged under "Chemistry" will be deleted.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The edited flashcard will be updated and displayed in the flashcards panel.</p>
+<p><strong>Note</strong> This action is not reversible. The <code>undo</code> and <code>redo</code> command do not apply to the deletion of subjects.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clearing-all-flashcards-code-clear-code-or-code-c-code"><a class="link" href="#clearing-all-flashcards-code-clear-code-or-code-c-code">Clearing all flashcards: <code>clear</code> or <code>c</code></a></h3>
+<div class="paragraph">
+<p>Clears all flashcards.<br>
+Format: <code>clear</code> or <code>c</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>clear</code><br>
+All flashcards that are in the FlashBook will be deleted.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong> This action is not reversible. The <code>undo</code> and <code>redo</code> command do not apply to the clearing of flashcards and subjects simultaneously.</p>
 </div>
 </div>
 </div>
@@ -326,5 +292,219 @@ Next, enter <code>edit 1 t/Brown Fox diff/1</code> or <code>e 1 t/Brown Fox diff
 </li>
 </ul>
 </div>
+<div class="sect2">
+<h3 id="shelf-life-of-flashcards"><a class="link" href="#shelf-life-of-flashcards">Shelf-Life of FlashCards</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The user can determine set a deadline for the flashcards and determine how long the flash cards will exist in the database “FlashCards”.
+The following operations are available:</p>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 14:07:49 UTC</div></div></div></body></html>
+<div class="ulist">
+<ul>
+<li>
+<p><code>FlashCards#deadline()</code> or <code>FlashCards#note()</code>&#8201;&#8212;&#8201;Adds a deadline/note for the specified flashcard.</p>
+</li>
+<li>
+<p><code>FlashCards#deleteSubject()</code>&#8201;&#8212;&#8201;Deletes a specific subject when in "Subject" Knowledge Testing Mode.</p>
+</li>
+<li>
+<p><code>FlashCards#clear()</code>&#8201;&#8212;&#8201;Clears the entire database.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These operations are exposed in the <code>Logic</code> interface as <code>Logic#deadline()</code>, <code>Logic#note()</code>, <code>Logic#deleteSubject()</code> and <code>Logic#clear()</code> respectively.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deadline-command"><a class="link" href="#deadline-command">Deadline Command</a></h4>
+<div class="paragraph">
+<p>For the <code>deadline</code> command, the user can input a date whereby the flashcards would be unavailable thereafter.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. The user can input a deadline for the flashcard. An example of the command is <code>deadline 3 d/12 January 2020</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. Upon adding to a specified flashcard, the deadline <code>12 January 2020</code> will be added to the <code>index 3</code> flashcard.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The <code>deadline</code> command also calls <code>Model#commitFlashBook()</code>, causing another modified flash book state to be saved into the <code>flashBookStateList</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. In the case that a new date is to be added to a flashcard with an existing deadline or note, corrections can be made by overwriting the existing information with the same commands.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-flashcards"><a class="link" href="#deleting-flashcards">Deleting Flashcards</a></h4>
+<div class="paragraph">
+<p>The user now decides that the deadline is over/the note is redundant and do not wish to save the flashcard in the database.
+For the user to delete the existing flashcards in the database, there are two options available:
+* Option 1: Deleting flashcards by subject. (<code>deleteSubject</code> command)
+* Option 2: Deleting all flashcards. (<code>clear</code> command)</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="option-1-deleting-flashcards-by-subject-code-deletesubject-code-command"><a class="link" href="#option-1-deleting-flashcards-by-subject-code-deletesubject-code-command">Option 1: Deleting flashcards by subject. (<code>deleteSubject</code> command)</a></h4>
+<div class="paragraph">
+<p>By executing the <code>deleteSubject</code> command, the user can delete all the flashcards under the specified subject. In this case, we will be deleting the subject <code>physics</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. When the <code>deleteSubject</code> command is called, it will be executed by the <code>LogicManager</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. Next, it will be parsed through the <code>FlashBookParser</code> with commandWord <code>deleteSubject()</code> under <code>parseCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. The <code>deleteSubject()</code> in Model will then be executed and the specified subject <code>physics</code> will be deleted from the <code>VersionedFlashBook</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. The <code>deleteSubject</code> command calls <code>Model#commitFlashBook()</code>, causing another modified flash book state to be saved into the <code>flashBookStateList</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. The <code>SubjectListPanel</code> and <code>FlashCardListPanel</code> will also be updated with new indexes after the deletion.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This action is not reversible. The <code>undo</code> and <code>redo</code> command do not apply to the deletion of subjects.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below illustrate how <code>deleteSubjectCommand</code> is executed.
+image::deleteSubjectSequenceDiagram.png[width="800"]</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="option-2-deleting-all-flashcards-code-clear-code-command"><a class="link" href="#option-2-deleting-all-flashcards-code-clear-code-command">Option 2: Deleting all flashcards. (<code>clear</code> command)</a></h4>
+<div class="paragraph">
+<p>By executing the <code>clear</code> command, all the flashcards will be cleared from the database.</p>
+</div>
+<div class="paragraph">
+<p>Step 1. When the <code>clear</code> command is called, it will call <code>Logic#clear()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous flash card state, and clear all the respective flash cards in FlashCards.</p>
+</div>
+<div class="paragraph">
+<p>Step 2. This command also calls <code>Model#commitAddressBook()</code>.</p>
+</div>
+<div class="paragraph">
+<p>Step 3. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>flashBookStateList</code>, all flash book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>clear</code> command. This is the behavior that most modern desktop applications follow.</p>
+</div>
+<div class="paragraph">
+<p>Step 4. Hence, all flashcards and subjects will be deleted in the database.</p>
+</div>
+<div class="paragraph">
+<p>Step 5. The FlashBook will then be in a clean slate, at fb3.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes a 'clear' command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This action is not reversible. The <code>undo</code> and <code>redo</code> command do not apply to the clearing of flashcards and subjects simultaneously.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-deadline-note-executes"><a class="link" href="#aspect-how-deadline-note-executes">Aspect: How deadline/note executes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Manual deletion of the flashcards.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allow the user to have the choice of keeping the flashcards or removing it.</p>
+</li>
+<li>
+<p>Cons: Might be troublesome for some users.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Auto deletion of the flashcards.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and convenient for the user. Deletes the flashcards right after the deadline.</p>
+</li>
+<li>
+<p>Cons: Need to have additional internal calendar for the auto deletion. E.g. Java Calendar</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Alternative 1 is chosen to provide users with the choice of keeping and deleting flashcards as and when they want. Even though it will result in overloading of overdue flashcards
+and take up excess storage if the user does not manually delete, we designed the command in such a way that it accepts both dates and text. This provides two options for the users:
+He/She can choose to write a date or write a note under the flashcard, for example, <code>Clarify with the Teacher</code> or <code>Edit photosynthesis</code>. This will allow the user to have the freedom to write whatever they require rather than just deadlines.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-the-deadline-note-commands"><a class="link" href="#aspect-data-structure-to-support-the-deadline-note-commands">Aspect: Data structure to support the deadline/note commands</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use the <code>deleteSubject</code> or <code>clear</code> command to manually delete flashcards.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Give the user the choice to keep or delete the flashcards. Also, the user can choose to delete the flashcards by subjects or delete all the flashcards altogether.</p>
+</li>
+<li>
+<p>Cons: Both <code>deleteSubject</code> and <code>clear</code> commands cannot be undone once implemented.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Implement an internal calendar to calculate the number of days left and auto-deletion of flashcards after the deadline.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Auto deletion of flash cards.</p>
+</li>
+<li>
+<p>Cons: Need to pay extra caution for Leap years. Users do not have the choice of keeping flashcards after the deadline.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Alternative 1 is chosen to provide users with the choice of deleting flashcards as and when they want. Even though it will take up extra storage if the user does not manually delete,
+the user will have better control over what they want to store and delete in the application.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 14:23:27 UTC</div></div></div></body></html>

@@ -225,6 +225,9 @@ Format: <code>add t/TOPIC diff/DIFFICULTY c/CONTENT s/SUBJECT</code></p>
 <li>
 <p><code>SUBJECT</code>: Subject of the flashcard.</p>
 </li>
+<li>
+<p><code>Deadline/Note</code> (optional): Deadline of the flashcard/Notes to be taken.</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -418,6 +421,9 @@ the subject tag "Math" will be added to a <code>SubjectBook</code> object and <c
 <li>
 <p><strong>Subject tag is unique among other flashcards</strong><br>
 The Subject tag will be added to the <code>UniqueSubjectList</code> object.</p>
+</li>
+</ol>
+</div>
 <div class="paragraph">
 <p>Shown below is the adding mechanism of a flashcard with a unique subject among other flashcards:<br></p>
 </div>
@@ -438,13 +444,17 @@ Since it is unique in this scenario, the subject tag of the current flashcard wi
 </li>
 <li>
 <p>The <code>SubjectListPanel</code> class then displays this newly added subject in the subjects panel.</p>
-</li>
-</ul>
-</div>
-</li>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p><strong>Subject tag already exists in other flashcards</strong><br>
 No Subject tag is added to the <code>UniqueSubjectList</code> object.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p>Shown below is the adding mechanism of a flashcard whose subject already exists in other flashcards:</p>
 </div>
@@ -467,9 +477,6 @@ Since it is not unique in this scenario, the subject tag <strong>will not</stron
 <p>The subjects panel remains unchanged.</p>
 </li>
 </ul>
-</div>
-</li>
-</ol>
 </div>
 <div class="paragraph">
 <p>The following sequence diagram summarises what happens in Step 1:<br></p>
@@ -692,4 +699,4 @@ If the subject tag matches, this flashcard is added to a <code>newFlashcardList<
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 14:07:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 14:23:27 UTC</div></div></div></body></html>
