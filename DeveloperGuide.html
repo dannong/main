@@ -73,7 +73,12 @@
 </li>
 <li><a href="#product-scope">Appendix B: Product Scope</a></li>
 <li><a href="#user-stories">Appendix C: User Stories</a></li>
-<li><a href="#use-cases">Appendix D: Use Cases</a></li>
+<li><a href="#use-cases">Appendix D: Use Cases</a>
+<ul class="sectlevel2">
+<li><a href="#use-case-sorting-all-flashcards-categorized-by-difficulty">D.1. Use Case: Sorting all Flashcards categorized by Difficulty</a></li>
+<li><a href="#use-case-create-account-coming-in-v2-0">D.2. Use Case: Create Account (coming in v2.0)</a></li>
+</ul>
+</li>
 <li><a href="#non-functional-requirements">Appendix E: Non Functional Requirements</a>
 <ul class="sectlevel2">
 <li><a href="#performance-requirement">E.1. Performance Requirement</a></li>
@@ -2644,6 +2649,12 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List flashcards categorized by flashcards</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Have an overview of the flashcards I currently have</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">View flashcards categorized by subjects</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Have an overview of the flashcards I currently have for a particular subject</p></td>
 </tr>
@@ -2763,15 +2774,15 @@ for <code>RemarkCommandParser</code>.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use an application that is not just monochromatic in colour</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Have a better user experience</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">New User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create a new account</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Only see flashcards and flashcards that are customised by me</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">New User</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Create a new account</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Perform actions specific to the flashcards I created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use an application that is not just monochromatic in colour</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Have a better user experience</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
@@ -2818,51 +2829,55 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ol>
 </div>
-<h3 id="use-case-editing-a-flashcard" class="discrete">Use Case: Editing a Flashcard</h3>
+<h3 id="use-case-deleting-a-flashcard" class="discrete">Use case: Deleting a Flashcard</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User selects a subject</p>
+<p>User enters the flashcard of the flashcard to be deleted</p>
 </li>
 <li>
-<p>FlashCards displays the list of flashcards for that subject.</p>
+<p>FlashCards displays a list of flashcards belonging to the same flashcard</p>
 </li>
 <li>
-<p>User enters the index and fields of the flashcard to be edited</p>
+<p>User selects the index of the flashcard to delete</p>
 </li>
 <li>
-<p>FlashCards displays the updated list of flashcards</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
+<p>FlashCards displays the updated list of flashcards
+Use case ends.</p>
 </li>
 </ol>
 </div>
-<h3 id="use-case-deleting-a-flashcard" class="discrete">Use Case: Deleting a Flashcard</h3>
+<h3 id="use-case-editing-a-flashcard" class="discrete">Use case: Editing a Flashcard</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User selects a subject</p>
+<p>User enters the flashcard of the flashcard to be edited</p>
 </li>
 <li>
-<p>FlashCards displays the list of flashcards for that subject.</p>
+<p>FlashCards displays a list of flashcards belonging to the same flashcard</p>
 </li>
 <li>
-<p>User enters the index of the flashcard to be deleted</p>
+<p>User selects the index of the flashcard to edit</p>
 </li>
 <li>
-<p>FlashCards displays the updated list of flashcards</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
+<p>FlashCards prompts for new data</p>
+</li>
+<li>
+<p>User enters new data</p>
+</li>
+<li>
+<p>FlashCards displays the updated flashcard</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>Use case ends.</p>
 </div>
 <h3 id="use-case-finding-a-flashcard" class="discrete">Use Case: Finding a Flashcard</h3>
 <div class="paragraph">
@@ -2870,6 +2885,12 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
+<li>
+<p>User selects a subject</p>
+</li>
+<li>
+<p>FlashCards displays a list of flashcards belonging to the same subject</p>
+</li>
 <li>
 <p>User enters a keyword</p>
 </li>
@@ -2881,52 +2902,28 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. Keyword not found</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-selecting-a-flashcard" class="discrete">Use Case: Selecting a Flashcard</h3>
+<h3 id="use-case-selecting-a-flashcard" class="discrete">Use case: Selecting a Flashcard</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User selects a flashcard</p>
+<p>User enters the subject of the flashcard to be displayed</p>
 </li>
 <li>
-<p>FlashCards displays the topic and content in the Content panel.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
+<p>FlashCards displays a list of flashcards belonging to the same subject</p>
+</li>
+<li>
+<p>User selects the index of the flashcard to view</p>
+</li>
+<li>
+<p>FlashCards displays the flashcard of the chosen index</p>
 </li>
 </ol>
 </div>
-<h3 id="use-case-viewing-flashcards-based-on-subject" class="discrete">Use Case: Viewing Flashcards Based on Subject</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User selects a subject</p>
-</li>
-<li>
-<p>FlashCards displays the list of flashcards for that subject.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
-</div>
-</li>
-</ol>
 </div>
 <h3 id="use-case-viewing-the-next-flashcard" class="discrete">Use Case: Viewing the next Flashcard</h3>
 <div class="paragraph">
@@ -2980,49 +2977,31 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 <li>
 <p>FlashCards displays the previous flashcard</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
 </li>
 </ol>
 </div>
-<h3 id="use-case-finding-a-flashcard-2" class="discrete">Use Case: Finding a Flashcard</h3>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+<h3 id="use-case-listing-all-flashcards-categorized-by-subjects" class="discrete">Use case: Listing all Flashcards categorized by Subjects</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User selects a subject</p>
+<p>User enters the subject of the flashcards to be displayed</p>
 </li>
 <li>
-<p>FlashCards displays a list of flashcards belonging to the same subject</p>
-</li>
-<li>
-<p>User enters a keyword</p>
-</li>
-<li>
-<p>FlashCards displays all flashcards that contains the given keyword</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
+<p>FlashCards displays an indexed list of flashcards categorized by flashcards</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3a. Keyword not found</p>
-<div class="paragraph">
 <p>Use case ends.</p>
 </div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-sorting-all-flashcards-categorized-by-difficulty" class="discrete">Use Case: Sorting all Flashcards categorized by Difficulty</h3>
+<div class="sect2">
+<h3 id="use-case-sorting-all-flashcards-categorized-by-difficulty"><a class="link" href="#use-case-sorting-all-flashcards-categorized-by-difficulty">D.1. Use Case: Sorting all Flashcards categorized by Difficulty</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3032,15 +3011,16 @@ for <code>RemarkCommandParser</code>.</p>
 <p>User enters the difficulty of the flashcards to be displayed</p>
 </li>
 <li>
-<p>FlashCards displays an indexed list of flashcards categorized by selected difficulty
-+</p>
+<p>FlashCards displays an indexed list of flashcards categorized by selected difficulty</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
-<h3 id="use-case-create-account-coming-in-v2-0" class="discrete">Use Case: Create Account (coming in v2.0)</h3>
+</div>
+<div class="sect2">
+<h3 id="use-case-create-account-coming-in-v2-0"><a class="link" href="#use-case-create-account-coming-in-v2-0">D.2. Use Case: Create Account (coming in v2.0)</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3079,20 +3059,10 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 <h3 id="use-case-login-coming-in-v2-0" class="discrete">Use Case: Login (coming in v2.0)</h3>
 <div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User enters username</p>
-</li>
-<li>
-<p>FlashCards retrieves all relevant data for user account</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
+<p><strong>MSS</strong>
+1.  User enters username
+2.  FlashCards retrieves all relevant data for user account
+Use case ends.</p>
 </div>
 <div class="paragraph">
 <p><strong>Extensions</strong></p>
@@ -3113,6 +3083,7 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 </li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -3330,4 +3301,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 12:27:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 13:03:25 UTC</div></div></div></body></html>
