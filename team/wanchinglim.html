@@ -318,17 +318,17 @@ Next, enter <code>delete 1</code> or <code>d 1</code> to delete the specified fl
 <h3 id="quizzing-by-subject"><a class="link" href="#quizzing-by-subject">Quizzing by Subject</a></h3>
 <div class="paragraph">
 <p>A subject that is selected will have all the flashcards pertaining to it shown.
-This mode will help users focus on a specific subject before their tests/exams/quizzes.</p>
+This mode will help users to focus on a particular subject&#8217;s notes when studying.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The FlashCards UI is divided into three panels from left to right – Subjects, Flashcards, and Content.<br></p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>Subjects Panel (facilitated by <code>SubjectListPanel</code>):<br>
+<p><strong>Subjects Panel</strong> (facilitated by <code>SubjectListPanel</code> class):<br>
 Displays:</p>
 <div class="ulist">
 <ul>
@@ -339,7 +339,7 @@ Displays:</p>
 </div>
 </li>
 <li>
-<p>Flashcards Panel (facilitated by <code>FlashcardListPanel</code>):<br>
+<p><strong>Flashcards Panel</strong> (facilitated by <code>FlashcardListPanel</code> class):<br>
 Displays information in this order:</p>
 <div class="ulist">
 <ul>
@@ -359,7 +359,7 @@ Displays information in this order:</p>
 </div>
 </li>
 <li>
-<p>Content Panel (facilitated by <code>RightPanel</code>):<br>
+<p><strong>Content Panel</strong> (facilitated by <code>RightPanel</code> class):<br>
 This panel is further sectioned into 2:</p>
 <div class="ulist">
 <ul>
@@ -372,17 +372,25 @@ This panel is further sectioned into 2:</p>
 </ul>
 </div>
 </li>
-</ul>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UI_edited.png" alt="UI edited" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p><em>Figure. GUI of FlashCards</em></p>
 </div>
 <div class="paragraph">
 <p>Upon adding a flashcard with the <code>add</code> command, (e.g. <code>add t/Pythagoras Theorem diff/1 c/a^2 + b^2 = c^2 s/Math</code>),
-the subject tag "Math" will be added to a <code>SubjectBook</code> and <code>UniqueSubjectList</code> before being displayed in the <code>SubjectListPanel</code>.<br></p>
+the subject tag "Math" will be added to a <code>SubjectBook</code> object and <code>UniqueSubjectList</code> object before being displayed in the subjects panel.<br></p>
 </div>
 <div class="paragraph">
 <p>An example scenario of adding a flashcard (Step 1) and displaying the flashcards for each subject (Step 2) is shown below.</p>
 </div>
 <div class="sect4">
-<h5 id="step-1-adding-a-flashcard"><a class="link" href="#step-1-adding-a-flashcard">Step 1: Adding a Flashcard</a></h5>
+<h5 id="step-1-adding-a-flashcard"><a class="link" href="#step-1-adding-a-flashcard">Step 1: Adding a flashcard</a></h5>
 <div class="paragraph">
 <p>There are 2 possible cases when adding a flashcard:</p>
 </div>
@@ -392,25 +400,25 @@ the subject tag "Math" will be added to a <code>SubjectBook</code> and <code>Uni
 <p><strong>Subject tag is unique among other flashcards</strong><br>
 The Subject tag will be added to the <code>UniqueSubjectList</code> object.</p>
 <div class="paragraph">
-<p>Shown below is the adding mechanism of a flashcard with a unique subject among other flashcards is added:<br></p>
+<p>Shown below is the adding mechanism of a flashcard with a unique subject among other flashcards:<br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Each time a flashcard is added using the Logic component&#8217;s <code>AddCommand()</code>, the adding will be facilitated by <code>addSubject()</code> in the Model component.</p>
+<p>The Logic component&#8217;s <code>AddCommand</code> class is triggered every time the user adds a flashcard. It will then be facilitated by <code>addSubject()</code> in the Model component.</p>
 </li>
 <li>
-<p>The Model component&#8217;s <code>addSubject()</code> will use <code>SubjectBook</code> 's <code>addSubject()</code> to add the subject to a list containing only unique subjects.</p>
+<p>The Model component&#8217;s <code>addSubject()</code> will use <code>SubjectBook</code> 's <code>addSubject()</code> to add the subject to a list that contains only unique subjects.</p>
 </li>
 <li>
-<p><code>SubjectBook</code> will create a <code>UniqueSubjectList</code> object that stores all unique subjects.</p>
+<p>The <code>SubjectBook</code> class will create an <code>UniqueSubjectList</code> object to store all unique subjects.</p>
 </li>
 <li>
 <p>The <code>UniqueSubjectList</code> object will invoke its <code>addSubject()</code> function. This function will check if the current <code>UniqueSubjectList</code> object contains the subject tag of the current flashcard to be added.
 Since it is unique in this scenario, the subject tag of the current flashcard will be added to this <code>UniqueSubjectList</code> object.</p>
 </li>
 <li>
-<p>The <code>SubjectListPanel</code> then displays this newly added subject.</p>
+<p>The <code>SubjectListPanel</code> class then displays this newly added subject in the subjects panel.</p>
 </li>
 </ul>
 </div>
@@ -419,25 +427,25 @@ Since it is unique in this scenario, the subject tag of the current flashcard wi
 <p><strong>Subject tag already exists in other flashcards</strong><br>
 No Subject tag is added to the <code>UniqueSubjectList</code> object.</p>
 <div class="paragraph">
-<p>Shown below is the adding mechanism of a flashcard whose subject already exists in other flashcards is added:</p>
+<p>Shown below is the adding mechanism of a flashcard whose subject already exists in other flashcards:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Each time a flashcard is added using the Logic component&#8217;s <code>AddCommand()</code>, the adding will be facilitated by <code>addSubject()</code> in the Model component.</p>
+<p>The Logic component&#8217;s <code>AddCommand</code> class is triggered every time the user adds a flashcard. It will then be facilitated by <code>addSubject()</code> in the Model component.</p>
 </li>
 <li>
-<p>The Model component&#8217;s <code>addSubject()</code> will use <code>SubjectBook</code> 's <code>addSubject()</code> to add the subject to a list containing only unique subjects.</p>
+<p>The Model component&#8217;s <code>addSubject()</code> will use <code>SubjectBook</code> 's <code>addSubject()</code> to add the subject to a list that contains only unique subjects.</p>
 </li>
 <li>
 <p><code>SubjectBook</code> will create a <code>UniqueSubjectList</code> object that stores all unique subjects.</p>
 </li>
 <li>
 <p>The <code>UniqueSubjectList</code> object will invoke its <code>addSubject()</code> function. This function will check if the current <code>UniqueSubjectList</code> object contains the subject tag of the current flashcard to be added.
-Since it is not unique in this scenario, the subject tag <strong>will not</strong> be added to the <code>UniqueSubjectList</code> object.</p>
+Since it is not unique in this scenario, the subject tag <strong>will not</strong> be added to this <code>UniqueSubjectList</code> object.</p>
 </li>
 <li>
-<p>The <code>SubjectListPanel</code> remains unchanged.</p>
+<p>The subjects panel remains unchanged.</p>
 </li>
 </ul>
 </div>
@@ -445,7 +453,7 @@ Since it is not unique in this scenario, the subject tag <strong>will not</stron
 </ol>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram summarises what happens in this Step 1:<br></p>
+<p>The following sequence diagram summarises what happens in Step 1:<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -453,12 +461,12 @@ Since it is not unique in this scenario, the subject tag <strong>will not</stron
 </div>
 </div>
 <div class="paragraph">
-<p>Figure: Sequence Diagram of successfully adding a flashcard<br></p>
+<p><em>Figure: Sequence Diagram of adding a flashcard successfully</em><br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Blue:&#8201;&#8212;&#8201;Logic and Model component</p>
+<p>Blue&#8201;&#8212;&#8201;Logic and Model component</p>
 </li>
 <li>
 <p>Yellow&#8201;&#8212;&#8201;JavaFX component</p>
@@ -467,18 +475,18 @@ Since it is not unique in this scenario, the subject tag <strong>will not</stron
 </div>
 </div>
 <div class="sect4">
-<h5 id="step-2-displaying-flashcards-according-to-subjects"><a class="link" href="#step-2-displaying-flashcards-according-to-subjects">Step 2: Displaying Flashcards According to Subjects</a></h5>
+<h5 id="step-2-displaying-flashcards-according-to-subjects"><a class="link" href="#step-2-displaying-flashcards-according-to-subjects">Step 2: Displaying flashcards according to subjects</a></h5>
 <div class="paragraph">
 <p>After a flashcard is added, the following sequence of events will happen:</p>
 </div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The UI component&#8217;s <code>MainWindow</code> class will create a new <code>SubjectListPanel</code> object that takes in and invokes:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The UI component&#8217;s <code>MainWindow</code> will create a new <code>SubjectListPanel</code> object that takes in and invokes:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Logic component&#8217;s <code>getFilteredSubjectList()</code>&#8201;&#8212;&#8201;returns <code>filteredSubjects</code> which contains a list of unique subjects</p>
+<p>Logic component&#8217;s <code>getFilteredSubjectList()</code>&#8201;&#8212;&#8201;returns <code>filteredSubjects</code> which contains the list of unique subjects</p>
 </li>
 <li>
 <p>Logic component&#8217;s <code>selectedSubjectProperty()</code>&#8201;&#8212;&#8201;returns the <code>selectedSubject</code> tag clicked by the user</p>
@@ -490,14 +498,21 @@ Since it is not unique in this scenario, the subject tag <strong>will not</stron
 </div>
 </li>
 <li>
-<p>In <code>SubjectListPanel</code>, <code>setItems()</code> and <code>setCellFactory()</code> of JavaFX will populate the panel with the unique subject list from <code>getFilteredSubjectList()</code>.</p>
-</li>
-<li>
-<p>The UI component&#8217;s <code>MainWindow</code> will create a new <code>FlashcardListPanel</code> object that takes in and invokes:</p>
+<p>In the <code>SubjectListPanel</code> class</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Logic component&#8217;s <code>getFilteredFlashcardList()</code>&#8201;&#8212;&#8201;returns <code>filteredFlashcards</code> which contains a list of unique flashcards</p>
+<p><code>setItems()</code> and <code>setCellFactory()</code> of JavaFX will populate the subjects panel with the unique subject list from <code>getFilteredSubjectList()</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The UI component&#8217;s <code>MainWindow</code> class will create a new <code>FlashcardListPanel</code> object that takes in and invokes:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Logic component&#8217;s <code>getFilteredFlashcardList()</code>&#8201;&#8212;&#8201;returns <code>filteredFlashcards</code> which contains the list of unique flashcards</p>
 </li>
 <li>
 <p>Logic component&#8217;s <code>selectedSubjectProperty()</code>&#8201;&#8212;&#8201;returns the <code>selectedSubject</code> tag clicked by the user</p>
@@ -506,20 +521,27 @@ Since it is not unique in this scenario, the subject tag <strong>will not</stron
 </div>
 </li>
 <li>
-<p>In <code>FlashcardListPanel</code>, <code>setItems()</code> and <code>setCellFactory()</code> of JavaFX will populate the panel with the unique flashcard list from <code>getFilteredFlashcardList()</code>.</p>
+<p>In the <code>FlashcardListPanel</code> class</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>setItems()</code> and <code>setCellFactory()</code> of JavaFX will populate the flashcards panel with the unique flashcard list from <code>getFilteredFlashcardList()</code>.</p>
 </li>
 <li>
-<p>A listener is attached to the <code>selectedSubjectProperty</code> value passed into <code>FlashcardListPanel</code> in order to detect if another subject is selected.</p>
+<p>A listener is attached to the <code>selectedSubjectProperty</code> value passed into this panel in order to detect when another subject is selected.</p>
 </li>
 <li>
-<p>When a new subject is selected, <code>FlashcardListPanel</code> invokes <code>updateFlashcardList()</code>.
+<p>When another subject is selected, the class invokes <code>updateFlashcardList()</code>.
 It matches the subject tag of flashcards from <code>getFilteredFlashcardList()</code> with the newly selected subject.
-If the subject tag matches, this flashcard is added to a <code>newFlashcardList</code>.</p>
+If the subject tag matches, this flashcard is added to a <code>newFlashcardList</code> object.</p>
 </li>
 <li>
-<p>The flashcard panel is then populated with flashcards from <code>newFlashcardList</code> using <code>setItems()</code> and <code>setCellFactory()</code> of JavaFX.</p>
+<p>The flashcard panel is then populated with flashcards from the <code>newFlashcardList</code> object using <code>setItems()</code> and <code>setCellFactory()</code> of JavaFX.</p>
 </li>
 </ul>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>The following sequence diagram summarizes what happens in Step 2:<br></p>
@@ -530,7 +552,7 @@ If the subject tag matches, this flashcard is added to a <code>newFlashcardList<
 </div>
 </div>
 <div class="paragraph">
-<p>Figure: Sequence Diagram of displaying flashcards according to subject<br></p>
+<p><em>Figure: Sequence Diagram of displaying flashcards categorized by subject</em><br></p>
 </div>
 <div class="ulist">
 <ul>
@@ -554,7 +576,7 @@ If the subject tag matches, this flashcard is added to a <code>newFlashcardList<
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Check if subject is unique in <code>addSubject()</code> of <code>UniqueSubjectList</code></p>
+<p><strong>Alternative 1 (current choice):</strong> Check if subject is unique in <code>addSubject()</code> of <code>UniqueSubjectList</code> class</p>
 <div class="ulist">
 <ul>
 <li>
@@ -567,11 +589,11 @@ If the subject tag matches, this flashcard is added to a <code>newFlashcardList<
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Check if subject is unique in <code>AddCommand()</code></p>
+<p><strong>Alternative 2:</strong> Check if subject is unique in <code>AddCommand</code> class</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement and faster way of checking.</p>
+<p>Pros: Easy to implement and a faster way of checking.</p>
 </li>
 <li>
 <p>Cons: Does not support code reusability.</p>
@@ -583,15 +605,15 @@ If the subject tag matches, this flashcard is added to a <code>newFlashcardList<
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-populating-subjects-list-on-application-start-up"><a class="link" href="#aspect-populating-subjects-list-on-application-start-up">Aspect: Populating subjects list on application start up</a></h5>
+<h5 id="aspect-populating-subject-list-on-application-startup"><a class="link" href="#aspect-populating-subject-list-on-application-startup">Aspect: Populating subject list on application startup</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Populate the subject list after the flashcard list is populated</p>
+<p><strong>Alternative 1 (current choice):</strong> Populate subject list after flashcard list is populated</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: No need additional storage for subject list</p>
+<p>Pros: No need additional storage for the subject list.</p>
 </li>
 <li>
 <p>Cons: Harder to implement.</p>
@@ -604,10 +626,10 @@ If the subject tag matches, this flashcard is added to a <code>newFlashcardList<
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement. Populates subject list the same way as how flashcard list is populated.</p>
+<p>Pros: Easy to implement as it populates subject list the same way as how flashcard list is populated.</p>
 </li>
 <li>
-<p>Cons: Need to create additional storage for subject list.</p>
+<p>Cons: Need to create additional storage for the subject list.</p>
 </li>
 </ul>
 </div>
@@ -627,7 +649,7 @@ If the subject tag matches, this flashcard is added to a <code>newFlashcardList<
 <p>Pros: Easier to implement and UI is not overly colourful which makes it easier for users' eyes to adapt.</p>
 </li>
 <li>
-<p>Cons: Inconsistency when displaying subject (i.e. plain text in <code>SubjectListPanel</code> but coloured tag in <code>FlashcardListPanel</code>).</p>
+<p>Cons: Inconsistency when displaying subject (i.e. plain text in subjects panel but coloured tag in flashcards panel).</p>
 </li>
 </ul>
 </div>
@@ -637,7 +659,7 @@ If the subject tag matches, this flashcard is added to a <code>newFlashcardList<
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: More consistency when displaying subject in <code>SubjectListPanel</code> and <code>FlashcardListPanel</code>.</p>
+<p>Pros: More consistency when displaying subject in subjects panel and flashcards panel.</p>
 </li>
 <li>
 <p>Cons: Harder to implement. Might also be harsher on the users' eyes and they might not know where to focus on.</p>
@@ -651,4 +673,4 @@ If the subject tag matches, this flashcard is added to a <code>newFlashcardList<
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 10:33:58 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 10:42:27 UTC</div></div></div></body></html>

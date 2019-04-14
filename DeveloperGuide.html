@@ -762,17 +762,17 @@ In NextCommand class, the <code>nextIndex</code> will now be replaced by <code>p
 <h3 id="quizzing-by-subject"><a class="link" href="#quizzing-by-subject">3.2. Quizzing by Subject</a></h3>
 <div class="paragraph">
 <p>A subject that is selected will have all the flashcards pertaining to it shown.
-This mode will help users focus on a specific subject before their tests/exams/quizzes.</p>
+This mode will help users to focus on a particular subject&#8217;s notes when studying.</p>
 </div>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The FlashCards UI is divided into three panels from left to right – Subjects, Flashcards, and Content.<br></p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>Subjects Panel (facilitated by <code>SubjectListPanel</code>):<br>
+<p><strong>Subjects Panel</strong> (facilitated by <code>SubjectListPanel</code> class):<br>
 Displays:</p>
 <div class="ulist">
 <ul>
@@ -783,7 +783,7 @@ Displays:</p>
 </div>
 </li>
 <li>
-<p>Flashcards Panel (facilitated by <code>FlashcardListPanel</code>):<br>
+<p><strong>Flashcards Panel</strong> (facilitated by <code>FlashcardListPanel</code> class):<br>
 Displays information in this order:</p>
 <div class="ulist">
 <ul>
@@ -803,7 +803,7 @@ Displays information in this order:</p>
 </div>
 </li>
 <li>
-<p>Content Panel (facilitated by <code>RightPanel</code>):<br>
+<p><strong>Content Panel</strong> (facilitated by <code>RightPanel</code> class):<br>
 This panel is further sectioned into 2:</p>
 <div class="ulist">
 <ul>
@@ -816,17 +816,25 @@ This panel is further sectioned into 2:</p>
 </ul>
 </div>
 </li>
-</ul>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UI_edited.png" alt="UI edited" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p><em>Figure. GUI of FlashCards</em></p>
 </div>
 <div class="paragraph">
 <p>Upon adding a flashcard with the <code>add</code> command, (e.g. <code>add t/Pythagoras Theorem diff/1 c/a^2 + b^2 = c^2 s/Math</code>),
-the subject tag "Math" will be added to a <code>SubjectBook</code> and <code>UniqueSubjectList</code> before being displayed in the <code>SubjectListPanel</code>.<br></p>
+the subject tag "Math" will be added to a <code>SubjectBook</code> object and <code>UniqueSubjectList</code> object before being displayed in the subjects panel.<br></p>
 </div>
 <div class="paragraph">
 <p>An example scenario of adding a flashcard (Step 1) and displaying the flashcards for each subject (Step 2) is shown below.</p>
 </div>
 <div class="sect4">
-<h5 id="step-1-adding-a-flashcard"><a class="link" href="#step-1-adding-a-flashcard">Step 1: Adding a Flashcard</a></h5>
+<h5 id="step-1-adding-a-flashcard"><a class="link" href="#step-1-adding-a-flashcard">Step 1: Adding a flashcard</a></h5>
 <div class="paragraph">
 <p>There are 2 possible cases when adding a flashcard:</p>
 </div>
@@ -836,25 +844,25 @@ the subject tag "Math" will be added to a <code>SubjectBook</code> and <code>Uni
 <p><strong>Subject tag is unique among other flashcards</strong><br>
 The Subject tag will be added to the <code>UniqueSubjectList</code> object.</p>
 <div class="paragraph">
-<p>Shown below is the adding mechanism of a flashcard with a unique subject among other flashcards is added:<br></p>
+<p>Shown below is the adding mechanism of a flashcard with a unique subject among other flashcards:<br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Each time a flashcard is added using the Logic component&#8217;s <code>AddCommand()</code>, the adding will be facilitated by <code>addSubject()</code> in the Model component.</p>
+<p>The Logic component&#8217;s <code>AddCommand</code> class is triggered every time the user adds a flashcard. It will then be facilitated by <code>addSubject()</code> in the Model component.</p>
 </li>
 <li>
-<p>The Model component&#8217;s <code>addSubject()</code> will use <code>SubjectBook</code> 's <code>addSubject()</code> to add the subject to a list containing only unique subjects.</p>
+<p>The Model component&#8217;s <code>addSubject()</code> will use <code>SubjectBook</code> 's <code>addSubject()</code> to add the subject to a list that contains only unique subjects.</p>
 </li>
 <li>
-<p><code>SubjectBook</code> will create a <code>UniqueSubjectList</code> object that stores all unique subjects.</p>
+<p>The <code>SubjectBook</code> class will create an <code>UniqueSubjectList</code> object to store all unique subjects.</p>
 </li>
 <li>
 <p>The <code>UniqueSubjectList</code> object will invoke its <code>addSubject()</code> function. This function will check if the current <code>UniqueSubjectList</code> object contains the subject tag of the current flashcard to be added.
 Since it is unique in this scenario, the subject tag of the current flashcard will be added to this <code>UniqueSubjectList</code> object.</p>
 </li>
 <li>
-<p>The <code>SubjectListPanel</code> then displays this newly added subject.</p>
+<p>The <code>SubjectListPanel</code> class then displays this newly added subject in the subjects panel.</p>
 </li>
 </ul>
 </div>
@@ -863,25 +871,25 @@ Since it is unique in this scenario, the subject tag of the current flashcard wi
 <p><strong>Subject tag already exists in other flashcards</strong><br>
 No Subject tag is added to the <code>UniqueSubjectList</code> object.</p>
 <div class="paragraph">
-<p>Shown below is the adding mechanism of a flashcard whose subject already exists in other flashcards is added:</p>
+<p>Shown below is the adding mechanism of a flashcard whose subject already exists in other flashcards:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Each time a flashcard is added using the Logic component&#8217;s <code>AddCommand()</code>, the adding will be facilitated by <code>addSubject()</code> in the Model component.</p>
+<p>The Logic component&#8217;s <code>AddCommand</code> class is triggered every time the user adds a flashcard. It will then be facilitated by <code>addSubject()</code> in the Model component.</p>
 </li>
 <li>
-<p>The Model component&#8217;s <code>addSubject()</code> will use <code>SubjectBook</code> 's <code>addSubject()</code> to add the subject to a list containing only unique subjects.</p>
+<p>The Model component&#8217;s <code>addSubject()</code> will use <code>SubjectBook</code> 's <code>addSubject()</code> to add the subject to a list that contains only unique subjects.</p>
 </li>
 <li>
 <p><code>SubjectBook</code> will create a <code>UniqueSubjectList</code> object that stores all unique subjects.</p>
 </li>
 <li>
 <p>The <code>UniqueSubjectList</code> object will invoke its <code>addSubject()</code> function. This function will check if the current <code>UniqueSubjectList</code> object contains the subject tag of the current flashcard to be added.
-Since it is not unique in this scenario, the subject tag <strong>will not</strong> be added to the <code>UniqueSubjectList</code> object.</p>
+Since it is not unique in this scenario, the subject tag <strong>will not</strong> be added to this <code>UniqueSubjectList</code> object.</p>
 </li>
 <li>
-<p>The <code>SubjectListPanel</code> remains unchanged.</p>
+<p>The subjects panel remains unchanged.</p>
 </li>
 </ul>
 </div>
@@ -889,7 +897,7 @@ Since it is not unique in this scenario, the subject tag <strong>will not</stron
 </ol>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram summarises what happens in this Step 1:<br></p>
+<p>The following sequence diagram summarises what happens in Step 1:<br></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -897,12 +905,12 @@ Since it is not unique in this scenario, the subject tag <strong>will not</stron
 </div>
 </div>
 <div class="paragraph">
-<p>Figure: Sequence Diagram of successfully adding a flashcard<br></p>
+<p><em>Figure: Sequence Diagram of adding a flashcard successfully</em><br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Blue:&#8201;&#8212;&#8201;Logic and Model component</p>
+<p>Blue&#8201;&#8212;&#8201;Logic and Model component</p>
 </li>
 <li>
 <p>Yellow&#8201;&#8212;&#8201;JavaFX component</p>
@@ -911,18 +919,18 @@ Since it is not unique in this scenario, the subject tag <strong>will not</stron
 </div>
 </div>
 <div class="sect4">
-<h5 id="step-2-displaying-flashcards-according-to-subjects"><a class="link" href="#step-2-displaying-flashcards-according-to-subjects">Step 2: Displaying Flashcards According to Subjects</a></h5>
+<h5 id="step-2-displaying-flashcards-according-to-subjects"><a class="link" href="#step-2-displaying-flashcards-according-to-subjects">Step 2: Displaying flashcards according to subjects</a></h5>
 <div class="paragraph">
 <p>After a flashcard is added, the following sequence of events will happen:</p>
 </div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The UI component&#8217;s <code>MainWindow</code> class will create a new <code>SubjectListPanel</code> object that takes in and invokes:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>The UI component&#8217;s <code>MainWindow</code> will create a new <code>SubjectListPanel</code> object that takes in and invokes:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Logic component&#8217;s <code>getFilteredSubjectList()</code>&#8201;&#8212;&#8201;returns <code>filteredSubjects</code> which contains a list of unique subjects</p>
+<p>Logic component&#8217;s <code>getFilteredSubjectList()</code>&#8201;&#8212;&#8201;returns <code>filteredSubjects</code> which contains the list of unique subjects</p>
 </li>
 <li>
 <p>Logic component&#8217;s <code>selectedSubjectProperty()</code>&#8201;&#8212;&#8201;returns the <code>selectedSubject</code> tag clicked by the user</p>
@@ -934,14 +942,21 @@ Since it is not unique in this scenario, the subject tag <strong>will not</stron
 </div>
 </li>
 <li>
-<p>In <code>SubjectListPanel</code>, <code>setItems()</code> and <code>setCellFactory()</code> of JavaFX will populate the panel with the unique subject list from <code>getFilteredSubjectList()</code>.</p>
-</li>
-<li>
-<p>The UI component&#8217;s <code>MainWindow</code> will create a new <code>FlashcardListPanel</code> object that takes in and invokes:</p>
+<p>In the <code>SubjectListPanel</code> class</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Logic component&#8217;s <code>getFilteredFlashcardList()</code>&#8201;&#8212;&#8201;returns <code>filteredFlashcards</code> which contains a list of unique flashcards</p>
+<p><code>setItems()</code> and <code>setCellFactory()</code> of JavaFX will populate the subjects panel with the unique subject list from <code>getFilteredSubjectList()</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The UI component&#8217;s <code>MainWindow</code> class will create a new <code>FlashcardListPanel</code> object that takes in and invokes:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Logic component&#8217;s <code>getFilteredFlashcardList()</code>&#8201;&#8212;&#8201;returns <code>filteredFlashcards</code> which contains the list of unique flashcards</p>
 </li>
 <li>
 <p>Logic component&#8217;s <code>selectedSubjectProperty()</code>&#8201;&#8212;&#8201;returns the <code>selectedSubject</code> tag clicked by the user</p>
@@ -950,20 +965,27 @@ Since it is not unique in this scenario, the subject tag <strong>will not</stron
 </div>
 </li>
 <li>
-<p>In <code>FlashcardListPanel</code>, <code>setItems()</code> and <code>setCellFactory()</code> of JavaFX will populate the panel with the unique flashcard list from <code>getFilteredFlashcardList()</code>.</p>
+<p>In the <code>FlashcardListPanel</code> class</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>setItems()</code> and <code>setCellFactory()</code> of JavaFX will populate the flashcards panel with the unique flashcard list from <code>getFilteredFlashcardList()</code>.</p>
 </li>
 <li>
-<p>A listener is attached to the <code>selectedSubjectProperty</code> value passed into <code>FlashcardListPanel</code> in order to detect if another subject is selected.</p>
+<p>A listener is attached to the <code>selectedSubjectProperty</code> value passed into this panel in order to detect when another subject is selected.</p>
 </li>
 <li>
-<p>When a new subject is selected, <code>FlashcardListPanel</code> invokes <code>updateFlashcardList()</code>.
+<p>When another subject is selected, the class invokes <code>updateFlashcardList()</code>.
 It matches the subject tag of flashcards from <code>getFilteredFlashcardList()</code> with the newly selected subject.
-If the subject tag matches, this flashcard is added to a <code>newFlashcardList</code>.</p>
+If the subject tag matches, this flashcard is added to a <code>newFlashcardList</code> object.</p>
 </li>
 <li>
-<p>The flashcard panel is then populated with flashcards from <code>newFlashcardList</code> using <code>setItems()</code> and <code>setCellFactory()</code> of JavaFX.</p>
+<p>The flashcard panel is then populated with flashcards from the <code>newFlashcardList</code> object using <code>setItems()</code> and <code>setCellFactory()</code> of JavaFX.</p>
 </li>
 </ul>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>The following sequence diagram summarizes what happens in Step 2:<br></p>
@@ -974,7 +996,7 @@ If the subject tag matches, this flashcard is added to a <code>newFlashcardList<
 </div>
 </div>
 <div class="paragraph">
-<p>Figure: Sequence Diagram of displaying flashcards according to subject<br></p>
+<p><em>Figure: Sequence Diagram of displaying flashcards categorized by subject</em><br></p>
 </div>
 <div class="ulist">
 <ul>
@@ -998,7 +1020,7 @@ If the subject tag matches, this flashcard is added to a <code>newFlashcardList<
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Check if subject is unique in <code>addSubject()</code> of <code>UniqueSubjectList</code></p>
+<p><strong>Alternative 1 (current choice):</strong> Check if subject is unique in <code>addSubject()</code> of <code>UniqueSubjectList</code> class</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1011,11 +1033,11 @@ If the subject tag matches, this flashcard is added to a <code>newFlashcardList<
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Check if subject is unique in <code>AddCommand()</code></p>
+<p><strong>Alternative 2:</strong> Check if subject is unique in <code>AddCommand</code> class</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement and faster way of checking.</p>
+<p>Pros: Easy to implement and a faster way of checking.</p>
 </li>
 <li>
 <p>Cons: Does not support code reusability.</p>
@@ -1027,15 +1049,15 @@ If the subject tag matches, this flashcard is added to a <code>newFlashcardList<
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-populating-subjects-list-on-application-start-up"><a class="link" href="#aspect-populating-subjects-list-on-application-start-up">Aspect: Populating subjects list on application start up</a></h5>
+<h5 id="aspect-populating-subject-list-on-application-startup"><a class="link" href="#aspect-populating-subject-list-on-application-startup">Aspect: Populating subject list on application startup</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Populate the subject list after the flashcard list is populated</p>
+<p><strong>Alternative 1 (current choice):</strong> Populate subject list after flashcard list is populated</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: No need additional storage for subject list</p>
+<p>Pros: No need additional storage for the subject list.</p>
 </li>
 <li>
 <p>Cons: Harder to implement.</p>
@@ -1048,10 +1070,10 @@ If the subject tag matches, this flashcard is added to a <code>newFlashcardList<
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement. Populates subject list the same way as how flashcard list is populated.</p>
+<p>Pros: Easy to implement as it populates subject list the same way as how flashcard list is populated.</p>
 </li>
 <li>
-<p>Cons: Need to create additional storage for subject list.</p>
+<p>Cons: Need to create additional storage for the subject list.</p>
 </li>
 </ul>
 </div>
@@ -1071,7 +1093,7 @@ If the subject tag matches, this flashcard is added to a <code>newFlashcardList<
 <p>Pros: Easier to implement and UI is not overly colourful which makes it easier for users' eyes to adapt.</p>
 </li>
 <li>
-<p>Cons: Inconsistency when displaying subject (i.e. plain text in <code>SubjectListPanel</code> but coloured tag in <code>FlashcardListPanel</code>).</p>
+<p>Cons: Inconsistency when displaying subject (i.e. plain text in subjects panel but coloured tag in flashcards panel).</p>
 </li>
 </ul>
 </div>
@@ -1081,7 +1103,7 @@ If the subject tag matches, this flashcard is added to a <code>newFlashcardList<
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: More consistency when displaying subject in <code>SubjectListPanel</code> and <code>FlashcardListPanel</code>.</p>
+<p>Pros: More consistency when displaying subject in subjects panel and flashcards panel.</p>
 </li>
 <li>
 <p>Cons: Harder to implement. Might also be harsher on the users' eyes and they might not know where to focus on.</p>
@@ -2542,13 +2564,13 @@ for <code>RemarkCommandParser</code>.</p>
 <p>(Mainly) Secondary School students</p>
 </li>
 <li>
-<p>Has a need to memorise notes across different flashcards</p>
+<p>Has a need to memorise notes</p>
 </li>
 <li>
 <p>Prefer digital notes over paper and pen</p>
 </li>
 <li>
-<p>Reasonably comfortable with using CLI apps</p>
+<p>Reasonably comfortable with using CLI applications</p>
 </li>
 </ul>
 </div>
@@ -2558,16 +2580,16 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Digitizes notes for each flashcard</p>
+<p>Digitize notes</p>
 </li>
 <li>
-<p>One-stop platform to get all one&#8217;s notes for different flashcards</p>
+<p>One-stop platform to access all of one&#8217;s notes</p>
 </li>
 <li>
-<p>Help with the memorisation of notes through the use of flash cards (e.g. before exams)</p>
+<p>Organize one&#8217;s notes based on subjects</p>
 </li>
 <li>
-<p>Organised one&#8217;s notes in one platform</p>
+<p>Help with the memorisation of notes through the use of flashcards (e.g. before exams)</p>
 </li>
 </ul>
 </div>
@@ -2622,8 +2644,20 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List flash cards categorized by flashcards</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Have an overview of the flashcards I currently have</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">View flashcards categorized by subjects</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Have an overview of the flashcards I currently have for a particular subject</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use the GUI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Perform certain operations easily with just a click</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identify my flashcards easily</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Have a better user experience with the application</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2698,6 +2732,18 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Reduce the time to input each long command</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hide the content of my flashcard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quiz myself more effectively</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Show the content of my flashcard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quiz myself more effectively</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Categorize each flashcard by importance</p></td>
@@ -2717,15 +2763,21 @@ for <code>RemarkCommandParser</code>.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use an application that is not just monochromatic in colour</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Have a better user experience</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">New User</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Create a new account</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Only see flash cards and flashcards that are customised by me</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Perform actions specific to the flashcards I created</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Login</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Access my account</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Perform actions that only pertain to my account</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
@@ -2733,11 +2785,14 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Share notes with friends who also have an account</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Test myself with my friend&#8217;s flashcard when I have finished mine.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Encrypt my data</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ensure my data is secure</p></td>
+</tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><em>{More to be added in future versions of the developer guide}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -2746,76 +2801,59 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is the <code>FlashCards</code> and the <strong>Actor</strong> is the <code>User</code>, unless specified otherwise)</p>
 </div>
-<h3 id="use-case-adding-a-flash-card" class="discrete">Use case: Adding a Flash Card</h3>
+<h3 id="use-case-adding-a-flashcard" class="discrete">Use Case: Adding a Flashcard</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User enters flashcard and data to add as a flash card</p>
+<p>User enters data to add as a flashcard</p>
 </li>
 <li>
-<p>FlashCards displays the flash card that was just added</p>
+<p>FlashCards displays the flashcard that was just added</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
 </li>
 </ol>
 </div>
-<h3 id="use-case-deleting-a-flash-card" class="discrete">Use case: Deleting a Flash Card</h3>
+<h3 id="use-case-editing-a-flashcard" class="discrete">Use Case: Editing a Flashcard</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User enters the flashcard of the flash card to be deleted</p>
+<p>User selects a subject</p>
 </li>
 <li>
-<p>FlashCards displays a list of flash cards belonging to the same flashcard</p>
+<p>FlashCards displays the list of flashcards for that subject.</p>
 </li>
 <li>
-<p>User selects the index of the flash card to delete</p>
+<p>User enters the index and fields of the flashcard to be edited</p>
 </li>
 <li>
-<p>FlashCards displays the updated list of flash cards</p>
+<p>FlashCards displays the updated list of flashcards</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
 </li>
 </ol>
 </div>
-<h3 id="use-case-editing-a-flash-card" class="discrete">Use case: Editing a Flash Card</h3>
+<h3 id="use-case-deleting-a-flashcard" class="discrete">Use Case: Deleting a Flashcard</h3>
 <div class="paragraph">
-<p><strong>MSS</strong></p>
+<p><strong>MSS</strong>
+1. User selects a subject
+2. FlashCards displays the list of flashcards for that subject.
+3. User enters the index of the flashcard to be deleted
+4. FlashCards displays the updated list of flashcards</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User enters the flashcard of the flash card to be edited</p>
-</li>
-<li>
-<p>FlashCards displays a list of flash cards belonging to the same flashcard</p>
-</li>
-<li>
-<p>User selects the index of the flash card to edit</p>
-</li>
-<li>
-<p>FlashCards prompts for new data</p>
-</li>
-<li>
-<p>User enters new data</p>
-</li>
-<li>
-<p>FlashCards displays the updated flash card</p>
 <div class="paragraph">
-<p>Use case ends.</p>
+<p>+
+Use case ends.</p>
 </div>
-</li>
-</ol>
-</div>
-<h3 id="use-case-finding-a-flash-card" class="discrete">Use case: Finding a Flash Card</h3>
+<h3 id="use-case-finding-a-flashcard" class="discrete">Use case: Finding a Flashcard</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2845,23 +2883,34 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-selecting-a-flash-card" class="discrete">Use case: Selecting a Flash Card</h3>
+<h3 id="use-case-selecting-a-flashcard" class="discrete">Use Case: Selecting a Flashcard</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User enters the subject of the flash card to be displayed</p>
+<p>User selects a flashcard</p>
 </li>
 <li>
-<p>FlashCards displays a list of flash cards belonging to the same subject</p>
+<p>FlashCards displays the topic and content in the Content panel.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-viewing-flashcards-based-on-subject" class="discrete">Use Case: Viewing Flashcards Based on Subject</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User selects a subject</p>
 </li>
 <li>
-<p>User selects the index of the flash card to view</p>
-</li>
-<li>
-<p>FlashCards displays the flash card of the chosen index</p>
+<p>FlashCards displays the list of flashcards for that subject.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2926,21 +2975,30 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ol>
 </div>
-<h3 id="use-case-listing-all-flash-cards-categorized-by-subjects" class="discrete">Use case: Listing all Flash Cards categorized by Subjects</h3>
+<h3 id="use-case-finding-a-flashcard-2" class="discrete">Use Case: Finding a Flashcard</h3>
 <div class="paragraph">
-<p><strong>MSS</strong></p>
+<p><strong>MSS</strong>
+1. User selects a subject
+2. FlashCards displays a list of flashcards belonging to the same subject
+3. User enters a keyword
+4. FlashCards displays all flashcards that contains the given keyword</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User enters the subject of the flash cards to be displayed</p>
-</li>
-<li>
-<p>FlashCards displays an indexed list of flash cards categorized by flashcards
-  <br>
+<div class="paragraph">
+<p>+
 Use case ends.</p>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. Keyword not found</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
 </li>
-</ol>
+</ul>
 </div>
 <h3 id="use-case-sorting-all-flash-cards-categorized-by-difficulty" class="discrete">Use case: Sorting all Flash Cards categorized by Difficulty</h3>
 <div class="paragraph">
@@ -2953,22 +3011,24 @@ Use case ends.</p>
 </li>
 <li>
 <p>FlashCards displays an indexed list of flash cards categorized by selected difficulty
-  <br>
-Use case ends.</p>
++</p>
 </li>
 </ol>
 </div>
-<h3 id="use-case-clear-all-data-of-a-particular-user" class="discrete">Use case: Clear all Data of a particular User</h3>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+<h3 id="use-case-create-account-coming-in-v2-0" class="discrete">Use Case: Create Account (coming in v2.0)</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User enters clear command</p>
+<p>User enters a new username</p>
 </li>
 <li>
-<p>FlashCards clears all flash cards of the user along with flash cards respective subjects</p>
+<p>FlashCards creates a new User Account</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2976,7 +3036,61 @@ Use case ends.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p><em>{More use cases to be added in future versions of the developer guide}</em></p>
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Username is taken</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. FlashCards prints error message</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-login-coming-in-v2-0" class="discrete">Use Case: Login (coming in v2.0)</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters username</p>
+</li>
+<li>
+<p>FlashCards retrieves all relevant data for user account</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. Account not found</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. FlashCards prints error message</p>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -3011,13 +3125,13 @@ Use case ends.</p>
 <div class="sect2">
 <h3 id="portability-requirement"><a class="link" href="#portability-requirement">E.3. Portability Requirement</a></h3>
 <div class="paragraph">
-<p>The product can be used through both laptop and smartphone allowing users to use them on the go.</p>
+<p>The product can be used on both laptops and smart phones, allowing users to use them on the go.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="operational-requirement"><a class="link" href="#operational-requirement">E.4. Operational Requirement</a></h3>
 <div class="paragraph">
-<p>The system is capable of categorizing the cards based on the flashcards and allows easy access to cards when searching for one.</p>
+<p>The system is capable of categorizing the flashcards based on their subjects and allows easy access to flashcards when searching for one.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3143,9 +3257,6 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="deleting-a-flashcard"><a class="link" href="#deleting-a-flashcard">H.2. Deleting a flashcard</a></h3>
@@ -3156,27 +3267,24 @@ Expected: The most recent window size and location is retained.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all flashcards using the <code>list</code> command. Multiple flashcards in the list.</p>
+<p>Prerequisites: Select a subject via the GUI or <code>selectSubject</code> command.</p>
 </li>
 <li>
 <p>Test case: <code>delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
+Expected: First flashcard is deleted from the filtered list. Details of the deleted flashcard shown in the status message. Timestamp in the status bar is updated.</p>
 </li>
 <li>
 <p>Test case: <code>delete 0</code><br>
 Expected: No flashcard is deleted. Error details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size), <code>delete a</code> (where a is any alphabet)<br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
 <div class="sect2">
@@ -3200,4 +3308,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 10:33:58 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 10:42:27 UTC</div></div></div></body></html>
