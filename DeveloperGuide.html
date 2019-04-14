@@ -596,7 +596,7 @@ Following that, <code>NextCommand</code> or <code>PreviousCommand</code> can be 
 <div class="ulist">
 <ul>
 <li>
-<p><code>NextCommand#getNextIndex(Index index)</code>&#8201;&#8212;&#8201;retrieves the current flash card&#8217;s Index from <code>SelectCommand</code> class.</p>
+<p><code>NextCommand#getNextIndex(Index index)</code>&#8201;&#8212;&#8201;retrieves the current flashcard&#8217;s Index from <code>SelectCommand</code> class.</p>
 </li>
 <li>
 <p><code>NextCommand#setNextIndex(Index index, int start)</code>&#8201;&#8212;&#8201; pass the index currently being used in <code>NextCommand</code> to <code>PreviousCommand</code>.</p>
@@ -609,7 +609,7 @@ Following that, <code>NextCommand</code> or <code>PreviousCommand</code> can be 
 <div class="ulist">
 <ul>
 <li>
-<p><code>PreviousCommand#getPreviousIndex(Index index)</code>&#8201;&#8212;&#8201;retrieves the current flash card&#8217;s Index from <code>SelectCommand</code> class.</p>
+<p><code>PreviousCommand#getPreviousIndex(Index index)</code>&#8201;&#8212;&#8201;retrieves the current flashcard&#8217;s Index from <code>SelectCommand</code> class.</p>
 </li>
 <li>
 <p><code>PreviousCommand#setPreviousIndex(Index index, int start)</code>&#8201;&#8212;&#8201;pass the index currently being used in <code>PreviousCommand</code> to <code>NextCommand</code>.</p>
@@ -1176,7 +1176,7 @@ The <code>SortCommand</code> will help students to focus on one chosen difficult
 <div class="sect3">
 <h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.4.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The user can determine how long the flash cards will exist in the database “FlashCards”.
+<p>The user can determine how long the flashcards will exist in the database “FlashCards”.
 The following operations are available:</p>
 </div>
 <div class="ulist">
@@ -1193,7 +1193,7 @@ The following operations are available:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>For easier modes of implementation, the user can also choose to set a date whereby the flash cards would be unavailable thereafter. To activate this function, the user can type in <code>deadline</code> or <code>exam</code>, followed by the index and the date. For example, in the event where the user knows the specific exam date for the selected flashcard, he/she can set the exam date under the “Subject Details” and the flash cards will be available for another month after the exam before the auto deletion function is activated.</p>
+<p>For easier modes of implementation, the user can also choose to set a date whereby the flashcards would be unavailable thereafter. To activate this function, the user can type in <code>deadline</code> or <code>exam</code>, followed by the index and the date. For example, in the event where the user knows the specific exam date for the selected flashcard, he/she can set the exam date under the “Subject Details” and the flashcards will be available for another month after the exam before the auto deletion function is activated.</p>
 </div>
 <div class="paragraph">
 <p>These operations are exposed in the <code>Logic</code> interface as <code>Logic#clearall()</code>, <code>Logic#clear()</code>, <code>Logic#deadline()</code> and <code>Logic#exam()</code> respectively.</p>
@@ -1202,7 +1202,7 @@ The following operations are available:</p>
 <p>Given below is an example usage scenario and how the deadline/exam mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedFlashCards</code> will be initialized with the initial flash card state, and the <code>currentStatePointer</code> pointing to that single flash card state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedFlashCards</code> will be initialized with the initial flashcard state, and the <code>currentStatePointer</code> pointing to that single flashcard state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1210,7 +1210,7 @@ The following operations are available:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>list</code> command to list all the available flashcards in the FlashCards. The <code>list</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the flash card after the <code>list</code> command executes to be saved in the <code>flashCardStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted flash card state.</p>
+<p>Step 2. The user executes <code>list</code> command to list all the available flashcards in the FlashCards. The <code>list</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the flashcard after the <code>list</code> command executes to be saved in the <code>flashCardStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted flashcard state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1238,10 +1238,10 @@ If a command fails its execution, it will not call <code>Model#commitFlashBook()
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that the deadline/exam is over and do not wish to save the flashcard in the flash card. By executing the <code>clear</code> command, he can delete all the respective flash cards under the specified flashcard. The <code>clear</code> command will call <code>Logic#Clear()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous flash card state, and clear all the respective flash cards of the specified flashcard.</p>
+<p>Step 4. The user now decides that the deadline/exam is over and do not wish to save the flashcard in the flashcard. By executing the <code>clear</code> command, he can delete all the respective flashcards under the specified flashcard. The <code>clear</code> command will call <code>Logic#Clear()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous flashcard state, and clear all the respective flashcards of the specified flashcard.</p>
 </div>
 <div class="paragraph">
-<p>Step 5: Alternatively, the user can execute the <code>clearall</code> command which will delete all the flash cards in the FlashCards. The <code>clearall</code> command will call <code>Logic#Clearall()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous flash card state, and clear all the respective flash cards in FlashCards.</p>
+<p>Step 5: Alternatively, the user can execute the <code>clearall</code> command which will delete all the flashcards in the FlashCards. The <code>clearall</code> command will call <code>Logic#Clearall()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous flashcard state, and clear all the respective flashcards in FlashCards.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1315,7 +1315,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Auto deletion of the flash cards.</p>
+<p><strong>Alternative 1 (current choice):</strong> Auto deletion of the flashcards.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1328,11 +1328,11 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Manual deletion of the flash cards.</p>
+<p><strong>Alternative 2:</strong> Manual deletion of the flashcards.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Allow the user to have the choice of keeping the flash cards or removing it.</p>
+<p>Pros: Allow the user to have the choice of keeping the flashcards or removing it.</p>
 </li>
 <li>
 <p>Cons: Might be troublesome for some users.</p>
@@ -1355,7 +1355,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Auto deletion of flash cards.</p>
+<p>Pros: Auto deletion of flashcards.</p>
 </li>
 <li>
 <p>Cons: Need to pay extra caution for Leap years.</p>
@@ -2626,19 +2626,19 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add a new flash card</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add a new flashcard</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Insert a new unique flashcard</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Edit a flash card</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Edit a flashcard</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Change my mistakes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Delete a flash card through its index</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete a flashcard through its index</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Remove flashcards that I no longer need</p></td>
 </tr>
 <tr>
@@ -2662,7 +2662,7 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Find a flash card</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find a flashcard</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Locate the flashcard I need without going through the entire list</p></td>
 </tr>
 <tr>
@@ -2686,13 +2686,13 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sort the flash cards according to Difficulty</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sort the flashcards according to Difficulty</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Categorise the flashcards according to the difficulty levels</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Categorise the flash cards according to Subjects</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Categorise the flashcards according to Subjects</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Split the flashcards into respective subjects</p></td>
 </tr>
 <tr>
@@ -2843,17 +2843,28 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 <h3 id="use-case-deleting-a-flashcard" class="discrete">Use Case: Deleting a Flashcard</h3>
 <div class="paragraph">
-<p><strong>MSS</strong>
-1. User selects a subject
-2. FlashCards displays the list of flashcards for that subject.
-3. User enters the index of the flashcard to be deleted
-4. FlashCards displays the updated list of flashcards</p>
+<p><strong>MSS</strong></p>
 </div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User selects a subject</p>
+</li>
+<li>
+<p>FlashCards displays the list of flashcards for that subject.</p>
+</li>
+<li>
+<p>User enters the index of the flashcard to be deleted</p>
+</li>
+<li>
+<p>FlashCards displays the updated list of flashcards</p>
 <div class="paragraph">
-<p>+
-Use case ends.</p>
+<p>Use case ends.</p>
 </div>
-<h3 id="use-case-finding-a-flashcard" class="discrete">Use case: Finding a Flashcard</h3>
+</li>
+</ol>
+</div>
+<h3 id="use-case-finding-a-flashcard" class="discrete">Use Case: Finding a Flashcard</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2863,7 +2874,7 @@ Use case ends.</p>
 <p>User enters a keyword</p>
 </li>
 <li>
-<p>FlashCards displays all flash cards that contains the given keyword</p>
+<p>FlashCards displays all flashcards that contains the given keyword</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2917,58 +2928,58 @@ Use case ends.</p>
 </li>
 </ol>
 </div>
-<h3 id="use-case-viewing-the-next-flash-card" class="discrete">Use case: Viewing the next Flash Card</h3>
+<h3 id="use-case-viewing-the-next-flashcard" class="discrete">Use Case: Viewing the next Flashcard</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User enters the subject of the flash card to be displayed</p>
+<p>User enters the subject of the flashcard to be displayed</p>
 </li>
 <li>
-<p>FlashCards displays a list of flash cards belonging to the same subject</p>
+<p>FlashCards displays a list of flashcards belonging to the same subject</p>
 </li>
 <li>
-<p>User selects the index of the flash card to view</p>
+<p>User selects the index of the flashcard to view</p>
 </li>
 <li>
-<p>FlashCards displays the flash card of the chosen index</p>
+<p>FlashCards displays the flashcard of the chosen index</p>
 </li>
 <li>
-<p>User enters next to view the flash card with the next index</p>
+<p>User enters next to view the flashcard with the next index</p>
 </li>
 <li>
-<p>FlashCards displays the next flash card</p>
+<p>FlashCards displays the next flashcard</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
 </li>
 </ol>
 </div>
-<h3 id="use-case-viewing-the-previous-flash-card" class="discrete">Use case: Viewing the previous Flash Card</h3>
+<h3 id="use-case-viewing-the-previous-flashcard" class="discrete">Use Case: Viewing the previous Flashcard</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User enters the subject of the flash card to be displayed</p>
+<p>User enters the subject of the flashcard to be displayed</p>
 </li>
 <li>
-<p>FlashCards displays a list of flash cards belonging to the same subject</p>
+<p>FlashCards displays a list of flashcards belonging to the same subject</p>
 </li>
 <li>
-<p>User selects the index of the flash card to view</p>
+<p>User selects the index of the flashcard to view</p>
 </li>
 <li>
-<p>FlashCards displays the flash card of the chosen index</p>
+<p>FlashCards displays the flashcard of the chosen index</p>
 </li>
 <li>
-<p>User enters previous to view the flash card with the previous index</p>
+<p>User enters previous to view the flashcard with the previous index</p>
 </li>
 <li>
-<p>FlashCards displays the previous flash card</p>
+<p>FlashCards displays the previous flashcard</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2977,15 +2988,26 @@ Use case ends.</p>
 </div>
 <h3 id="use-case-finding-a-flashcard-2" class="discrete">Use Case: Finding a Flashcard</h3>
 <div class="paragraph">
-<p><strong>MSS</strong>
-1. User selects a subject
-2. FlashCards displays a list of flashcards belonging to the same subject
-3. User enters a keyword
-4. FlashCards displays all flashcards that contains the given keyword</p>
+<p><strong>MSS</strong></p>
 </div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User selects a subject</p>
+</li>
+<li>
+<p>FlashCards displays a list of flashcards belonging to the same subject</p>
+</li>
+<li>
+<p>User enters a keyword</p>
+</li>
+<li>
+<p>FlashCards displays all flashcards that contains the given keyword</p>
 <div class="paragraph">
-<p>+
-Use case ends.</p>
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p><strong>Extensions</strong></p>
@@ -3000,17 +3022,17 @@ Use case ends.</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-sorting-all-flash-cards-categorized-by-difficulty" class="discrete">Use case: Sorting all Flash Cards categorized by Difficulty</h3>
+<h3 id="use-case-sorting-all-flashcards-categorized-by-difficulty" class="discrete">Use Case: Sorting all Flashcards categorized by Difficulty</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User enters the difficulty of the flash cards to be displayed</p>
+<p>User enters the difficulty of the flashcards to be displayed</p>
 </li>
 <li>
-<p>FlashCards displays an indexed list of flash cards categorized by selected difficulty
+<p>FlashCards displays an indexed list of flashcards categorized by selected difficulty
 +</p>
 </li>
 </ol>
@@ -3308,4 +3330,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 10:42:27 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 10:49:29 UTC</div></div></div></body></html>
