@@ -24,13 +24,11 @@
 <li><a href="#viewing-the-next-flashcard-code-next-code-or-code-n-code">3.9. Viewing the next flashcard: <code>next</code> or <code>n</code></a></li>
 <li><a href="#viewing-the-next-flashcard-code-previous-code-or-code-p-code">3.10. Viewing the next flashcard: <code>previous</code> or <code>p</code></a></li>
 <li><a href="#listing-entered-commands-code-history-code">3.11. Listing entered commands: <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.12. Undoing previous command: <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.13. Redoing the previously undone command: <code>redo</code></a></li>
-<li><a href="#clearing-all-flashcards-code-clear-code-or-code-c-code">3.14. Clearing all flashcards: <code>clear</code> or <code>c</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.15. Exiting the program: <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.16. Saving the data</a></li>
-<li><a href="#creating-an-account-coming-in-v2-0">3.17. Creating an account (coming in v2.0)</a></li>
-<li><a href="#logging-in-coming-in-v2-0">3.18. Logging in (coming in v2.0)</a></li>
+<li><a href="#clearing-all-flashcards-code-clear-code-or-code-c-code">3.12. Clearing all flashcards: <code>clear</code> or <code>c</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.13. Exiting the program: <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.14. Saving the data</a></li>
+<li><a href="#creating-an-account-coming-in-v2-0">3.15. Creating an account (coming in v2.0)</a></li>
+<li><a href="#logging-in-coming-in-v2-0">3.16. Logging in (coming in v2.0)</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -390,7 +388,26 @@ Next, enter <code>delete 1</code> or <code>d 1</code> to delete the specified fl
 </div>
 <div class="sect2">
 <h3 id="selecting-a-subject-code-selectsubject-code"><a class="link" href="#selecting-a-subject-code-selectsubject-code">3.7. Selecting a subject: <code>selectSubject</code></a></h3>
-
+<div class="paragraph">
+<p>Selects the subject identified by the name used in the displayed list of subjects.+
+Format: <code>selectSubject SUBJECT</code><br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>SUBJECT</code>: Subject to be selected. This subject name can be found in the displayed list of subjects on the left panel.
+<strong>Must be a subject that is already in the subject list</strong><br></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Steps to select a subject:</strong><br>
+* Enter the <code>selectSubject</code> command to select a subject;</p>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong><br>
+* Enter this command <code>selectSubject English</code>, all flashcards that are tagged under "English" will be displayed in the flashcards panel.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="selecting-a-flashcard-code-select-code"><a class="link" href="#selecting-a-flashcard-code-select-code">3.8. Selecting a flashcard: <code>select</code></a></h3>
@@ -457,10 +474,13 @@ Format: <code>next</code> or <code>n</code><br></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Use the <code>select</code> command (see Section 3.9) to select a flashcard first.<br></p>
+<p>First select the subject of the flashcards you want to toggle with <code>selectSubject</code> command.<br></p>
 </li>
 <li>
-<p>Use this <code>next</code> / <code>n</code> command to go to the next flashcard.<br></p>
+<p>Next, use the <code>select</code> command (see Section 3.9) to select a flashcard first.<br></p>
+</li>
+<li>
+<p>Use <code>next</code> / <code>n</code> command to go to the next flashcard.<br></p>
 </li>
 </ul>
 </div>
@@ -470,18 +490,20 @@ Format: <code>next</code> or <code>n</code><br></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>select 2</code><br>
-Selects the 2nd flashcard in the list.<br>
+<p><code>selectSubject math</code><br>
+ Selects all flashcards that is tagged under subject math.<br>
+<code>select 2</code><br>
+Selects the 2nd flashcard in the filtered list.<br>
 <code>next</code><br>
-Selects the next flashcard in the list (i.e. the 3rd flashcard); and<br>
-Displays the content of this flashcard.</p>
+Selects the next flashcard in the list (i.e. the 3rd flashcard); and displays the content of this flashcard.+</p>
 </li>
 <li>
-<p><code>select 5</code><br>
+<p><code>selectSubject science</code><br>
+ Selects all flashcards that is tagged under subject science.<br>
+<code>select 5</code><br>
 Selects the 5th flashcard in the list.<br>
 <code>n</code><br>
-Displays the next flashcard in the list (i.e. the 6th flashcard); and<br>
-Displays the content of this flashcard.</p>
+Displays the next flashcard in the list (i.e. the 6th flashcard); and + displays the content of this flashcard.</p>
 </li>
 </ul>
 </div>
@@ -508,6 +530,9 @@ Format: <code>previous</code> or <code>p</code><br></p>
 <div class="ulist">
 <ul>
 <li>
+<p>First select the subject of the flashcards you want to toggle with <code>selectSubject</code> command.<br></p>
+</li>
+<li>
 <p>Use the <code>select</code> command (see Section 3.9) to select a flashcard first.<br></p>
 </li>
 <li>
@@ -516,23 +541,25 @@ Format: <code>previous</code> or <code>p</code><br></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>*Examples:<br></p>
+<p><strong>Examples:</strong><br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>select 2</code><br>
+<p><code>selectSubject math</code><br>
+Selects all flashcards that is tagged under subject math.<br>
+<code>select 2</code><br>
 Selects the 2nd flashcard in the list.<br>
 <code>previous</code><br>
-Selects the previous flashcard in the list (i.e. the 1st flashcard); and<br>
-Displays the content of this flashcard.</p>
+Selects the previous flashcard in the filtered list (i.e. the 1st flashcard); and displays the content of this flashcard.</p>
 </li>
 <li>
-<p><code>select 5</code><br>
+<p><code>selectSubject science</code><br>
+   Selects all flashcards that is tagged under subject science.<br>
+<code>select 5</code><br>
 Selects the 5th flashcard in the list.<br>
 <code>p</code><br>
-Selects the previous flashcard in the list (i.e. the 4th flashcard); and<br>
-Displays the content of this flashcard.</p>
+Selects the previous flashcard in the list (i.e. the 4th flashcard); and displays the content of this flashcard.</p>
 </li>
 </ul>
 </div>
@@ -562,117 +589,21 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.12. Undoing previous command: <code>undo</code></a></h3>
-<div class="paragraph">
-<p>Restores the flashcard to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Undoable commands: those commands that modify the flashcard&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-Deletes the 1st flashcard in the list.<br>
-<code>list</code><br>
-Lists all flashcards.<br>
-<code>undo</code><br>
-Reverses the <code>delete 1</code> command.</p>
-</li>
-<li>
-<p><code>select 1</code><br>
-Selects the 1st flashcard in the list.<br>
-<code>list</code><br>
-Lists all flashcards.<br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-Deletes the 1st flashcard in the list.<br>
-<code>clear</code><br>
-Clear all flashcards.<br>
-<code>undo</code><br>
-Reverses the <code>clear</code> command<br>
-<code>undo</code><br>
-Reverses the <code>delete 1</code> command<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.13. Redoing the previously undone command: <code>redo</code></a></h3>
-<div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-Deletes the 1st flashcard in the list.<br>
-<code>undo</code><br>
-Reverses the <code>delete 1</code> command<br>
-<code>redo</code><br>
-Reapplies the <code>delete 1</code> command<br></p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-Deletes the 1st flashcard in the list.<br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-Deletes the 1st flashcard in the list.<br>
-<code>clear</code><br>
-Clears all flashcards.<br>
-<code>undo</code><br>
-Reverses the <code>clear</code> command<br>
-<code>undo</code><br>
-Reverses the <code>delete 1</code> command<br>
-<code>redo</code><br>
-Reapplies the <code>delete 1</code> command<br>
-<code>redo</code><br>
-Reapplies the <code>clear</code> command<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="clearing-all-flashcards-code-clear-code-or-code-c-code"><a class="link" href="#clearing-all-flashcards-code-clear-code-or-code-c-code">3.14. Clearing all flashcards: <code>clear</code> or <code>c</code></a></h3>
+<h3 id="clearing-all-flashcards-code-clear-code-or-code-c-code"><a class="link" href="#clearing-all-flashcards-code-clear-code-or-code-c-code">3.12. Clearing all flashcards: <code>clear</code> or <code>c</code></a></h3>
 <div class="paragraph">
 <p>Clears all flashcards.<br>
 Format: <code>clear</code> or <code>c</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.15. Exiting the program: <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.13. Exiting the program: <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.16. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.14. Saving the data</a></h3>
 <div class="paragraph">
 <p>FlashCards data is saved in the hard disk automatically after any command that changes the data.<br></p>
 </div>
@@ -681,7 +612,7 @@ Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="creating-an-account-coming-in-v2-0"><a class="link" href="#creating-an-account-coming-in-v2-0">3.17. Creating an account (coming in v2.0)</a></h3>
+<h3 id="creating-an-account-coming-in-v2-0"><a class="link" href="#creating-an-account-coming-in-v2-0">3.15. Creating an account (coming in v2.0)</a></h3>
 <div class="paragraph">
 <p>Creates an account for the user.<br></p>
 </div>
@@ -690,7 +621,7 @@ Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging-in-coming-in-v2-0"><a class="link" href="#logging-in-coming-in-v2-0">3.18. Logging in (coming in v2.0)</a></h3>
+<h3 id="logging-in-coming-in-v2-0"><a class="link" href="#logging-in-coming-in-v2-0">3.16. Logging in (coming in v2.0)</a></h3>
 <div class="paragraph">
 <p>Enables users who already have an account to log in.<br></p>
 </div>
@@ -750,9 +681,6 @@ e.g. <code>find Theorem</code> or <code>f sun fox</code></p>
 <p><strong>Previous</strong> : <code>previous</code> or <code>p</code></p>
 </li>
 <li>
-<p><strong>Redo</strong> : <code>redo</code></p>
-</li>
-<li>
 <p><strong>Select</strong> : <code>select INDEX</code><br>
 e.g.<code>select 2</code></p>
 </li>
@@ -760,10 +688,7 @@ e.g.<code>select 2</code></p>
 <p><strong>Select Subject</strong> : <code>selectSubject SUBJECT</code><br>
 e.g. <code>selectSubject Math</code></p>
 </li>
-<li>
-<p><strong>Undo</strong> : <code>undo</code></p>
-</li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 09:23:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 10:31:25 UTC</div></div></div></body></html>

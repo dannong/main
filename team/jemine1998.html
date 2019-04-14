@@ -74,7 +74,11 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.1</code> - <code>v1.3</code> (3 releases) on GitHub</p>
+<p>Managed release <code>v1.4</code> (The last release) on GitHub</p>
+</li>
+<li>
+<p>Ensured the final product&#8217;s commands work properly and correct their respective bugs.
+<strong>*</strong></p>
 </li>
 </ul>
 </div>
@@ -87,7 +91,10 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <p>Added a status for number of flashcards(Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Added an event center to track the change in</p>
+</li>
+<li>
+<p>Modified most of the basic commands to accommodate the filtered subject list. Eg. Clear Command, Find Command, List Command, etc (Pull request)</p>
 </li>
 </ul>
 </div>
@@ -96,6 +103,9 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <p>Documentation:</p>
 <div class="ulist">
 <ul>
+<li>
+<p>Change most of the sequence diagram and class diagram to reflect the changes we did to the respective components.</p>
+</li>
 <li>
 <p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
 </li>
@@ -265,10 +275,13 @@ Format: <code>next</code> or <code>n</code><br></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Use the <code>select</code> command (see Section 3.9) to select a flashcard first.<br></p>
+<p>First select the subject of the flashcards you want to toggle with <code>selectSubject</code> command.<br></p>
 </li>
 <li>
-<p>Use this <code>next</code> / <code>n</code> command to go to the next flashcard.<br></p>
+<p>Next, use the <code>select</code> command (see Section 3.9) to select a flashcard first.<br></p>
+</li>
+<li>
+<p>Use <code>next</code> / <code>n</code> command to go to the next flashcard.<br></p>
 </li>
 </ul>
 </div>
@@ -278,18 +291,20 @@ Format: <code>next</code> or <code>n</code><br></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>select 2</code><br>
-Selects the 2nd flashcard in the list.<br>
+<p><code>selectSubject math</code><br>
+ Selects all flashcards that is tagged under subject math.<br>
+<code>select 2</code><br>
+Selects the 2nd flashcard in the filtered list.<br>
 <code>next</code><br>
-Selects the next flashcard in the list (i.e. the 3rd flashcard); and<br>
-Displays the content of this flashcard.</p>
+Selects the next flashcard in the list (i.e. the 3rd flashcard); and displays the content of this flashcard.+</p>
 </li>
 <li>
-<p><code>select 5</code><br>
+<p><code>selectSubject science</code><br>
+ Selects all flashcards that is tagged under subject science.<br>
+<code>select 5</code><br>
 Selects the 5th flashcard in the list.<br>
 <code>n</code><br>
-Displays the next flashcard in the list (i.e. the 6th flashcard); and<br>
-Displays the content of this flashcard.</p>
+Displays the next flashcard in the list (i.e. the 6th flashcard); and + displays the content of this flashcard.</p>
 </li>
 </ul>
 </div>
@@ -316,6 +331,9 @@ Format: <code>previous</code> or <code>p</code><br></p>
 <div class="ulist">
 <ul>
 <li>
+<p>First select the subject of the flashcards you want to toggle with <code>selectSubject</code> command.<br></p>
+</li>
+<li>
 <p>Use the <code>select</code> command (see Section 3.9) to select a flashcard first.<br></p>
 </li>
 <li>
@@ -324,23 +342,25 @@ Format: <code>previous</code> or <code>p</code><br></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>*Examples:<br></p>
+<p><strong>Examples:</strong><br></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>select 2</code><br>
+<p><code>selectSubject math</code><br>
+Selects all flashcards that is tagged under subject math.<br>
+<code>select 2</code><br>
 Selects the 2nd flashcard in the list.<br>
 <code>previous</code><br>
-Selects the previous flashcard in the list (i.e. the 1st flashcard); and<br>
-Displays the content of this flashcard.</p>
+Selects the previous flashcard in the filtered list (i.e. the 1st flashcard); and displays the content of this flashcard.</p>
 </li>
 <li>
-<p><code>select 5</code><br>
+<p><code>selectSubject science</code><br>
+   Selects all flashcards that is tagged under subject science.<br>
+<code>select 5</code><br>
 Selects the 5th flashcard in the list.<br>
 <code>p</code><br>
-Selects the previous flashcard in the list (i.e. the 4th flashcard); and<br>
-Displays the content of this flashcard.</p>
+Selects the previous flashcard in the list (i.e. the 4th flashcard); and displays the content of this flashcard.</p>
 </li>
 </ul>
 </div>
@@ -544,10 +564,10 @@ Following that, <code>NextCommand</code> or <code>PreviousCommand</code> can be 
 <div class="ulist">
 <ul>
 <li>
-<p><code>NextCommand#getNextInteger(Index index)</code>&#8201;&#8212;&#8201;retrieves the current flash card&#8217;s Index from <code>SelectCommand</code> class.</p>
+<p><code>NextCommand#getNextIndex(Index index)</code>&#8201;&#8212;&#8201;retrieves the current flash card&#8217;s Index from <code>SelectCommand</code> class.</p>
 </li>
 <li>
-<p><code>NextCommand#setNextInteger(Index index, int start)</code>&#8201;&#8212;&#8201; pass the index currently being used in <code>NextCommand</code> to <code>PreviousCommand</code>.</p>
+<p><code>NextCommand#setNextIndex(Index index, int start)</code>&#8201;&#8212;&#8201; pass the index currently being used in <code>NextCommand</code> to <code>PreviousCommand</code>.</p>
 </li>
 </ul>
 </div>
@@ -560,7 +580,7 @@ Following that, <code>NextCommand</code> or <code>PreviousCommand</code> can be 
 <p><code>PreviousCommand#getPreviousIndex(Index index)</code>&#8201;&#8212;&#8201;retrieves the current flash card&#8217;s Index from <code>SelectCommand</code> class.</p>
 </li>
 <li>
-<p><code>NextCommand#setPreviousInteger(Index index, int start)</code>&#8201;&#8212;&#8201;pass the index currently being used in <code>PreviousCommand</code> to <code>NextCommand</code>.</p>
+<p><code>PreviousCommand#setPreviousIndex(Index index, int start)</code>&#8201;&#8212;&#8201;pass the index currently being used in <code>PreviousCommand</code> to <code>NextCommand</code>.</p>
 </li>
 </ul>
 </div>
@@ -607,6 +627,70 @@ Flashcard with next 3 will be displayed for the example above.<br></p>
 2) <code>previous</code><br>
 Flashcard with next 1 will be displayed for the example above.<br></p>
 </div>
+<div class="paragraph">
+<p>An example scenario of selecting the flashcard (Step 1) and executing the next or previous after select (Step 2) or otherwise (Step 3) is shown below.<br></p>
+</div>
+<div class="sect4">
+<h5 id="step-1-selecting-a-flashcard"><a class="link" href="#step-1-selecting-a-flashcard">Step 1: Selecting a Flashcard</a></h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Executing a <code>select INDEX</code> command.<br></p>
+</li>
+<li>
+<p>The <code>INDEX</code> will be passed into Next Command, facilitated by <code>getNextIndex()</code> in NextCommand class. In NextCommand class, <code>nextIndex</code> will be initiated
+with <code>INDEX+1</code> to obtain the index number of the next flashcard.<br></p>
+</li>
+<li>
+<p>The <code>INDEX</code> will also be passed into Previous Command, facilitated by <code>getPreviousIndex()</code> in PreviousCommand class. In PreviousCommand class, the <code>previousIndex</code> will be initiated
+with <code>INDEX-1</code> to obtain the index number of the previous flashcard.<br></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="step-2-executing-next-or-previous-after-select"><a class="link" href="#step-2-executing-next-or-previous-after-select">Step 2: Executing next or previous after select</a></h5>
+<div class="paragraph">
+<p>The following is an execution of NextCommand:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>As mentioned in step 1, <code>nextIndex</code> has been initiated with the index obtain through Select command.</p>
+</li>
+<li>
+<p>When NextCommand is called, the <code>nextIndex</code> will be passed into Previous Command, facilitated by <code>setPreviousIndex()</code> in PreviousCommand class.
+In PreviousCommand class, the <code>previousIndex</code> will now be replaced by <code>nextIndex -1</code> to obtain the index number of the previous flashcard.</p>
+</li>
+<li>
+<p>Lastly nextCommand will set the flashcard of <code>nextIndex</code>, facilitated by setSelectedFlashcard() in model.</p>
+</li>
+<li>
+<p>Thereafter, next or previous can be called interchangeably without having to select a flashcard.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following is an execution of PreviousCommand:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>As mentioned in step 1, <code>previousIndex</code> has been initiated with the index obtain through Select command.</p>
+</li>
+<li>
+<p>When PreviousCommand is called, the <code>previousIndex</code> will be passed into Next Command, facilitated by <code>setNextIndex()</code> in NextCommand class.
+In NextCommand class, the <code>nextIndex</code> will now be replaced by <code>previousIndex+1</code> to obtain the index number of the next flashcard.</p>
+</li>
+<li>
+<p>Lastly PreviousCommand will set flashcard of <code>previousIndex</code>, facilitated by setSelectedFlashcard() in model.</p>
+</li>
+<li>
+<p>Thereafter, next or previous can be called interchangeably without having to select a flashcard.</p>
+</li>
+</ol>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
@@ -652,4 +736,4 @@ Flashcard with next 1 will be displayed for the example above.<br></p>
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 09:23:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 10:31:25 UTC</div></div></div></body></html>

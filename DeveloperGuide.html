@@ -452,7 +452,7 @@ The following class plays an important role at the architecture level:</p>
 <p><strong>API</strong> : <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>FlashcardListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/cs2113-ay1819s2-m11-3/main/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -596,10 +596,10 @@ Following that, <code>NextCommand</code> or <code>PreviousCommand</code> can be 
 <div class="ulist">
 <ul>
 <li>
-<p><code>NextCommand#getNextInteger(Index index)</code>&#8201;&#8212;&#8201;retrieves the current flash card&#8217;s Index from <code>SelectCommand</code> class.</p>
+<p><code>NextCommand#getNextIndex(Index index)</code>&#8201;&#8212;&#8201;retrieves the current flash card&#8217;s Index from <code>SelectCommand</code> class.</p>
 </li>
 <li>
-<p><code>NextCommand#setNextInteger(Index index, int start)</code>&#8201;&#8212;&#8201; pass the index currently being used in <code>NextCommand</code> to <code>PreviousCommand</code>.</p>
+<p><code>NextCommand#setNextIndex(Index index, int start)</code>&#8201;&#8212;&#8201; pass the index currently being used in <code>NextCommand</code> to <code>PreviousCommand</code>.</p>
 </li>
 </ul>
 </div>
@@ -612,7 +612,7 @@ Following that, <code>NextCommand</code> or <code>PreviousCommand</code> can be 
 <p><code>PreviousCommand#getPreviousIndex(Index index)</code>&#8201;&#8212;&#8201;retrieves the current flash card&#8217;s Index from <code>SelectCommand</code> class.</p>
 </li>
 <li>
-<p><code>NextCommand#setPreviousInteger(Index index, int start)</code>&#8201;&#8212;&#8201;pass the index currently being used in <code>PreviousCommand</code> to <code>NextCommand</code>.</p>
+<p><code>PreviousCommand#setPreviousIndex(Index index, int start)</code>&#8201;&#8212;&#8201;pass the index currently being used in <code>PreviousCommand</code> to <code>NextCommand</code>.</p>
 </li>
 </ul>
 </div>
@@ -658,6 +658,70 @@ Flashcard with next 3 will be displayed for the example above.<br></p>
 <p>1) <code>select 2</code> [2 is just an example, choose index of choice]<br>
 2) <code>previous</code><br>
 Flashcard with next 1 will be displayed for the example above.<br></p>
+</div>
+<div class="paragraph">
+<p>An example scenario of selecting the flashcard (Step 1) and executing the next or previous after select (Step 2) or otherwise (Step 3) is shown below.<br></p>
+</div>
+<div class="sect4">
+<h5 id="step-1-selecting-a-flashcard"><a class="link" href="#step-1-selecting-a-flashcard">Step 1: Selecting a Flashcard</a></h5>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Executing a <code>select INDEX</code> command.<br></p>
+</li>
+<li>
+<p>The <code>INDEX</code> will be passed into Next Command, facilitated by <code>getNextIndex()</code> in NextCommand class. In NextCommand class, <code>nextIndex</code> will be initiated
+with <code>INDEX+1</code> to obtain the index number of the next flashcard.<br></p>
+</li>
+<li>
+<p>The <code>INDEX</code> will also be passed into Previous Command, facilitated by <code>getPreviousIndex()</code> in PreviousCommand class. In PreviousCommand class, the <code>previousIndex</code> will be initiated
+with <code>INDEX-1</code> to obtain the index number of the previous flashcard.<br></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="step-2-executing-next-or-previous-after-select"><a class="link" href="#step-2-executing-next-or-previous-after-select">Step 2: Executing next or previous after select</a></h5>
+<div class="paragraph">
+<p>The following is an execution of NextCommand:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>As mentioned in step 1, <code>nextIndex</code> has been initiated with the index obtain through Select command.</p>
+</li>
+<li>
+<p>When NextCommand is called, the <code>nextIndex</code> will be passed into Previous Command, facilitated by <code>setPreviousIndex()</code> in PreviousCommand class.
+In PreviousCommand class, the <code>previousIndex</code> will now be replaced by <code>nextIndex -1</code> to obtain the index number of the previous flashcard.</p>
+</li>
+<li>
+<p>Lastly nextCommand will set the flashcard of <code>nextIndex</code>, facilitated by setSelectedFlashcard() in model.</p>
+</li>
+<li>
+<p>Thereafter, next or previous can be called interchangeably without having to select a flashcard.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following is an execution of PreviousCommand:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>As mentioned in step 1, <code>previousIndex</code> has been initiated with the index obtain through Select command.</p>
+</li>
+<li>
+<p>When PreviousCommand is called, the <code>previousIndex</code> will be passed into Next Command, facilitated by <code>setNextIndex()</code> in NextCommand class.
+In NextCommand class, the <code>nextIndex</code> will now be replaced by <code>previousIndex+1</code> to obtain the index number of the next flashcard.</p>
+</li>
+<li>
+<p>Lastly PreviousCommand will set flashcard of <code>previousIndex</code>, facilitated by setSelectedFlashcard() in model.</p>
+</li>
+<li>
+<p>Thereafter, next or previous can be called interchangeably without having to select a flashcard.</p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -2642,6 +2706,12 @@ for <code>RemarkCommandParser</code>.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Choose the color of the subject tag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Personalize my flashbook</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Retrieve a recently deleted flashcard</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Retrieve the flashcard which I might have accidentally deleted</p></td>
 </tr>
@@ -2655,7 +2725,13 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Login</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Access my account</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Share notes with friends who also have an account</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test myself with my friend&#8217;s flashcard when I have finished mine.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2670,80 +2746,6 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is the <code>FlashCards</code> and the <strong>Actor</strong> is the <code>User</code>, unless specified otherwise)</p>
 </div>
-<h3 id="use-case-create-account" class="discrete">Use case: Create Account</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User enters a new username</p>
-</li>
-<li>
-<p>FlashCards creates a new User Account</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. Username is taken</p>
-<div class="ulist">
-<ul>
-<li>
-<p>1a1. FlashCards prints error message</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<h3 id="use-case-login" class="discrete">Use case: Login</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User enters username</p>
-</li>
-<li>
-<p>FlashCards retrieves all relevant data for user account</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. Account not found</p>
-<div class="ulist">
-<ul>
-<li>
-<p>1a1. FlashCards prints error message</p>
-<div class="paragraph">
-<p>Use case resumes at step 1.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
 <h3 id="use-case-adding-a-flash-card" class="discrete">Use case: Adding a Flash Card</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -2755,35 +2757,6 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 <li>
 <p>FlashCards displays the flash card that was just added</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<h3 id="use-case-editing-a-flash-card" class="discrete">Use case: Editing a Flash Card</h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User enters the flashcard of the flash card to be edited</p>
-</li>
-<li>
-<p>FlashCards displays a list of flash cards belonging to the same flashcard</p>
-</li>
-<li>
-<p>User selects the index of the flash card to edit</p>
-</li>
-<li>
-<p>FlashCards prompts for new data</p>
-</li>
-<li>
-<p>User enters new data</p>
-</li>
-<li>
-<p>FlashCards displays the updated flash card</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2813,14 +2786,29 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ol>
 </div>
-<h3 id="use-case-listing-all-flash-cards-categorized-by-subjects" class="discrete">Use case: Listing all Flash Cards categorized by Subjects</h3>
+<h3 id="use-case-editing-a-flash-card" class="discrete">Use case: Editing a Flash Card</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>FlashCards displays an indexed list of flash cards categorized by flashcards</p>
+<p>User enters the flashcard of the flash card to be edited</p>
+</li>
+<li>
+<p>FlashCards displays a list of flash cards belonging to the same flashcard</p>
+</li>
+<li>
+<p>User selects the index of the flash card to edit</p>
+</li>
+<li>
+<p>FlashCards prompts for new data</p>
+</li>
+<li>
+<p>User enters new data</p>
+</li>
+<li>
+<p>FlashCards displays the updated flash card</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2857,6 +2845,119 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
+<h3 id="use-case-selecting-a-flash-card" class="discrete">Use case: Selecting a Flash Card</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters the subject of the flash card to be displayed</p>
+</li>
+<li>
+<p>FlashCards displays a list of flash cards belonging to the same subject</p>
+</li>
+<li>
+<p>User selects the index of the flash card to view</p>
+</li>
+<li>
+<p>FlashCards displays the flash card of the chosen index</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-viewing-the-next-flash-card" class="discrete">Use case: Viewing the next Flash Card</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters the subject of the flash card to be displayed</p>
+</li>
+<li>
+<p>FlashCards displays a list of flash cards belonging to the same subject</p>
+</li>
+<li>
+<p>User selects the index of the flash card to view</p>
+</li>
+<li>
+<p>FlashCards displays the flash card of the chosen index</p>
+</li>
+<li>
+<p>User enters next to view the flash card with the next index</p>
+</li>
+<li>
+<p>FlashCards displays the next flash card</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-viewing-the-previous-flash-card" class="discrete">Use case: Viewing the previous Flash Card</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters the subject of the flash card to be displayed</p>
+</li>
+<li>
+<p>FlashCards displays a list of flash cards belonging to the same subject</p>
+</li>
+<li>
+<p>User selects the index of the flash card to view</p>
+</li>
+<li>
+<p>FlashCards displays the flash card of the chosen index</p>
+</li>
+<li>
+<p>User enters previous to view the flash card with the previous index</p>
+</li>
+<li>
+<p>FlashCards displays the previous flash card</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="use-case-listing-all-flash-cards-categorized-by-subjects" class="discrete">Use case: Listing all Flash Cards categorized by Subjects</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters the subject of the flash cards to be displayed</p>
+</li>
+<li>
+<p>FlashCards displays an indexed list of flash cards categorized by flashcards
+  <br>
+Use case ends.</p>
+</li>
+</ol>
+</div>
+<h3 id="use-case-sorting-all-flash-cards-categorized-by-difficulty" class="discrete">Use case: Sorting all Flash Cards categorized by Difficulty</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters the difficulty of the flash cards to be displayed</p>
+</li>
+<li>
+<p>FlashCards displays an indexed list of flash cards categorized by selected difficulty
+  <br>
+Use case ends.</p>
+</li>
+</ol>
+</div>
 <h3 id="use-case-clear-all-data-of-a-particular-user" class="discrete">Use case: Clear all Data of a particular User</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -2867,7 +2968,7 @@ for <code>RemarkCommandParser</code>.</p>
 <p>User enters clear command</p>
 </li>
 <li>
-<p>FlashCards clears all flash cards of the user</p>
+<p>FlashCards clears all flash cards of the user along with flash cards respective subjects</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3099,4 +3200,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-13 09:23:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-14 10:31:25 UTC</div></div></div></body></html>
