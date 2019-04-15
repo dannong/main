@@ -10,7 +10,7 @@
 == Overview
 
 This portfolio is written to document the process of developing FlashCards throughout the course of one semester in a team of 3 members.
-My team chose to morph the basic Address Book into FlashCards and my role was to design and write the code for the *deadline* features as well as the *GUI display* of the flashcards.
+My team chose to morph the basic Address Book into FlashCards and my role was to design and write the code for the *deadline* feature as well as the *GUI display* of the flashcards.
 
 FlashCards is a desktop flash book application written in Java which targets mainly secondary school students.
 It is specially designed to cater to users a platform to digitize and store their notes in one place.
